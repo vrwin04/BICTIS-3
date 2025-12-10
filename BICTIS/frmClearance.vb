@@ -91,7 +91,7 @@ Public Class frmClearance
         startY += 25
         e.Graphics.DrawString("Municipality of Silang", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
         startY += 25
-        e.Graphics.DrawString("BARANGAY POBLACION I", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
+        e.Graphics.DrawString("BARANGAY Tartatia", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
 
         startY += 80
 
