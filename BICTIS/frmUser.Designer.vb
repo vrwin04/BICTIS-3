@@ -39,15 +39,14 @@ Partial Class frmUser
         ' 
         ' pnlBorder
         ' 
-        pnlBorder.BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
+        pnlBorder.BackColor = Color.FromArgb(236, 240, 241)
         pnlBorder.Controls.Add(pnlContainer)
         pnlBorder.Controls.Add(pnlHeader)
         pnlBorder.Controls.Add(pnlSidebar)
         pnlBorder.Dock = DockStyle.Fill
         pnlBorder.Location = New Point(0, 0)
-        pnlBorder.Margin = New Padding(4, 5, 4, 5)
         pnlBorder.Name = "pnlBorder"
-        pnlBorder.Size = New Size(1174, 738)
+        pnlBorder.Size = New Size(1336, 768)
         pnlBorder.TabIndex = 0
         ' 
         ' pnlContainer
@@ -56,10 +55,9 @@ Partial Class frmUser
         pnlContainer.Controls.Add(dgvHistory)
         pnlContainer.Dock = DockStyle.Fill
         pnlContainer.Location = New Point(347, 123)
-        pnlContainer.Margin = New Padding(4, 5, 4, 5)
         pnlContainer.Name = "pnlContainer"
         pnlContainer.Padding = New Padding(40, 46, 40, 46)
-        pnlContainer.Size = New Size(827, 615)
+        pnlContainer.Size = New Size(989, 645)
         pnlContainer.TabIndex = 2
         ' 
         ' dgvHistory
@@ -72,7 +70,7 @@ Partial Class frmUser
         dgvHistory.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         dgvHistory.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(0), CByte(150), CByte(136))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(0, 150, 136)
         DataGridViewCellStyle1.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
         DataGridViewCellStyle1.ForeColor = Color.White
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
@@ -83,19 +81,18 @@ Partial Class frmUser
         dgvHistory.Dock = DockStyle.Fill
         dgvHistory.EnableHeadersVisualStyles = False
         dgvHistory.Location = New Point(40, 46)
-        dgvHistory.Margin = New Padding(4, 5, 4, 5)
         dgvHistory.Name = "dgvHistory"
         dgvHistory.ReadOnly = True
         dgvHistory.RowHeadersVisible = False
         dgvHistory.RowHeadersWidth = 51
         DataGridViewCellStyle2.BackColor = Color.White
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 10.0F)
-        DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(224), CByte(242), CByte(241))
+        DataGridViewCellStyle2.ForeColor = Color.FromArgb(64, 64, 64)
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(224, 242, 241)
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
         dgvHistory.RowsDefaultCellStyle = DataGridViewCellStyle2
         dgvHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvHistory.Size = New Size(747, 523)
+        dgvHistory.Size = New Size(909, 553)
         dgvHistory.TabIndex = 0
         ' 
         ' pnlHeader
@@ -104,18 +101,16 @@ Partial Class frmUser
         pnlHeader.Controls.Add(lblWelcome)
         pnlHeader.Dock = DockStyle.Top
         pnlHeader.Location = New Point(347, 0)
-        pnlHeader.Margin = New Padding(4, 5, 4, 5)
         pnlHeader.Name = "pnlHeader"
-        pnlHeader.Size = New Size(827, 123)
+        pnlHeader.Size = New Size(989, 123)
         pnlHeader.TabIndex = 1
         ' 
         ' lblWelcome
         ' 
         lblWelcome.AutoSize = True
         lblWelcome.Font = New Font("Segoe UI", 18.0F, FontStyle.Bold)
-        lblWelcome.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        lblWelcome.ForeColor = Color.FromArgb(44, 62, 80)
         lblWelcome.Location = New Point(33, 38)
-        lblWelcome.Margin = New Padding(4, 0, 4, 0)
         lblWelcome.Name = "lblWelcome"
         lblWelcome.Size = New Size(277, 41)
         lblWelcome.TabIndex = 0
@@ -123,7 +118,7 @@ Partial Class frmUser
         ' 
         ' pnlSidebar
         ' 
-        pnlSidebar.BackColor = Color.FromArgb(CByte(0), CByte(150), CByte(136))
+        pnlSidebar.BackColor = Color.FromArgb(0, 150, 136)
         pnlSidebar.Controls.Add(btnLogout)
         pnlSidebar.Controls.Add(btnRefresh)
         pnlSidebar.Controls.Add(btnFileBlotter)
@@ -131,21 +126,19 @@ Partial Class frmUser
         pnlSidebar.Controls.Add(pnlLogo)
         pnlSidebar.Dock = DockStyle.Left
         pnlSidebar.Location = New Point(0, 0)
-        pnlSidebar.Margin = New Padding(4, 5, 4, 5)
         pnlSidebar.Name = "pnlSidebar"
-        pnlSidebar.Size = New Size(347, 738)
+        pnlSidebar.Size = New Size(347, 768)
         pnlSidebar.TabIndex = 0
         ' 
         ' btnLogout
         ' 
-        btnLogout.BackColor = Color.FromArgb(CByte(0), CByte(121), CByte(107))
+        btnLogout.BackColor = Color.FromArgb(0, 121, 107)
         btnLogout.Dock = DockStyle.Bottom
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
         btnLogout.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
         btnLogout.ForeColor = Color.White
-        btnLogout.Location = New Point(0, 646)
-        btnLogout.Margin = New Padding(4, 5, 4, 5)
+        btnLogout.Location = New Point(0, 676)
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(347, 92)
         btnLogout.TabIndex = 5
@@ -160,7 +153,6 @@ Partial Class frmUser
         btnRefresh.Font = New Font("Segoe UI", 11.0F)
         btnRefresh.ForeColor = Color.White
         btnRefresh.Location = New Point(0, 307)
-        btnRefresh.Margin = New Padding(4, 5, 4, 5)
         btnRefresh.Name = "btnRefresh"
         btnRefresh.Padding = New Padding(27, 0, 0, 0)
         btnRefresh.Size = New Size(347, 92)
@@ -177,7 +169,6 @@ Partial Class frmUser
         btnFileBlotter.Font = New Font("Segoe UI", 11.0F)
         btnFileBlotter.ForeColor = Color.White
         btnFileBlotter.Location = New Point(0, 215)
-        btnFileBlotter.Margin = New Padding(4, 5, 4, 5)
         btnFileBlotter.Name = "btnFileBlotter"
         btnFileBlotter.Padding = New Padding(27, 0, 0, 0)
         btnFileBlotter.Size = New Size(347, 92)
@@ -194,7 +185,6 @@ Partial Class frmUser
         btnReport.Font = New Font("Segoe UI", 11.0F)
         btnReport.ForeColor = Color.White
         btnReport.Location = New Point(0, 123)
-        btnReport.Margin = New Padding(4, 5, 4, 5)
         btnReport.Name = "btnReport"
         btnReport.Padding = New Padding(27, 0, 0, 0)
         btnReport.Size = New Size(347, 92)
@@ -205,11 +195,10 @@ Partial Class frmUser
         ' 
         ' pnlLogo
         ' 
-        pnlLogo.BackColor = Color.FromArgb(CByte(0), CByte(105), CByte(92))
+        pnlLogo.BackColor = Color.FromArgb(0, 105, 92)
         pnlLogo.Controls.Add(Label1)
         pnlLogo.Dock = DockStyle.Top
         pnlLogo.Location = New Point(0, 0)
-        pnlLogo.Margin = New Padding(4, 5, 4, 5)
         pnlLogo.Name = "pnlLogo"
         pnlLogo.Size = New Size(347, 123)
         pnlLogo.TabIndex = 0
@@ -220,7 +209,6 @@ Partial Class frmUser
         Label1.Font = New Font("Segoe UI", 20.0F, FontStyle.Bold)
         Label1.ForeColor = Color.White
         Label1.Location = New Point(80, 31)
-        Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(180, 46)
         Label1.TabIndex = 0
@@ -231,10 +219,9 @@ Partial Class frmUser
         AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.WhiteSmoke
-        ClientSize = New Size(1280, 720)
+        ClientSize = New Size(1336, 768)
         Controls.Add(pnlBorder)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(4, 5, 4, 5)
         Name = "frmUser"
         StartPosition = FormStartPosition.CenterScreen
         Text = "User Dashboard"
