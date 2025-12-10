@@ -15,9 +15,13 @@ Partial Class adminDashboard
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         pnlBorder = New Panel()
         pnlMainContent = New Panel()
         pnlChartSection = New Panel()
+        chartIncidents = New System.Windows.Forms.DataVisualization.Charting.Chart()
         pnlFilterBar = New Panel()
         cbIncidentType = New ComboBox()
         Label2 = New Label()
@@ -52,6 +56,7 @@ Partial Class adminDashboard
         pnlBorder.SuspendLayout()
         pnlMainContent.SuspendLayout()
         pnlChartSection.SuspendLayout()
+        CType(chartIncidents, System.ComponentModel.ISupportInitialize).BeginInit()
         pnlFilterBar.SuspendLayout()
         pnlStatsRow.SuspendLayout()
         pnlCard1.SuspendLayout()
@@ -91,6 +96,7 @@ Partial Class adminDashboard
         ' pnlChartSection
         ' 
         pnlChartSection.BackColor = Color.White
+        pnlChartSection.Controls.Add(chartIncidents)
         pnlChartSection.Controls.Add(pnlFilterBar)
         pnlChartSection.Dock = DockStyle.Fill
         pnlChartSection.Location = New Point(40, 297)
@@ -99,6 +105,23 @@ Partial Class adminDashboard
         pnlChartSection.Padding = New Padding(27, 31, 27, 31)
         pnlChartSection.Size = New Size(1257, 514)
         pnlChartSection.TabIndex = 1
+        ' 
+        ' chartIncidents
+        ' 
+        ChartArea1.Name = "ChartArea1"
+        chartIncidents.ChartAreas.Add(ChartArea1)
+        chartIncidents.Dock = DockStyle.Fill
+        Legend1.Name = "Legend1"
+        chartIncidents.Legends.Add(Legend1)
+        chartIncidents.Location = New Point(27, 123)
+        chartIncidents.Name = "chartIncidents"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        chartIncidents.Series.Add(Series1)
+        chartIncidents.Size = New Size(1203, 360)
+        chartIncidents.TabIndex = 1
+        chartIncidents.Text = "Incidents Chart"
         ' 
         ' pnlFilterBar
         ' 
@@ -520,6 +543,7 @@ Partial Class adminDashboard
         pnlMainContent.ResumeLayout(False)
         pnlMainContent.PerformLayout()
         pnlChartSection.ResumeLayout(False)
+        CType(chartIncidents, System.ComponentModel.ISupportInitialize).EndInit()
         pnlFilterBar.ResumeLayout(False)
         pnlFilterBar.PerformLayout()
         pnlStatsRow.ResumeLayout(False)
