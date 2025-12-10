@@ -29,6 +29,14 @@ Public Class frmClearance
         End If
 
         Dim row As DataGridViewRow = dgvRequests.SelectedRows(0)
+        Dim currentStatus As String = row.Cells("Status").Value.ToString()
+
+        ' CHECK: Prevent changes if already processed
+        If currentStatus = "Approved" Or currentStatus = "Rejected" Then
+            MessageBox.Show("This request has already been processed (" & currentStatus & ").", "Action Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            Exit Sub
+        End If
+
         Dim cid As Integer = Convert.ToInt32(row.Cells("ClearanceID").Value)
 
         ' 1. Capture Data for Printing
@@ -56,7 +64,17 @@ Public Class frmClearance
 
     Private Sub btnReject_Click(sender As Object, e As EventArgs) Handles btnReject.Click
         If dgvRequests.SelectedRows.Count = 0 Then Exit Sub
-        Dim cid As Integer = Convert.ToInt32(dgvRequests.SelectedRows(0).Cells("ClearanceID").Value)
+
+        Dim row As DataGridViewRow = dgvRequests.SelectedRows(0)
+        Dim currentStatus As String = row.Cells("Status").Value.ToString()
+
+        ' CHECK: Prevent changes if already processed
+        If currentStatus = "Approved" Or currentStatus = "Rejected" Then
+            MessageBox.Show("This request has already been processed (" & currentStatus & ").", "Action Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            Exit Sub
+        End If
+
+        Dim cid As Integer = Convert.ToInt32(row.Cells("ClearanceID").Value)
 
         If MessageBox.Show("Reject this request?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Session.ExecuteQuery("UPDATE tblClearances SET Status='Rejected' WHERE ClearanceID=" & cid)
@@ -91,7 +109,7 @@ Public Class frmClearance
         startY += 25
         e.Graphics.DrawString("Municipality of Silang", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
         startY += 25
-        e.Graphics.DrawString("BARANGAY Tartatia", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
+        e.Graphics.DrawString("BARANGAY POBLACION I", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
 
         startY += 80
 
@@ -106,7 +124,7 @@ Public Class frmClearance
         Dim text As String = "This is to certify that " & printName.ToUpper() & ", of legal age, is a bona fide resident of this Barangay." & vbCrLf & vbCrLf &
                              "This certification is issued upon the request of the interested party for the purpose of: " & vbCrLf & vbCrLf &
                              "     " & printPurpose.ToUpper() & "." & vbCrLf & vbCrLf &
-                             "Issued this " & printDate & " at Barangay Tartaria, Silang, Cavite."
+                             "Issued this " & printDate & " at Barangay Poblacion I, Silang, Cavite."
 
         Dim rect As New RectangleF(startX, startY, e.PageBounds.Width - 200, 400)
         e.Graphics.DrawString(text, bodyFont, Brushes.Black, rect)
