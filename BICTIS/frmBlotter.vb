@@ -8,20 +8,64 @@ Public Class frmBlotter
     End Sub
 
     Private Sub LoadDropdowns()
+        ' 1. Status Options
         cbStatus.Items.Clear()
         cbStatus.Items.AddRange(New String() {"Resolved", "Dismissed", "Escalated"})
         cbStatus.SelectedIndex = 0
 
+        ' 2. Complainant (Residents from Database)
         Dim dt As DataTable = Session.GetDataTable("SELECT ResidentID, FullName FROM tblResidents WHERE Role='User'")
         cbComplainant.DataSource = dt
         cbComplainant.DisplayMember = "FullName"
         cbComplainant.ValueMember = "ResidentID"
         cbComplainant.SelectedIndex = -1
 
+        ' 3. Respondent (Barangay Bodies / LGU)
         cbRespondent.DataSource = Nothing
         cbRespondent.Items.Clear()
-        cbRespondent.Items.AddRange(New String() {"Peace and Order Committee", "Lupon Tagapamayapa", "Barangay Health Office", "Resident (See Narrative)"})
+        cbRespondent.Items.AddRange(New String() {
+            "Peace and Order Committee",
+            "Lupon Tagapamayapa",
+            "Barangay Health Office",
+            "Resident (See Narrative)"
+        })
         cbRespondent.SelectedIndex = 0
+
+        ' 4. Incident Nature (Explicit List)
+        cbIncidentType.Items.Clear()
+        cbIncidentType.Items.AddRange(New String() {
+            "Physical Injury",
+            "Theft / Robbery",
+            "Property / Land Dispute",
+            "Harassment / Threats",
+            "Unjust Vexation",
+            "Malicious Mischief",
+            "Estafa / Swindling",
+            "Libel / Slander",
+            "Other"
+        })
+        cbIncidentType.SelectedIndex = -1
+    End Sub
+
+    ' *** NEW: Auto-Categorize Respondent based on Incident Type ***
+    Private Sub cbIncidentType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbIncidentType.SelectedIndexChanged
+        If cbIncidentType.SelectedIndex = -1 Then Exit Sub
+
+        Dim selectedType As String = cbIncidentType.Text
+
+        Select Case selectedType
+            ' DISPUTES & CIVIL MATTERS -> Lupon Tagapamayapa (Justice System)
+            Case "Property / Land Dispute", "Estafa / Swindling", "Unjust Vexation", "Libel / Slander", "Malicious Mischief"
+                cbRespondent.SelectedItem = "Lupon Tagapamayapa"
+
+            ' CRIMES & ORDER -> Peace and Order Committee (Tanods/Police)
+            Case "Physical Injury", "Theft / Robbery", "Harassment / Threats"
+                cbRespondent.SelectedItem = "Peace and Order Committee"
+
+                ' DEFAULT -> Specific Resident or Other
+            Case Else
+                cbRespondent.SelectedItem = "Resident (See Narrative)"
+        End Select
     End Sub
 
     Private Sub LoadIncidents()
@@ -33,7 +77,7 @@ Public Class frmBlotter
         dgvCases.DataSource = Session.GetDataTable(sql)
     End Sub
 
-    ' *** NEW: Double Click to View Details ***
+    ' View Details on Double Click
     Private Sub dgvCases_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCases.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim id As Integer = Convert.ToInt32(dgvCases.Rows(e.RowIndex).Cells("IncidentID").Value)
