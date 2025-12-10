@@ -26,17 +26,23 @@ Public Class adminDashboard
     End Sub
 
     Private Async Function LoadStatsAsync() As Task
-        ' Fetch both counts in parallel
+        ' Fetch counts in parallel
         Dim taskUserCount = Session.GetCountAsync("SELECT COUNT(*) FROM tblResidents WHERE Role='User'")
         Dim taskPending = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Status='Pending'")
+        Dim taskBlotter = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Category='Blotter'")
+        Dim taskConcerns = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Category='Concern'")
 
-        ' Wait for both
+        ' Wait for all
         Dim userCount As Integer = Await taskUserCount
         Dim pending As Integer = Await taskPending
+        Dim blotter As Integer = Await taskBlotter
+        Dim concerns As Integer = Await taskConcerns
 
         ' Update UI
         lblTotalUsers.Text = userCount.ToString()
         lblPendingCases.Text = pending.ToString()
+        lblTotalBlotter.Text = blotter.ToString()
+        lblTotalConcerns.Text = concerns.ToString()
 
         If pending > 0 Then
             lblPendingCases.ForeColor = Color.Red
