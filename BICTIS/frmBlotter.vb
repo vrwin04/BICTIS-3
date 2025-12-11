@@ -1,6 +1,9 @@
 ﻿Imports System.Collections.Generic
 
 Public Class frmBlotter
+    ' Flag to prevent infinite loops between the two dropdown events
+    Private isUpdating As Boolean = False
+
     Private Sub frmBlotter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblTitle.Text = "BLOTTER CASES (Admin)"
         LoadDropdowns()
@@ -21,7 +24,6 @@ Public Class frmBlotter
         cbComplainant.SelectedIndex = -1
 
         ' 3. Respondent (Barangay Bodies / LGU)
-        cbRespondent.DataSource = Nothing
         cbRespondent.Items.Clear()
         cbRespondent.Items.AddRange(New String() {
             "Peace and Order Committee",
@@ -29,43 +31,99 @@ Public Class frmBlotter
             "Barangay Health Office",
             "Resident (See Narrative)"
         })
+        ' Default to first item to trigger the filter
         cbRespondent.SelectedIndex = 0
-
-        ' 4. Incident Nature (Explicit List)
-        cbIncidentType.Items.Clear()
-        cbIncidentType.Items.AddRange(New String() {
-            "Physical Injury",
-            "Theft / Robbery",
-            "Property / Land Dispute",
-            "Harassment / Threats",
-            "Unjust Vexation",
-            "Malicious Mischief",
-            "Estafa / Swindling",
-            "Libel / Slander",
-            "Other"
-        })
-        cbIncidentType.SelectedIndex = -1
     End Sub
 
-    ' *** NEW: Auto-Categorize Respondent based on Incident Type ***
+    ' *** FUNCTION: Filter Incidents based on Respondent ***
+    Private Sub cbRespondent_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRespondent.SelectedIndexChanged
+        If isUpdating Or cbRespondent.SelectedIndex = -1 Then Exit Sub
+
+        isUpdating = True ' Lock to prevent circular updates
+
+        Dim currentSelection As String = cbIncidentType.Text
+        cbIncidentType.Items.Clear()
+
+        Select Case cbRespondent.Text
+            Case "Peace and Order Committee"
+                ' Crimes and Order Violations
+                cbIncidentType.Items.AddRange(New String() {
+                    "Physical Injury",
+                    "Theft / Robbery",
+                    "Harassment / Threats",
+                    "Curfew Violation",
+                    "Other"
+                })
+
+            Case "Lupon Tagapamayapa"
+                ' Civil Disputes
+                cbIncidentType.Items.AddRange(New String() {
+                    "Property / Land Dispute",
+                    "Estafa / Swindling",
+                    "Unjust Vexation",
+                    "Libel / Slander",
+                    "Malicious Mischief",
+                    "Other"
+                })
+
+            Case "Barangay Health Office"
+                ' Health related
+                cbIncidentType.Items.AddRange(New String() {
+                    "Health Hazard",
+                    "Sanitation Issue",
+                    "Other"
+                })
+
+            Case Else
+                ' Default / Resident / Other
+                cbIncidentType.Items.AddRange(New String() {
+                    "Physical Injury",
+                    "Theft / Robbery",
+                    "Property / Land Dispute",
+                    "Harassment / Threats",
+                    "Unjust Vexation",
+                    "Malicious Mischief",
+                    "Estafa / Swindling",
+                    "Libel / Slander",
+                    "Other"
+                })
+        End Select
+
+        ' Restore selection if it is still valid in the new list
+        If cbIncidentType.Items.Contains(currentSelection) Then
+            cbIncidentType.Text = currentSelection
+        Else
+            cbIncidentType.SelectedIndex = -1
+        End If
+
+        isUpdating = False ' Unlock
+    End Sub
+
+    ' *** FUNCTION: Auto-Select Respondent based on Incident Type ***
     Private Sub cbIncidentType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbIncidentType.SelectedIndexChanged
-        If cbIncidentType.SelectedIndex = -1 Then Exit Sub
+        If isUpdating Or cbIncidentType.SelectedIndex = -1 Then Exit Sub
+
+        isUpdating = True ' Lock
 
         Dim selectedType As String = cbIncidentType.Text
 
         Select Case selectedType
-            ' DISPUTES & CIVIL MATTERS -> Lupon Tagapamayapa (Justice System)
+            ' DISPUTES & CIVIL MATTERS -> Lupon Tagapamayapa
             Case "Property / Land Dispute", "Estafa / Swindling", "Unjust Vexation", "Libel / Slander", "Malicious Mischief"
                 cbRespondent.SelectedItem = "Lupon Tagapamayapa"
 
-            ' CRIMES & ORDER -> Peace and Order Committee (Tanods/Police)
-            Case "Physical Injury", "Theft / Robbery", "Harassment / Threats"
+            ' CRIMES & ORDER -> Peace and Order Committee
+            Case "Physical Injury", "Theft / Robbery", "Harassment / Threats", "Curfew Violation"
                 cbRespondent.SelectedItem = "Peace and Order Committee"
 
-                ' DEFAULT -> Specific Resident or Other
-            Case Else
-                cbRespondent.SelectedItem = "Resident (See Narrative)"
+            ' HEALTH
+            Case "Health Hazard", "Sanitation Issue"
+                cbRespondent.SelectedItem = "Barangay Health Office"
+
+                ' Note: "Other" or "Resident" does not force a change to allow manual selection
         End Select
+
+        isUpdating = False ' Unlock
     End Sub
 
     Private Sub LoadIncidents()
