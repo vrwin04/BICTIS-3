@@ -7,31 +7,27 @@ Public Class frmUser
     End Sub
 
     Private Sub LoadHistory()
-        ' Load both Blotters and Concerns for this user from tblIncidents
         Dim sql As String = "SELECT IncidentID, Category, IncidentType, Status, IncidentDate FROM tblIncidents " &
-                             "WHERE ComplainantID=" & Session.CurrentResidentID & " ORDER BY IncidentID DESC"
+                            "WHERE ComplainantID=" & Session.CurrentResidentID & " ORDER BY IncidentID DESC"
 
         Dim dt As DataTable = Session.GetDataTable(sql)
         dgvHistory.DataSource = dt
     End Sub
 
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
-        ' OPEN CONCERN FORM
         Dim frm As New frmReportConcern()
         frm.ShowDialog()
-        LoadHistory() ' Refresh after closing
+        LoadHistory()
     End Sub
 
     Private Sub btnFileBlotter_Click(sender As Object, e As EventArgs) Handles btnFileBlotter.Click
-        ' OPEN BLOTTER FORM
         Dim frm As New frmFileBlotter()
         frm.ShowDialog()
-        LoadHistory() ' Refresh after closing
+        LoadHistory()
     End Sub
 
-    ' *** NEW: REQUEST CLEARANCE BUTTON ***
     Private Sub btnRequestClearance_Click(sender As Object, e As EventArgs) Handles btnRequestClearance.Click
-        Dim purpose As String = InputBox("Please state the purpose of the clearance (e.g., Employment, ID, Business):", "Clearance Request")
+        Dim purpose As String = Microsoft.VisualBasic.Interaction.InputBox("Please state the purpose of the clearance (e.g., Employment, ID, Business):", "Clearance Request")
 
         If String.IsNullOrWhiteSpace(purpose) Then Exit Sub
 
@@ -48,9 +44,9 @@ Public Class frmUser
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         LoadHistory()
+        MessageBox.Show("Dashboard refreshed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    ' VIEW DETAILS ON DOUBLE CLICK
     Private Sub dgvHistory_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvHistory.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim id As Integer = Convert.ToInt32(dgvHistory.Rows(e.RowIndex).Cells("IncidentID").Value)
@@ -68,5 +64,4 @@ Public Class frmUser
             Me.Close()
         End If
     End Sub
-
 End Class

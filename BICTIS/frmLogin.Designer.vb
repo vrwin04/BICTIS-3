@@ -95,7 +95,7 @@ Partial Class frmLogin
         Me.chkShowPass.Cursor = System.Windows.Forms.Cursors.Hand
         Me.chkShowPass.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.chkShowPass.ForeColor = System.Drawing.Color.Gray
-        Me.chkShowPass.Location = New System.Drawing.Point(50, 320)
+        Me.chkShowPass.Location = New System.Drawing.Point(50, 330)
         Me.chkShowPass.Name = "chkShowPass"
         Me.chkShowPass.Size = New System.Drawing.Size(108, 19)
         Me.chkShowPass.TabIndex = 3
@@ -147,7 +147,7 @@ Partial Class frmLogin
         Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogin.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnLogin.ForeColor = System.Drawing.Color.White
-        Me.btnLogin.Location = New System.Drawing.Point(50, 360)
+        Me.btnLogin.Location = New System.Drawing.Point(50, 370)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(350, 50)
         Me.btnLogin.TabIndex = 3
@@ -157,9 +157,9 @@ Partial Class frmLogin
         'pnlPassLine
         '
         Me.pnlPassLine.BackColor = System.Drawing.Color.Silver
-        Me.pnlPassLine.Location = New System.Drawing.Point(50, 305)
+        Me.pnlPassLine.Location = New System.Drawing.Point(50, 310)
         Me.pnlPassLine.Name = "pnlPassLine"
-        Me.pnlPassLine.Size = New System.Drawing.Size(350, 2)
+        Me.pnlPassLine.Size = New System.Drawing.Size(350, 5)
         Me.pnlPassLine.TabIndex = 6
         '
         'txtPassword
@@ -171,7 +171,7 @@ Partial Class frmLogin
         Me.txtPassword.Location = New System.Drawing.Point(50, 275)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
-        Me.txtPassword.Size = New System.Drawing.Size(350, 25)
+        Me.txtPassword.Size = New System.Drawing.Size(350, 30)
         Me.txtPassword.TabIndex = 2
         '
         'Label2
@@ -190,7 +190,7 @@ Partial Class frmLogin
         Me.pnlUserLine.BackColor = System.Drawing.Color.Silver
         Me.pnlUserLine.Location = New System.Drawing.Point(50, 215)
         Me.pnlUserLine.Name = "pnlUserLine"
-        Me.pnlUserLine.Size = New System.Drawing.Size(350, 2)
+        Me.pnlUserLine.Size = New System.Drawing.Size(350, 5)
         Me.pnlUserLine.TabIndex = 3
         '
         'txtUsername
@@ -199,9 +199,9 @@ Partial Class frmLogin
         Me.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtUsername.Font = New System.Drawing.Font("Segoe UI", 14.0!)
         Me.txtUsername.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64)
-        Me.txtUsername.Location = New System.Drawing.Point(50, 185)
+        Me.txtUsername.Location = New System.Drawing.Point(50, 180)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(350, 25)
+        Me.txtUsername.Size = New System.Drawing.Size(350, 30)
         Me.txtUsername.TabIndex = 1
         '
         'Label1
@@ -209,7 +209,7 @@ Partial Class frmLogin
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label1.ForeColor = System.Drawing.Color.Gray
-        Me.Label1.Location = New System.Drawing.Point(46, 160)
+        Me.Label1.Location = New System.Drawing.Point(46, 155)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(71, 19)
         Me.Label1.TabIndex = 1
@@ -244,20 +244,20 @@ Partial Class frmLogin
 
     End Sub
 
-    Friend WithEvents pnlLeft As Panel
-    Friend WithEvents pnlRight As Panel
-    Friend WithEvents lblBrand As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents lblTitle As Label
-    Friend WithEvents txtUsername As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents txtPassword As TextBox
-    Friend WithEvents btnLogin As Button
-    Friend WithEvents Label5 As Label
-    Friend WithEvents lblRegisterLink As Label
-    Friend WithEvents btnClose As Button
-    Friend WithEvents pnlUserLine As Panel
-    Friend WithEvents pnlPassLine As Panel
-    Friend WithEvents chkShowPass As CheckBox
+    Friend WithEvents pnlLeft As System.Windows.Forms.Panel
+    Friend WithEvents pnlRight As System.Windows.Forms.Panel
+    Friend WithEvents lblBrand As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblTitle As System.Windows.Forms.Label
+    Friend WithEvents txtUsername As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtPassword As System.Windows.Forms.TextBox
+    Friend WithEvents btnLogin As System.Windows.Forms.Button
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lblRegisterLink As System.Windows.Forms.Label
+    Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents pnlUserLine As System.Windows.Forms.Panel
+    Friend WithEvents pnlPassLine As System.Windows.Forms.Panel
+    Friend WithEvents chkShowPass As System.Windows.Forms.CheckBox
 End Class

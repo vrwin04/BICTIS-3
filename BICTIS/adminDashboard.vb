@@ -11,9 +11,46 @@ Public Class adminDashboard
         lblPageTitle.Text = "Dashboard - " & Session.CurrentUserRole
         Try
             LoadFilterOptions()
+            ' Defer chart initialization until after form has been laid out
+            Me.BeginInvoke(New Action(AddressOf InitializeChart))
             Await LoadDashboardStats()
         Catch ex As Exception
             MessageBox.Show("Error loading dashboard: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub InitializeChart()
+        Try
+            If chartIncidents Is Nothing Then Return
+
+            ' Ensure chart has a positive size before configuring
+            If chartIncidents.Height <= 0 Or chartIncidents.Width <= 0 Then
+                chartIncidents.Size = New Size(600, 300)
+            End If
+
+            chartIncidents.Series.Clear()
+            chartIncidents.Titles.Clear()
+
+            Dim chartArea As New SysChart.ChartArea("ChartArea1")
+            chartIncidents.ChartAreas.Clear()
+            chartIncidents.ChartAreas.Add(chartArea)
+
+            Dim legend As New SysChart.Legend("Legend1")
+            legend.IsTextAutoFit = False
+            legend.Font = New Font("Segoe UI", 10.0!)
+            chartIncidents.Legends.Clear()
+            chartIncidents.Legends.Add(legend)
+
+            Dim series As New SysChart.Series("Incidents")
+            series.ChartArea = "ChartArea1"
+            series.Legend = "Legend1"
+            series.IsValueShownAsLabel = True
+            series.ChartType = SysChart.SeriesChartType.Column
+
+            chartIncidents.Series.Add(series)
+            chartIncidents.Titles.Add("All Incidents Overview")
+        Catch ex As Exception
+            ' Swallow to avoid crash during load; log if needed
         End Try
     End Sub
 
@@ -111,6 +148,11 @@ Public Class adminDashboard
         End If
 
         Dim dt As DataTable = Await Session.GetDataTableAsync(query, params)
+
+        ' Ensure chart is initialized before updating
+        If chartIncidents.Series.Count = 0 Then
+            Me.BeginInvoke(New Action(AddressOf InitializeChart))
+        End If
 
         chartIncidents.Series.Clear()
         chartIncidents.Titles.Clear()

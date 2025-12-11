@@ -15,9 +15,6 @@ Partial Class adminDashboard
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.pnlBorder = New System.Windows.Forms.Panel()
         Me.pnlMainContent = New System.Windows.Forms.Panel()
         Me.pnlHome = New System.Windows.Forms.Panel()
@@ -118,19 +115,9 @@ Partial Class adminDashboard
         '
         'chartIncidents
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.chartIncidents.ChartAreas.Add(ChartArea1)
         Me.chartIncidents.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Legend1.IsTextAutoFit = False
-        Legend1.Name = "Legend1"
-        Me.chartIncidents.Legends.Add(Legend1)
         Me.chartIncidents.Location = New System.Drawing.Point(20, 100)
         Me.chartIncidents.Name = "chartIncidents"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chartIncidents.Series.Add(Series1)
         Me.chartIncidents.Size = New System.Drawing.Size(919, 214)
         Me.chartIncidents.TabIndex = 1
         Me.chartIncidents.Text = "Incidents Chart"

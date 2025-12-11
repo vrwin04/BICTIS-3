@@ -47,7 +47,6 @@ Partial Class frmFileBlotter
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnClose.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClose.FlatAppearance.BorderSize = 0
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
@@ -146,7 +145,6 @@ Partial Class frmFileBlotter
         'cbType
         '
         Me.cbType.BackColor = System.Drawing.Color.White
-        Me.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbType.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.cbType.FormattingEnabled = True
