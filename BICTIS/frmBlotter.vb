@@ -10,86 +10,59 @@ Public Class frmBlotter
         LoadIncidents()
     End Sub
 
+    ' --- 1. CLEANER DROPDOWN LOADING ---
     Private Sub LoadDropdowns()
-        ' 1. Status Options
         cbStatus.Items.Clear()
-        cbStatus.Items.AddRange(New String() {"Resolved", "Dismissed", "Escalated"})
+        cbStatus.Items.AddRange({"Resolved", "Dismissed", "Escalated"})
         cbStatus.SelectedIndex = 0
 
-        ' 2. Complainant (Residents from Database)
+        ' Load Complainants (Residents)
         Dim dt As DataTable = Session.GetDataTable("SELECT ResidentID, FullName FROM tblResidents WHERE Role='User'")
         cbComplainant.DataSource = dt
         cbComplainant.DisplayMember = "FullName"
         cbComplainant.ValueMember = "ResidentID"
         cbComplainant.SelectedIndex = -1
 
-        ' 3. Respondent (Barangay Bodies / LGU)
+        ' Load Respondents
         cbRespondent.Items.Clear()
-        cbRespondent.Items.AddRange(New String() {
+        cbRespondent.Items.AddRange({
             "Peace and Order Committee",
             "Lupon Tagapamayapa",
             "Barangay Health Office",
             "Resident (See Narrative)"
         })
-        ' Default to first item to trigger the filter
         cbRespondent.SelectedIndex = 0
     End Sub
 
-    ' *** FUNCTION: Filter Incidents based on Respondent ***
+    ' --- 2. EXTRACTED DATA LOGIC ---
+    Private Function GetIncidentsForRespondent(respondent As String) As String()
+        Select Case respondent
+            Case "Peace and Order Committee"
+                Return {"Physical Injury", "Theft / Robbery", "Harassment / Threats", "Curfew Violation", "Other"}
+            Case "Lupon Tagapamayapa"
+                Return {"Property / Land Dispute", "Estafa / Swindling", "Unjust Vexation", "Libel / Slander", "Malicious Mischief", "Other"}
+            Case "Barangay Health Office"
+                Return {"Health Hazard", "Sanitation Issue", "Other"}
+            Case Else
+                Return {"Physical Injury", "Theft / Robbery", "Property / Land Dispute", "Harassment / Threats", "Other"}
+        End Select
+    End Function
+
+    ' Filter Incidents based on Respondent
     Private Sub cbRespondent_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRespondent.SelectedIndexChanged
         If isUpdating Or cbRespondent.SelectedIndex = -1 Then Exit Sub
 
-        isUpdating = True ' Lock to prevent circular updates
+        isUpdating = True ' Lock
 
         Dim currentSelection As String = cbIncidentType.Text
+
+        ' Use helper function to get items
+        Dim items() As String = GetIncidentsForRespondent(cbRespondent.Text)
+
         cbIncidentType.Items.Clear()
+        cbIncidentType.Items.AddRange(items)
 
-        Select Case cbRespondent.Text
-            Case "Peace and Order Committee"
-                ' Crimes and Order Violations
-                cbIncidentType.Items.AddRange(New String() {
-                    "Physical Injury",
-                    "Theft / Robbery",
-                    "Harassment / Threats",
-                    "Curfew Violation",
-                    "Other"
-                })
-
-            Case "Lupon Tagapamayapa"
-                ' Civil Disputes
-                cbIncidentType.Items.AddRange(New String() {
-                    "Property / Land Dispute",
-                    "Estafa / Swindling",
-                    "Unjust Vexation",
-                    "Libel / Slander",
-                    "Malicious Mischief",
-                    "Other"
-                })
-
-            Case "Barangay Health Office"
-                ' Health related
-                cbIncidentType.Items.AddRange(New String() {
-                    "Health Hazard",
-                    "Sanitation Issue",
-                    "Other"
-                })
-
-            Case Else
-                ' Default / Resident / Other
-                cbIncidentType.Items.AddRange(New String() {
-                    "Physical Injury",
-                    "Theft / Robbery",
-                    "Property / Land Dispute",
-                    "Harassment / Threats",
-                    "Unjust Vexation",
-                    "Malicious Mischief",
-                    "Estafa / Swindling",
-                    "Libel / Slander",
-                    "Other"
-                })
-        End Select
-
-        ' Restore selection if it is still valid in the new list
+        ' Restore selection if valid
         If cbIncidentType.Items.Contains(currentSelection) Then
             cbIncidentType.Text = currentSelection
         Else
@@ -99,7 +72,7 @@ Public Class frmBlotter
         isUpdating = False ' Unlock
     End Sub
 
-    ' *** FUNCTION: Auto-Select Respondent based on Incident Type ***
+    ' Auto-Select Respondent based on Incident Type
     Private Sub cbIncidentType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbIncidentType.SelectedIndexChanged
         If isUpdating Or cbIncidentType.SelectedIndex = -1 Then Exit Sub
 
@@ -107,20 +80,16 @@ Public Class frmBlotter
 
         Dim selectedType As String = cbIncidentType.Text
 
+        ' Determine Respondent based on type
         Select Case selectedType
-            ' DISPUTES & CIVIL MATTERS -> Lupon Tagapamayapa
             Case "Property / Land Dispute", "Estafa / Swindling", "Unjust Vexation", "Libel / Slander", "Malicious Mischief"
                 cbRespondent.SelectedItem = "Lupon Tagapamayapa"
 
-            ' CRIMES & ORDER -> Peace and Order Committee
             Case "Physical Injury", "Theft / Robbery", "Harassment / Threats", "Curfew Violation"
                 cbRespondent.SelectedItem = "Peace and Order Committee"
 
-            ' HEALTH
             Case "Health Hazard", "Sanitation Issue"
                 cbRespondent.SelectedItem = "Barangay Health Office"
-
-                ' Note: "Other" or "Resident" does not force a change to allow manual selection
         End Select
 
         isUpdating = False ' Unlock
@@ -135,7 +104,6 @@ Public Class frmBlotter
         dgvCases.DataSource = Session.GetDataTable(sql)
     End Sub
 
-    ' View Details on Double Click
     Private Sub dgvCases_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCases.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim id As Integer = Convert.ToInt32(dgvCases.Rows(e.RowIndex).Cells("IncidentID").Value)
@@ -164,6 +132,7 @@ Public Class frmBlotter
         Dim respondentName As String = cbRespondent.Text
         Dim finalNarrative As String = "[Respondent: " & respondentName & "] " & txtNarrative.Text
 
+        ' SAFE: Already using parameters
         Dim query As String = "INSERT INTO tblIncidents (ComplainantID, RespondentID, IncidentType, Narrative, Status, IncidentDate, Category) " &
                               "VALUES (@comp, 0, @type, @narr, 'Pending', @date, 'Blotter')"
 
@@ -198,7 +167,15 @@ Public Class frmBlotter
         End If
 
         If MessageBox.Show("Mark case as " & newStatus & "? This cannot be undone.", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Session.ExecuteQuery("UPDATE tblIncidents SET Status='" & newStatus & "' WHERE IncidentID=" & id)
+
+            ' FIXED: Security Fix using Parameters
+            Dim query As String = "UPDATE tblIncidents SET Status=@status WHERE IncidentID=@id"
+            Dim params As New Dictionary(Of String, Object)
+            params.Add("@status", newStatus)
+            params.Add("@id", id)
+
+            Session.ExecuteQuery(query, params)
+
             LoadIncidents()
             MessageBox.Show("Case updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If

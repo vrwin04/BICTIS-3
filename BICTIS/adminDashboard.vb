@@ -1,10 +1,9 @@
-﻿' ALIAS TO FIX CHART ERRORS
-Imports SysChart = System.Windows.Forms.DataVisualization.Charting
+﻿Imports SysChart = System.Windows.Forms.DataVisualization.Charting
 Imports System.Windows.Forms
 Imports System.Data
 Imports System.Collections.Generic
-Imports System.Threading.Tasks ' Required for Async
-Imports System.Drawing ' Required for Color
+Imports System.Threading.Tasks
+Imports System.Drawing
 
 Public Class adminDashboard
     ' Variable to keep track of the current child form loaded
@@ -25,9 +24,26 @@ Public Class adminDashboard
         End Try
     End Sub
 
-    ' --- HELPER TO SWITCH PANELS ---
+    ' ==========================================
+    '      NAVIGATION & SWITCH PANEL LOGIC
+    ' ==========================================
+
+    ' Centralized Navigation Handler for Sidebar Buttons
+    Private Sub Navigation_Click(sender As Object, e As EventArgs) Handles _
+        btnResidents.Click, btnBlotter.Click, btnConcerns.Click, btnClearance.Click
+
+        Dim btn As Button = CType(sender, Button)
+
+        Select Case btn.Name
+            Case "btnResidents" : OpenChildForm(New frmManageResidents())
+            Case "btnBlotter" : OpenChildForm(New frmBlotter())
+            Case "btnConcerns" : OpenChildForm(New frmConcerns())
+            Case "btnClearance" : OpenChildForm(New frmClearance())
+        End Select
+    End Sub
+
     Private Sub OpenChildForm(childForm As Form)
-        ' 1. Close previous form if exists
+        ' 1. Close previous form if exists to free resources
         If currentChildForm IsNot Nothing Then
             currentChildForm.Close()
         End If
@@ -37,62 +53,38 @@ Public Class adminDashboard
         childForm.TopLevel = False
         childForm.FormBorderStyle = FormBorderStyle.None
         childForm.Dock = DockStyle.Fill
-        childForm.AutoScroll = True ' <--- ADDED THIS: Enables scrolling if form is too large
+        childForm.AutoScroll = True ' Enables scrolling if form is too large
 
-        ' 3. Optional: Hide the Header/Close button of the child form 
-        ' so it looks integrated (Searching for 'pnlHeader' or 'btnClose' control)
+        ' 3. HIDE CHILD HEADER (Optional - assumes child has a panel named pnlHeader)
         Dim header = childForm.Controls.Find("pnlHeader", True).FirstOrDefault()
         If header IsNot Nothing Then header.Visible = False
 
-        ' 4. Add to Panel
+        ' 4. CRITICAL: Handle Closure to Restore Dashboard Home
+        AddHandler childForm.FormClosed, AddressOf OnChildFormClosed
+
+        ' 5. Add to Panel and Show
         pnlMainContent.Controls.Add(childForm)
         pnlMainContent.Tag = childForm
         childForm.BringToFront()
         childForm.Show()
 
-        ' 5. Hide the Dashboard Home Panel
+        ' 6. Update Dashboard State
         pnlHome.Visible = False
-
-        ' 6. Update Title
         lblPageTitle.Text = childForm.Text
     End Sub
 
-    Private Async Sub GoToHome()
-        ' Close any active child form
-        If currentChildForm IsNot Nothing Then
-            currentChildForm.Close()
-            currentChildForm = Nothing
-        End If
-
+    ' Triggered when the child form (e.g., Blotter) is closed
+    Private Async Sub OnChildFormClosed(sender As Object, e As FormClosedEventArgs)
         pnlHome.Visible = True
         pnlHome.BringToFront()
         lblPageTitle.Text = "Admin Dashboard"
 
-        ' Refresh Stats
+        ' Refresh stats to show any changes made in the child form
         Await LoadDashboardStats()
     End Sub
 
-    ' --- NAVIGATION BUTTONS ---
-
-    Private Sub btnResidents_Click(sender As Object, e As EventArgs) Handles btnResidents.Click
-        OpenChildForm(New frmManageResidents())
-    End Sub
-
-    Private Sub btnBlotter_Click(sender As Object, e As EventArgs) Handles btnBlotter.Click
-        OpenChildForm(New frmBlotter())
-    End Sub
-
-    Private Sub btnConcerns_Click(sender As Object, e As EventArgs) Handles btnConcerns.Click
-        OpenChildForm(New frmConcerns())
-    End Sub
-
-    Private Sub btnClearance_Click(sender As Object, e As EventArgs) Handles btnClearance.Click
-        OpenChildForm(New frmClearance())
-    End Sub
-
-    ' Click Logo to go back to Dashboard Home
     Private Sub pnlLogo_Click(sender As Object, e As EventArgs) Handles pnlLogo.Click, lblLogo.Click
-        GoToHome()
+        If currentChildForm IsNot Nothing Then currentChildForm.Close()
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
@@ -104,10 +96,11 @@ Public Class adminDashboard
         End If
     End Sub
 
-    ' --- DATA LOADING & CHARTS (Reused from previous code) ---
+    ' ==========================================
+    '        DATA LOADING & CHARTS
+    ' ==========================================
 
     Private Async Function LoadDashboardStats() As Task
-        ' Only load if Home is visible
         If Not pnlHome.Visible Then Exit Function
 
         Dim taskUserCount = Session.GetCountAsync("SELECT COUNT(*) FROM tblResidents WHERE Role='User'")
@@ -125,11 +118,7 @@ Public Class adminDashboard
         lblTotalBlotter.Text = blotter.ToString()
         lblTotalConcerns.Text = concerns.ToString()
 
-        If pending > 0 Then
-            lblPendingCases.ForeColor = Color.Red
-        Else
-            lblPendingCases.ForeColor = Color.Green
-        End If
+        lblPendingCases.ForeColor = If(pending > 0, Color.Red, Color.Green)
 
         Await LoadChartAsync()
     End Function
@@ -195,43 +184,43 @@ Public Class adminDashboard
                 Dim pIndex As Integer = series.Points.AddXY(xVal, yVal)
                 Dim p As SysChart.DataPoint = series.Points(pIndex)
 
-                ' --- COLOR CODING LOGIC ---
-                If isAllIncidents Then
-                    ' CATEGORY COLORS (Column Chart)
-                    Select Case xVal
-                        Case "Physical Injury" : p.Color = Color.Crimson
-                        Case "Theft / Robbery" : p.Color = Color.DarkRed
-                        Case "Harassment / Threats" : p.Color = Color.OrangeRed
-                        Case "Unjust Vexation" : p.Color = Color.Purple
-                        Case "Malicious Mischief" : p.Color = Color.DarkMagenta
-                        Case "Estafa / Swindling" : p.Color = Color.Indigo
-                        Case "Libel / Slander" : p.Color = Color.SlateBlue
-                        Case "Property / Land Dispute" : p.Color = Color.SaddleBrown
-
-                        Case "Noise Complaint" : p.Color = Color.DarkOrange
-                        Case "Waste Disposal / Trash" : p.Color = Color.ForestGreen
-                        Case "Suspicious Activity" : p.Color = Color.DimGray
-                        Case "Public Disturbance" : p.Color = Color.Goldenrod
-                        Case "Broken Street Light / Infrastructure" : p.Color = Color.Teal
-                        Case "Animal Control / Stray Pets" : p.Color = Color.OliveDrab
-                        Case "Curfew Violation" : p.Color = Color.MidnightBlue
-
-                        Case "Other" : p.Color = Color.Gray
-                        Case Else : p.Color = Color.SteelBlue
-                    End Select
-                Else
-                    ' STATUS COLORS (Pie Chart)
-                    Select Case xVal
-                        Case "Pending", "Escalated" : p.Color = Color.Crimson
-                        Case "Resolved", "Acknowledged" : p.Color = Color.SeaGreen
-                        Case "Dismissed", "Invalid" : p.Color = Color.Gray
-                        Case Else : p.Color = Color.SteelBlue
-                    End Select
-                End If
+                ' USE HELPER FUNCTION FOR COLORS
+                p.Color = GetChartColor(xVal)
             Next
         Else
             series.Points.AddXY("No Data", 0)
         End If
+
         chartIncidents.Series.Add(series)
+    End Function
+
+    ' Helper function to keep main logic clean
+    Private Function GetChartColor(category As String) As Color
+        Select Case category
+            ' Crimes / Red
+            Case "Physical Injury", "Pending", "Escalated" : Return Color.Crimson
+            Case "Theft / Robbery" : Return Color.DarkRed
+            Case "Harassment / Threats" : Return Color.OrangeRed
+
+            ' Civil / Purple
+            Case "Unjust Vexation" : Return Color.Purple
+            Case "Malicious Mischief" : Return Color.DarkMagenta
+            Case "Estafa / Swindling" : Return Color.Indigo
+            Case "Libel / Slander" : Return Color.SlateBlue
+            Case "Property / Land Dispute" : Return Color.SaddleBrown
+
+            ' Concerns / Green-Orange
+            Case "Noise Complaint" : Return Color.DarkOrange
+            Case "Waste Disposal / Trash", "Resolved", "Acknowledged" : Return Color.SeaGreen
+            Case "Broken Street Light / Infrastructure" : Return Color.Teal
+            Case "Public Disturbance" : Return Color.Goldenrod
+            Case "Animal Control / Stray Pets" : Return Color.OliveDrab
+            Case "Curfew Violation" : Return Color.MidnightBlue
+
+            ' Default
+            Case "Suspicious Activity", "Dismissed", "Invalid" : Return Color.DimGray
+            Case "Other" : Return Color.Gray
+            Case Else : Return Color.SteelBlue
+        End Select
     End Function
 End Class

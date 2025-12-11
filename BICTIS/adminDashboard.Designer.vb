@@ -18,577 +18,576 @@ Partial Class adminDashboard
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        pnlBorder = New Panel()
-        pnlMainContent = New Panel()
-        pnlHome = New Panel()
-        pnlChartSection = New Panel()
-        chartIncidents = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        pnlFilterBar = New Panel()
-        cbIncidentType = New ComboBox()
-        Label2 = New Label()
-        lblChartTitle = New Label()
-        pnlStatsRow = New FlowLayoutPanel()
-        pnlCard1 = New Panel()
-        lblTotalUsers = New Label()
-        Label1 = New Label()
-        Panel1 = New Panel()
-        pnlCard2 = New Panel()
-        lblPendingCases = New Label()
-        Label3 = New Label()
-        Panel2 = New Panel()
-        pnlCard3 = New Panel()
-        lblTotalBlotter = New Label()
-        Label4 = New Label()
-        Panel3 = New Panel()
-        pnlCard4 = New Panel()
-        lblTotalConcerns = New Label()
-        Label5 = New Label()
-        Panel4 = New Panel()
-        pnlHeader = New Panel()
-        lblPageTitle = New Label()
-        pnlSidebar = New Panel()
-        btnLogout = New Button()
-        btnClearance = New Button()
-        btnConcerns = New Button()
-        btnBlotter = New Button()
-        btnResidents = New Button()
-        pnlLogo = New Panel()
-        lblLogo = New Label()
-        pnlBorder.SuspendLayout()
-        pnlMainContent.SuspendLayout()
-        pnlHome.SuspendLayout()
-        pnlChartSection.SuspendLayout()
-        CType(chartIncidents, ComponentModel.ISupportInitialize).BeginInit()
-        pnlFilterBar.SuspendLayout()
-        pnlStatsRow.SuspendLayout()
-        pnlCard1.SuspendLayout()
-        pnlCard2.SuspendLayout()
-        pnlCard3.SuspendLayout()
-        pnlCard4.SuspendLayout()
-        pnlHeader.SuspendLayout()
-        pnlSidebar.SuspendLayout()
-        pnlLogo.SuspendLayout()
-        SuspendLayout()
-        ' 
-        ' pnlBorder
-        ' 
-        pnlBorder.BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
-        pnlBorder.Controls.Add(pnlMainContent)
-        pnlBorder.Controls.Add(pnlHeader)
-        pnlBorder.Controls.Add(pnlSidebar)
-        pnlBorder.Dock = DockStyle.Fill
-        pnlBorder.Location = New Point(3, 3)
-        pnlBorder.Name = "pnlBorder"
-        pnlBorder.Size = New Size(1360, 762)
-        pnlBorder.TabIndex = 0
-        ' 
-        ' pnlMainContent
-        ' 
-        pnlMainContent.Controls.Add(pnlHome)
-        pnlMainContent.Dock = DockStyle.Fill
-        pnlMainContent.Location = New Point(347, 123)
-        pnlMainContent.Name = "pnlMainContent"
-        pnlMainContent.Size = New Size(1013, 639)
-        pnlMainContent.TabIndex = 2
-        ' 
-        ' pnlHome
-        ' 
-        pnlHome.AutoScroll = True
-        ' CRITICAL FIX: Add Stats FIRST so it docks to TOP first
-        pnlHome.Controls.Add(pnlStatsRow)
-        pnlHome.Controls.Add(pnlChartSection)
-        pnlHome.Dock = DockStyle.Fill
-        pnlHome.Location = New Point(0, 0)
-        pnlHome.Name = "pnlHome"
-        pnlHome.Padding = New Padding(40)
-        pnlHome.Size = New Size(1013, 639)
-        pnlHome.TabIndex = 0
-        ' 
-        ' pnlChartSection
-        ' 
-        pnlChartSection.BackColor = Color.White
-        pnlChartSection.Controls.Add(chartIncidents)
-        pnlChartSection.Controls.Add(pnlFilterBar)
-        pnlChartSection.Dock = DockStyle.Top
-        pnlChartSection.Location = New Point(40, 291)
-        pnlChartSection.Name = "pnlChartSection"
-        pnlChartSection.Padding = New Padding(20)
-        pnlChartSection.Size = New Size(933, 500)
-        pnlChartSection.TabIndex = 1
-        ' 
-        ' chartIncidents
-        ' 
+        Me.pnlBorder = New System.Windows.Forms.Panel()
+        Me.pnlMainContent = New System.Windows.Forms.Panel()
+        Me.pnlHome = New System.Windows.Forms.Panel()
+        Me.pnlChartSection = New System.Windows.Forms.Panel()
+        Me.chartIncidents = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.pnlFilterBar = New System.Windows.Forms.Panel()
+        Me.cbIncidentType = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblChartTitle = New System.Windows.Forms.Label()
+        Me.pnlStatsRow = New System.Windows.Forms.FlowLayoutPanel()
+        Me.pnlCard1 = New System.Windows.Forms.Panel()
+        Me.lblTotalUsers = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pnlCard2 = New System.Windows.Forms.Panel()
+        Me.lblPendingCases = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.pnlCard3 = New System.Windows.Forms.Panel()
+        Me.lblTotalBlotter = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.pnlCard4 = New System.Windows.Forms.Panel()
+        Me.lblTotalConcerns = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.pnlHeader = New System.Windows.Forms.Panel()
+        Me.lblPageTitle = New System.Windows.Forms.Label()
+        Me.pnlSidebar = New System.Windows.Forms.Panel()
+        Me.btnLogout = New System.Windows.Forms.Button()
+        Me.btnClearance = New System.Windows.Forms.Button()
+        Me.btnConcerns = New System.Windows.Forms.Button()
+        Me.btnBlotter = New System.Windows.Forms.Button()
+        Me.btnResidents = New System.Windows.Forms.Button()
+        Me.pnlLogo = New System.Windows.Forms.Panel()
+        Me.lblLogo = New System.Windows.Forms.Label()
+        Me.pnlBorder.SuspendLayout()
+        Me.pnlMainContent.SuspendLayout()
+        Me.pnlHome.SuspendLayout()
+        Me.pnlChartSection.SuspendLayout()
+        CType(Me.chartIncidents, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlFilterBar.SuspendLayout()
+        Me.pnlStatsRow.SuspendLayout()
+        Me.pnlCard1.SuspendLayout()
+        Me.pnlCard2.SuspendLayout()
+        Me.pnlCard3.SuspendLayout()
+        Me.pnlCard4.SuspendLayout()
+        Me.pnlHeader.SuspendLayout()
+        Me.pnlSidebar.SuspendLayout()
+        Me.pnlLogo.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'pnlBorder
+        '
+        Me.pnlBorder.BackColor = System.Drawing.Color.FromArgb(236, 240, 241)
+        Me.pnlBorder.Controls.Add(Me.pnlMainContent)
+        Me.pnlBorder.Controls.Add(Me.pnlHeader)
+        Me.pnlBorder.Controls.Add(Me.pnlSidebar)
+        Me.pnlBorder.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlBorder.Location = New System.Drawing.Point(0, 0)
+        Me.pnlBorder.Name = "pnlBorder"
+        Me.pnlBorder.Size = New System.Drawing.Size(1366, 768)
+        Me.pnlBorder.TabIndex = 0
+        '
+        'pnlMainContent
+        '
+        Me.pnlMainContent.Controls.Add(Me.pnlHome)
+        Me.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlMainContent.Location = New System.Drawing.Point(347, 123)
+        Me.pnlMainContent.Name = "pnlMainContent"
+        Me.pnlMainContent.Size = New System.Drawing.Size(1019, 645)
+        Me.pnlMainContent.TabIndex = 2
+        '
+        'pnlHome
+        '
+        Me.pnlHome.AutoScroll = True
+        Me.pnlHome.Controls.Add(Me.pnlStatsRow)
+        Me.pnlHome.Controls.Add(Me.pnlChartSection)
+        Me.pnlHome.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlHome.Location = New System.Drawing.Point(0, 0)
+        Me.pnlHome.Name = "pnlHome"
+        Me.pnlHome.Padding = New System.Windows.Forms.Padding(40)
+        Me.pnlHome.Size = New System.Drawing.Size(1019, 645)
+        Me.pnlHome.TabIndex = 0
+        '
+        'pnlChartSection
+        '
+        Me.pnlChartSection.BackColor = System.Drawing.Color.White
+        Me.pnlChartSection.Controls.Add(Me.chartIncidents)
+        Me.pnlChartSection.Controls.Add(Me.pnlFilterBar)
+        Me.pnlChartSection.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlChartSection.Location = New System.Drawing.Point(40, 291)
+        Me.pnlChartSection.Name = "pnlChartSection"
+        Me.pnlChartSection.Padding = New System.Windows.Forms.Padding(20)
+        Me.pnlChartSection.Size = New System.Drawing.Size(933, 500)
+        Me.pnlChartSection.TabIndex = 1
+        '
+        'chartIncidents
+        '
         ChartArea1.Name = "ChartArea1"
-        chartIncidents.ChartAreas.Add(ChartArea1)
-        chartIncidents.Dock = DockStyle.Fill
-        Legend1.Font = New Font("Segoe UI", 10.0F)
+        Me.chartIncidents.ChartAreas.Add(ChartArea1)
+        Me.chartIncidents.Dock = System.Windows.Forms.DockStyle.Fill
+        Legend1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Legend1.IsTextAutoFit = False
         Legend1.Name = "Legend1"
-        chartIncidents.Legends.Add(Legend1)
-        chartIncidents.Location = New Point(20, 100)
-        chartIncidents.Name = "chartIncidents"
+        Me.chartIncidents.Legends.Add(Legend1)
+        Me.chartIncidents.Location = New System.Drawing.Point(20, 100)
+        Me.chartIncidents.Name = "chartIncidents"
         Series1.ChartArea = "ChartArea1"
         Series1.Legend = "Legend1"
         Series1.Name = "Series1"
-        chartIncidents.Series.Add(Series1)
-        chartIncidents.Size = New Size(893, 380)
-        chartIncidents.TabIndex = 1
-        chartIncidents.Text = "Incidents Chart"
-        ' 
-        ' pnlFilterBar
-        ' 
-        pnlFilterBar.Controls.Add(cbIncidentType)
-        pnlFilterBar.Controls.Add(Label2)
-        pnlFilterBar.Controls.Add(lblChartTitle)
-        pnlFilterBar.Dock = DockStyle.Top
-        pnlFilterBar.Location = New Point(20, 20)
-        pnlFilterBar.Name = "pnlFilterBar"
-        pnlFilterBar.Size = New Size(893, 80)
-        pnlFilterBar.TabIndex = 0
-        ' 
-        ' cbIncidentType
-        ' 
-        cbIncidentType.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        cbIncidentType.BackColor = Color.WhiteSmoke
-        cbIncidentType.DropDownStyle = ComboBoxStyle.DropDownList
-        cbIncidentType.FlatStyle = FlatStyle.Flat
-        cbIncidentType.Font = New Font("Segoe UI", 12.0F)
-        cbIncidentType.FormattingEnabled = True
-        cbIncidentType.Location = New Point(573, 23)
-        cbIncidentType.Name = "cbIncidentType"
-        cbIncidentType.Size = New Size(300, 36)
-        cbIncidentType.TabIndex = 2
-        ' 
-        ' Label2
-        ' 
-        Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
-        Label2.ForeColor = Color.Gray
-        Label2.Location = New Point(450, 26)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(122, 28)
-        Label2.TabIndex = 1
-        Label2.Text = "Filter Graph:"
-        ' 
-        ' lblChartTitle
-        ' 
-        lblChartTitle.AutoSize = True
-        lblChartTitle.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
-        lblChartTitle.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        lblChartTitle.Location = New Point(13, 23)
-        lblChartTitle.Name = "lblChartTitle"
-        lblChartTitle.Size = New Size(248, 37)
-        lblChartTitle.TabIndex = 0
-        lblChartTitle.Text = "Incident Analytics"
-        ' 
-        ' pnlStatsRow
-        ' 
-        pnlStatsRow.AutoSize = True
-        pnlStatsRow.Controls.Add(pnlCard1)
-        pnlStatsRow.Controls.Add(pnlCard2)
-        pnlStatsRow.Controls.Add(pnlCard3)
-        pnlStatsRow.Controls.Add(pnlCard4)
-        pnlStatsRow.Dock = DockStyle.Top
-        pnlStatsRow.Location = New Point(40, 40)
-        pnlStatsRow.Name = "pnlStatsRow"
-        pnlStatsRow.Size = New Size(933, 251)
-        pnlStatsRow.TabIndex = 0
-        ' 
-        ' pnlCard1
-        ' 
-        pnlCard1.BackColor = Color.White
-        pnlCard1.Controls.Add(lblTotalUsers)
-        pnlCard1.Controls.Add(Label1)
-        pnlCard1.Controls.Add(Panel1)
-        pnlCard1.Location = New Point(4, 5)
-        pnlCard1.Margin = New Padding(4, 5, 27, 31)
-        pnlCard1.Name = "pnlCard1"
-        pnlCard1.Size = New Size(280, 215)
-        pnlCard1.TabIndex = 0
-        ' 
-        ' lblTotalUsers
-        ' 
-        lblTotalUsers.AutoSize = True
-        lblTotalUsers.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
-        lblTotalUsers.ForeColor = Color.FromArgb(CByte(41), CByte(128), CByte(185))
-        lblTotalUsers.Location = New Point(27, 62)
-        lblTotalUsers.Name = "lblTotalUsers"
-        lblTotalUsers.Size = New Size(70, 81)
-        lblTotalUsers.TabIndex = 1
-        lblTotalUsers.Text = "0"
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
-        Label1.ForeColor = Color.Gray
-        Label1.Location = New Point(27, 23)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(174, 25)
-        Label1.TabIndex = 0
-        Label1.Text = "TOTAL RESIDENTS"
-        ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.FromArgb(CByte(41), CByte(128), CByte(185))
-        Panel1.Dock = DockStyle.Left
-        Panel1.Location = New Point(0, 0)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(11, 215)
-        Panel1.TabIndex = 2
-        ' 
-        ' pnlCard2
-        ' 
-        pnlCard2.BackColor = Color.White
-        pnlCard2.Controls.Add(lblPendingCases)
-        pnlCard2.Controls.Add(Label3)
-        pnlCard2.Controls.Add(Panel2)
-        pnlCard2.Location = New Point(315, 5)
-        pnlCard2.Margin = New Padding(4, 5, 27, 31)
-        pnlCard2.Name = "pnlCard2"
-        pnlCard2.Size = New Size(280, 215)
-        pnlCard2.TabIndex = 1
-        ' 
-        ' lblPendingCases
-        ' 
-        lblPendingCases.AutoSize = True
-        lblPendingCases.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
-        lblPendingCases.ForeColor = Color.Crimson
-        lblPendingCases.Location = New Point(27, 62)
-        lblPendingCases.Name = "lblPendingCases"
-        lblPendingCases.Size = New Size(70, 81)
-        lblPendingCases.TabIndex = 1
-        lblPendingCases.Text = "0"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
-        Label3.ForeColor = Color.Gray
-        Label3.Location = New Point(27, 23)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(158, 25)
-        Label3.TabIndex = 0
-        Label3.Text = "PENDING CASES"
-        ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.Crimson
-        Panel2.Dock = DockStyle.Left
-        Panel2.Location = New Point(0, 0)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(11, 215)
-        Panel2.TabIndex = 2
-        ' 
-        ' pnlCard3
-        ' 
-        pnlCard3.BackColor = Color.White
-        pnlCard3.Controls.Add(lblTotalBlotter)
-        pnlCard3.Controls.Add(Label4)
-        pnlCard3.Controls.Add(Panel3)
-        pnlCard3.Location = New Point(626, 5)
-        pnlCard3.Margin = New Padding(4, 5, 27, 31)
-        pnlCard3.Name = "pnlCard3"
-        pnlCard3.Size = New Size(280, 215)
-        pnlCard3.TabIndex = 2
-        ' 
-        ' lblTotalBlotter
-        ' 
-        lblTotalBlotter.AutoSize = True
-        lblTotalBlotter.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
-        lblTotalBlotter.ForeColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
-        lblTotalBlotter.Location = New Point(27, 62)
-        lblTotalBlotter.Name = "lblTotalBlotter"
-        lblTotalBlotter.Size = New Size(70, 81)
-        lblTotalBlotter.TabIndex = 1
-        lblTotalBlotter.Text = "0"
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
-        Label4.ForeColor = Color.Gray
-        Label4.Location = New Point(27, 23)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(218, 25)
-        Label4.TabIndex = 0
-        Label4.Text = "TOTAL BLOTTER CASES"
-        ' 
-        ' Panel3
-        ' 
-        Panel3.BackColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
-        Panel3.Dock = DockStyle.Left
-        Panel3.Location = New Point(0, 0)
-        Panel3.Name = "Panel3"
-        Panel3.Size = New Size(11, 215)
-        Panel3.TabIndex = 2
-        ' 
-        ' pnlCard4
-        ' 
-        pnlCard4.BackColor = Color.White
-        pnlCard4.Controls.Add(lblTotalConcerns)
-        pnlCard4.Controls.Add(Label5)
-        pnlCard4.Controls.Add(Panel4)
-        pnlCard4.Location = New Point(937, 5)
-        pnlCard4.Margin = New Padding(4, 5, 27, 31)
-        pnlCard4.Name = "pnlCard4"
-        pnlCard4.Size = New Size(280, 215)
-        pnlCard4.TabIndex = 3
-        ' 
-        ' lblTotalConcerns
-        ' 
-        lblTotalConcerns.AutoSize = True
-        lblTotalConcerns.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
-        lblTotalConcerns.ForeColor = Color.FromArgb(CByte(230), CByte(126), CByte(34))
-        lblTotalConcerns.Location = New Point(27, 62)
-        lblTotalConcerns.Name = "lblTotalConcerns"
-        lblTotalConcerns.Size = New Size(70, 81)
-        lblTotalConcerns.TabIndex = 1
-        lblTotalConcerns.Text = "0"
-        ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
-        Label5.ForeColor = Color.Gray
-        Label5.Location = New Point(27, 23)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(177, 25)
-        Label5.TabIndex = 0
-        Label5.Text = "TOTAL CONCERNS"
-        ' 
-        ' Panel4
-        ' 
-        Panel4.BackColor = Color.FromArgb(CByte(230), CByte(126), CByte(34))
-        Panel4.Dock = DockStyle.Left
-        Panel4.Location = New Point(0, 0)
-        Panel4.Name = "Panel4"
-        Panel4.Size = New Size(11, 215)
-        Panel4.TabIndex = 2
-        ' 
-        ' pnlHeader
-        ' 
-        pnlHeader.BackColor = Color.White
-        pnlHeader.Controls.Add(lblPageTitle)
-        pnlHeader.Dock = DockStyle.Top
-        pnlHeader.Location = New Point(347, 0)
-        pnlHeader.Name = "pnlHeader"
-        pnlHeader.Size = New Size(1013, 123)
-        pnlHeader.TabIndex = 1
-        ' 
-        ' lblPageTitle
-        ' 
-        lblPageTitle.AutoSize = True
-        lblPageTitle.Font = New Font("Segoe UI", 24.0F, FontStyle.Bold)
-        lblPageTitle.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        lblPageTitle.Location = New Point(40, 34)
-        lblPageTitle.Name = "lblPageTitle"
-        lblPageTitle.Size = New Size(372, 54)
-        lblPageTitle.TabIndex = 0
-        lblPageTitle.Text = "Admin Dashboard"
-        ' 
-        ' pnlSidebar
-        ' 
-        pnlSidebar.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        pnlSidebar.Controls.Add(btnLogout)
-        pnlSidebar.Controls.Add(btnClearance)
-        pnlSidebar.Controls.Add(btnConcerns)
-        pnlSidebar.Controls.Add(btnBlotter)
-        pnlSidebar.Controls.Add(btnResidents)
-        pnlSidebar.Controls.Add(pnlLogo)
-        pnlSidebar.Dock = DockStyle.Left
-        pnlSidebar.Location = New Point(0, 0)
-        pnlSidebar.Name = "pnlSidebar"
-        pnlSidebar.Size = New Size(347, 762)
-        pnlSidebar.TabIndex = 0
-        ' 
-        ' btnLogout
-        ' 
-        btnLogout.BackColor = Color.FromArgb(CByte(192), CByte(57), CByte(43))
-        btnLogout.Cursor = Cursors.Hand
-        btnLogout.Dock = DockStyle.Bottom
-        btnLogout.FlatAppearance.BorderSize = 0
-        btnLogout.FlatStyle = FlatStyle.Flat
-        btnLogout.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
-        btnLogout.ForeColor = Color.White
-        btnLogout.Location = New Point(0, 654)
-        btnLogout.Name = "btnLogout"
-        btnLogout.Size = New Size(347, 108)
-        btnLogout.TabIndex = 5
-        btnLogout.Text = "LOGOUT"
-        btnLogout.UseVisualStyleBackColor = False
-        ' 
-        ' btnClearance
-        ' 
-        btnClearance.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        btnClearance.Cursor = Cursors.Hand
-        btnClearance.Dock = DockStyle.Top
-        btnClearance.FlatAppearance.BorderSize = 0
-        btnClearance.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
-        btnClearance.FlatStyle = FlatStyle.Flat
-        btnClearance.Font = New Font("Segoe UI", 12.0F)
-        btnClearance.ForeColor = Color.WhiteSmoke
-        btnClearance.Location = New Point(0, 447)
-        btnClearance.Name = "btnClearance"
-        btnClearance.Padding = New Padding(40, 0, 0, 0)
-        btnClearance.Size = New Size(347, 108)
-        btnClearance.TabIndex = 3
-        btnClearance.Text = "Manage Clearances"
-        btnClearance.TextAlign = ContentAlignment.MiddleLeft
-        btnClearance.UseVisualStyleBackColor = False
-        ' 
-        ' btnConcerns
-        ' 
-        btnConcerns.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        btnConcerns.Cursor = Cursors.Hand
-        btnConcerns.Dock = DockStyle.Top
-        btnConcerns.FlatAppearance.BorderSize = 0
-        btnConcerns.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
-        btnConcerns.FlatStyle = FlatStyle.Flat
-        btnConcerns.Font = New Font("Segoe UI", 12.0F)
-        btnConcerns.ForeColor = Color.WhiteSmoke
-        btnConcerns.Location = New Point(0, 339)
-        btnConcerns.Name = "btnConcerns"
-        btnConcerns.Padding = New Padding(40, 0, 0, 0)
-        btnConcerns.Size = New Size(347, 108)
-        btnConcerns.TabIndex = 4
-        btnConcerns.Text = "Barangay Concerns"
-        btnConcerns.TextAlign = ContentAlignment.MiddleLeft
-        btnConcerns.UseVisualStyleBackColor = False
-        ' 
-        ' btnBlotter
-        ' 
-        btnBlotter.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        btnBlotter.Cursor = Cursors.Hand
-        btnBlotter.Dock = DockStyle.Top
-        btnBlotter.FlatAppearance.BorderSize = 0
-        btnBlotter.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
-        btnBlotter.FlatStyle = FlatStyle.Flat
-        btnBlotter.Font = New Font("Segoe UI", 12.0F)
-        btnBlotter.ForeColor = Color.WhiteSmoke
-        btnBlotter.Location = New Point(0, 231)
-        btnBlotter.Name = "btnBlotter"
-        btnBlotter.Padding = New Padding(40, 0, 0, 0)
-        btnBlotter.Size = New Size(347, 108)
-        btnBlotter.TabIndex = 2
-        btnBlotter.Text = "Incident Blotter"
-        btnBlotter.TextAlign = ContentAlignment.MiddleLeft
-        btnBlotter.UseVisualStyleBackColor = False
-        ' 
-        ' btnResidents
-        ' 
-        btnResidents.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        btnResidents.Cursor = Cursors.Hand
-        btnResidents.Dock = DockStyle.Top
-        btnResidents.FlatAppearance.BorderSize = 0
-        btnResidents.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
-        btnResidents.FlatStyle = FlatStyle.Flat
-        btnResidents.Font = New Font("Segoe UI", 12.0F)
-        btnResidents.ForeColor = Color.WhiteSmoke
-        btnResidents.Location = New Point(0, 123)
-        btnResidents.Name = "btnResidents"
-        btnResidents.Padding = New Padding(40, 0, 0, 0)
-        btnResidents.Size = New Size(347, 108)
-        btnResidents.TabIndex = 1
-        btnResidents.Text = "Manage Residents"
-        btnResidents.TextAlign = ContentAlignment.MiddleLeft
-        btnResidents.UseVisualStyleBackColor = False
-        ' 
-        ' pnlLogo
-        ' 
-        pnlLogo.BackColor = Color.FromArgb(CByte(34), CByte(49), CByte(63))
-        pnlLogo.Controls.Add(lblLogo)
-        pnlLogo.Cursor = Cursors.Hand
-        pnlLogo.Dock = DockStyle.Top
-        pnlLogo.Location = New Point(0, 0)
-        pnlLogo.Name = "pnlLogo"
-        pnlLogo.Size = New Size(347, 123)
-        pnlLogo.TabIndex = 0
-        ' 
-        ' lblLogo
-        ' 
-        lblLogo.AutoSize = True
-        lblLogo.Font = New Font("Segoe UI", 28.0F, FontStyle.Bold)
-        lblLogo.ForeColor = Color.White
-        lblLogo.Location = New Point(80, 28)
-        lblLogo.Name = "lblLogo"
-        lblLogo.Size = New Size(196, 62)
-        lblLogo.TabIndex = 0
-        lblLogo.Text = "ADMIN"
-        ' 
-        ' adminDashboard
-        ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
-        AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.DimGray
-        ClientSize = New Size(1366, 768)
-        Controls.Add(pnlBorder)
-        FormBorderStyle = FormBorderStyle.None
-        Name = "adminDashboard"
-        Padding = New Padding(3)
-        StartPosition = FormStartPosition.CenterScreen
-        Text = "Admin Dashboard"
-        pnlBorder.ResumeLayout(False)
-        pnlMainContent.ResumeLayout(False)
-        pnlHome.ResumeLayout(False)
-        pnlHome.PerformLayout()
-        pnlChartSection.ResumeLayout(False)
-        CType(chartIncidents, ComponentModel.ISupportInitialize).EndInit()
-        pnlFilterBar.ResumeLayout(False)
-        pnlFilterBar.PerformLayout()
-        pnlStatsRow.ResumeLayout(False)
-        pnlCard1.ResumeLayout(False)
-        pnlCard1.PerformLayout()
-        pnlCard2.ResumeLayout(False)
-        pnlCard2.PerformLayout()
-        pnlCard3.ResumeLayout(False)
-        pnlCard3.PerformLayout()
-        pnlCard4.ResumeLayout(False)
-        pnlCard4.PerformLayout()
-        pnlHeader.ResumeLayout(False)
-        pnlHeader.PerformLayout()
-        pnlSidebar.ResumeLayout(False)
-        pnlLogo.ResumeLayout(False)
-        pnlLogo.PerformLayout()
-        ResumeLayout(False)
+        Me.chartIncidents.Series.Add(Series1)
+        Me.chartIncidents.Size = New System.Drawing.Size(893, 380)
+        Me.chartIncidents.TabIndex = 1
+        Me.chartIncidents.Text = "Incidents Chart"
+        '
+        'pnlFilterBar
+        '
+        Me.pnlFilterBar.Controls.Add(Me.cbIncidentType)
+        Me.pnlFilterBar.Controls.Add(Me.Label2)
+        Me.pnlFilterBar.Controls.Add(Me.lblChartTitle)
+        Me.pnlFilterBar.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlFilterBar.Location = New System.Drawing.Point(20, 20)
+        Me.pnlFilterBar.Name = "pnlFilterBar"
+        Me.pnlFilterBar.Size = New System.Drawing.Size(893, 80)
+        Me.pnlFilterBar.TabIndex = 0
+        '
+        'cbIncidentType
+        '
+        Me.cbIncidentType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbIncidentType.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbIncidentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbIncidentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbIncidentType.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.cbIncidentType.FormattingEnabled = True
+        Me.cbIncidentType.Location = New System.Drawing.Point(573, 23)
+        Me.cbIncidentType.Name = "cbIncidentType"
+        Me.cbIncidentType.Size = New System.Drawing.Size(300, 29)
+        Me.cbIncidentType.TabIndex = 2
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.ForeColor = System.Drawing.Color.Gray
+        Me.Label2.Location = New System.Drawing.Point(450, 26)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(102, 21)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Filter Graph:"
+        '
+        'lblChartTitle
+        '
+        Me.lblChartTitle.AutoSize = True
+        Me.lblChartTitle.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.lblChartTitle.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.lblChartTitle.Location = New System.Drawing.Point(13, 23)
+        Me.lblChartTitle.Name = "lblChartTitle"
+        Me.lblChartTitle.Size = New System.Drawing.Size(201, 30)
+        Me.lblChartTitle.TabIndex = 0
+        Me.lblChartTitle.Text = "Incident Analytics"
+        '
+        'pnlStatsRow
+        '
+        Me.pnlStatsRow.AutoSize = True
+        Me.pnlStatsRow.Controls.Add(Me.pnlCard1)
+        Me.pnlStatsRow.Controls.Add(Me.pnlCard2)
+        Me.pnlStatsRow.Controls.Add(Me.pnlCard3)
+        Me.pnlStatsRow.Controls.Add(Me.pnlCard4)
+        Me.pnlStatsRow.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlStatsRow.Location = New System.Drawing.Point(40, 40)
+        Me.pnlStatsRow.Name = "pnlStatsRow"
+        Me.pnlStatsRow.Size = New System.Drawing.Size(939, 251)
+        Me.pnlStatsRow.TabIndex = 0
+        '
+        'pnlCard1
+        '
+        Me.pnlCard1.BackColor = System.Drawing.Color.White
+        Me.pnlCard1.Controls.Add(Me.lblTotalUsers)
+        Me.pnlCard1.Controls.Add(Me.Label1)
+        Me.pnlCard1.Controls.Add(Me.Panel1)
+        Me.pnlCard1.Location = New System.Drawing.Point(4, 5)
+        Me.pnlCard1.Margin = New System.Windows.Forms.Padding(4, 5, 27, 31)
+        Me.pnlCard1.Name = "pnlCard1"
+        Me.pnlCard1.Size = New System.Drawing.Size(280, 215)
+        Me.pnlCard1.TabIndex = 0
+        '
+        'lblTotalUsers
+        '
+        Me.lblTotalUsers.AutoSize = True
+        Me.lblTotalUsers.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTotalUsers.ForeColor = System.Drawing.Color.FromArgb(41, 128, 185)
+        Me.lblTotalUsers.Location = New System.Drawing.Point(27, 62)
+        Me.lblTotalUsers.Name = "lblTotalUsers"
+        Me.lblTotalUsers.Size = New System.Drawing.Size(56, 65)
+        Me.lblTotalUsers.TabIndex = 1
+        Me.lblTotalUsers.Text = "0"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.ForeColor = System.Drawing.Color.Gray
+        Me.Label1.Location = New System.Drawing.Point(27, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(142, 20)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "TOTAL RESIDENTS"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(41, 128, 185)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(11, 215)
+        Me.Panel1.TabIndex = 2
+        '
+        'pnlCard2
+        '
+        Me.pnlCard2.BackColor = System.Drawing.Color.White
+        Me.pnlCard2.Controls.Add(Me.lblPendingCases)
+        Me.pnlCard2.Controls.Add(Me.Label3)
+        Me.pnlCard2.Controls.Add(Me.Panel2)
+        Me.pnlCard2.Location = New System.Drawing.Point(315, 5)
+        Me.pnlCard2.Margin = New System.Windows.Forms.Padding(4, 5, 27, 31)
+        Me.pnlCard2.Name = "pnlCard2"
+        Me.pnlCard2.Size = New System.Drawing.Size(280, 215)
+        Me.pnlCard2.TabIndex = 1
+        '
+        'lblPendingCases
+        '
+        Me.lblPendingCases.AutoSize = True
+        Me.lblPendingCases.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold)
+        Me.lblPendingCases.ForeColor = System.Drawing.Color.Crimson
+        Me.lblPendingCases.Location = New System.Drawing.Point(27, 62)
+        Me.lblPendingCases.Name = "lblPendingCases"
+        Me.lblPendingCases.Size = New System.Drawing.Size(56, 65)
+        Me.lblPendingCases.TabIndex = 1
+        Me.lblPendingCases.Text = "0"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.ForeColor = System.Drawing.Color.Gray
+        Me.Label3.Location = New System.Drawing.Point(27, 23)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(127, 20)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "PENDING CASES"
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Crimson
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(11, 215)
+        Me.Panel2.TabIndex = 2
+        '
+        'pnlCard3
+        '
+        Me.pnlCard3.BackColor = System.Drawing.Color.White
+        Me.pnlCard3.Controls.Add(Me.lblTotalBlotter)
+        Me.pnlCard3.Controls.Add(Me.Label4)
+        Me.pnlCard3.Controls.Add(Me.Panel3)
+        Me.pnlCard3.Location = New System.Drawing.Point(626, 5)
+        Me.pnlCard3.Margin = New System.Windows.Forms.Padding(4, 5, 27, 31)
+        Me.pnlCard3.Name = "pnlCard3"
+        Me.pnlCard3.Size = New System.Drawing.Size(280, 215)
+        Me.pnlCard3.TabIndex = 2
+        '
+        'lblTotalBlotter
+        '
+        Me.lblTotalBlotter.AutoSize = True
+        Me.lblTotalBlotter.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTotalBlotter.ForeColor = System.Drawing.Color.FromArgb(39, 174, 96)
+        Me.lblTotalBlotter.Location = New System.Drawing.Point(27, 62)
+        Me.lblTotalBlotter.Name = "lblTotalBlotter"
+        Me.lblTotalBlotter.Size = New System.Drawing.Size(56, 65)
+        Me.lblTotalBlotter.TabIndex = 1
+        Me.lblTotalBlotter.Text = "0"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.ForeColor = System.Drawing.Color.Gray
+        Me.Label4.Location = New System.Drawing.Point(27, 23)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(176, 20)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "TOTAL BLOTTER CASES"
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(39, 174, 96)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(11, 215)
+        Me.Panel3.TabIndex = 2
+        '
+        'pnlCard4
+        '
+        Me.pnlCard4.BackColor = System.Drawing.Color.White
+        Me.pnlCard4.Controls.Add(Me.lblTotalConcerns)
+        Me.pnlCard4.Controls.Add(Me.Label5)
+        Me.pnlCard4.Controls.Add(Me.Panel4)
+        Me.pnlCard4.Location = New System.Drawing.Point(937, 5)
+        Me.pnlCard4.Margin = New System.Windows.Forms.Padding(4, 5, 27, 31)
+        Me.pnlCard4.Name = "pnlCard4"
+        Me.pnlCard4.Size = New System.Drawing.Size(280, 215)
+        Me.pnlCard4.TabIndex = 3
+        '
+        'lblTotalConcerns
+        '
+        Me.lblTotalConcerns.AutoSize = True
+        Me.lblTotalConcerns.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTotalConcerns.ForeColor = System.Drawing.Color.FromArgb(230, 126, 34)
+        Me.lblTotalConcerns.Location = New System.Drawing.Point(27, 62)
+        Me.lblTotalConcerns.Name = "lblTotalConcerns"
+        Me.lblTotalConcerns.Size = New System.Drawing.Size(56, 65)
+        Me.lblTotalConcerns.TabIndex = 1
+        Me.lblTotalConcerns.Text = "0"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.Label5.ForeColor = System.Drawing.Color.Gray
+        Me.Label5.Location = New System.Drawing.Point(27, 23)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(142, 20)
+        Me.Label5.TabIndex = 0
+        Me.Label5.Text = "TOTAL CONCERNS"
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.FromArgb(230, 126, 34)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(11, 215)
+        Me.Panel4.TabIndex = 2
+        '
+        'pnlHeader
+        '
+        Me.pnlHeader.BackColor = System.Drawing.Color.White
+        Me.pnlHeader.Controls.Add(Me.lblPageTitle)
+        Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlHeader.Location = New System.Drawing.Point(347, 0)
+        Me.pnlHeader.Name = "pnlHeader"
+        Me.pnlHeader.Size = New System.Drawing.Size(1019, 123)
+        Me.pnlHeader.TabIndex = 1
+        '
+        'lblPageTitle
+        '
+        Me.lblPageTitle.AutoSize = True
+        Me.lblPageTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.lblPageTitle.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.lblPageTitle.Location = New System.Drawing.Point(40, 34)
+        Me.lblPageTitle.Name = "lblPageTitle"
+        Me.lblPageTitle.Size = New System.Drawing.Size(298, 45)
+        Me.lblPageTitle.TabIndex = 0
+        Me.lblPageTitle.Text = "Admin Dashboard"
+        '
+        'pnlSidebar
+        '
+        Me.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.pnlSidebar.Controls.Add(Me.btnLogout)
+        Me.pnlSidebar.Controls.Add(Me.btnClearance)
+        Me.pnlSidebar.Controls.Add(Me.btnConcerns)
+        Me.pnlSidebar.Controls.Add(Me.btnBlotter)
+        Me.pnlSidebar.Controls.Add(Me.btnResidents)
+        Me.pnlSidebar.Controls.Add(Me.pnlLogo)
+        Me.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left
+        Me.pnlSidebar.Location = New System.Drawing.Point(0, 0)
+        Me.pnlSidebar.Name = "pnlSidebar"
+        Me.pnlSidebar.Size = New System.Drawing.Size(347, 768)
+        Me.pnlSidebar.TabIndex = 0
+        '
+        'btnLogout
+        '
+        Me.btnLogout.BackColor = System.Drawing.Color.FromArgb(192, 57, 43)
+        Me.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.btnLogout.FlatAppearance.BorderSize = 0
+        Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogout.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnLogout.ForeColor = System.Drawing.Color.White
+        Me.btnLogout.Location = New System.Drawing.Point(0, 660)
+        Me.btnLogout.Name = "btnLogout"
+        Me.btnLogout.Size = New System.Drawing.Size(347, 108)
+        Me.btnLogout.TabIndex = 5
+        Me.btnLogout.Text = "LOGOUT"
+        Me.btnLogout.UseVisualStyleBackColor = False
+        '
+        'btnClearance
+        '
+        Me.btnClearance.BackColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.btnClearance.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClearance.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnClearance.FlatAppearance.BorderSize = 0
+        Me.btnClearance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(52, 73, 94)
+        Me.btnClearance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnClearance.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnClearance.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.btnClearance.Location = New System.Drawing.Point(0, 447)
+        Me.btnClearance.Name = "btnClearance"
+        Me.btnClearance.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
+        Me.btnClearance.Size = New System.Drawing.Size(347, 108)
+        Me.btnClearance.TabIndex = 3
+        Me.btnClearance.Text = "Manage Clearances"
+        Me.btnClearance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnClearance.UseVisualStyleBackColor = False
+        '
+        'btnConcerns
+        '
+        Me.btnConcerns.BackColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.btnConcerns.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnConcerns.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnConcerns.FlatAppearance.BorderSize = 0
+        Me.btnConcerns.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(52, 73, 94)
+        Me.btnConcerns.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnConcerns.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnConcerns.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.btnConcerns.Location = New System.Drawing.Point(0, 339)
+        Me.btnConcerns.Name = "btnConcerns"
+        Me.btnConcerns.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
+        Me.btnConcerns.Size = New System.Drawing.Size(347, 108)
+        Me.btnConcerns.TabIndex = 4
+        Me.btnConcerns.Text = "Barangay Concerns"
+        Me.btnConcerns.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnConcerns.UseVisualStyleBackColor = False
+        '
+        'btnBlotter
+        '
+        Me.btnBlotter.BackColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.btnBlotter.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBlotter.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnBlotter.FlatAppearance.BorderSize = 0
+        Me.btnBlotter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(52, 73, 94)
+        Me.btnBlotter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBlotter.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnBlotter.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.btnBlotter.Location = New System.Drawing.Point(0, 231)
+        Me.btnBlotter.Name = "btnBlotter"
+        Me.btnBlotter.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
+        Me.btnBlotter.Size = New System.Drawing.Size(347, 108)
+        Me.btnBlotter.TabIndex = 2
+        Me.btnBlotter.Text = "Incident Blotter"
+        Me.btnBlotter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnBlotter.UseVisualStyleBackColor = False
+        '
+        'btnResidents
+        '
+        Me.btnResidents.BackColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.btnResidents.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnResidents.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnResidents.FlatAppearance.BorderSize = 0
+        Me.btnResidents.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(52, 73, 94)
+        Me.btnResidents.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnResidents.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.btnResidents.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.btnResidents.Location = New System.Drawing.Point(0, 123)
+        Me.btnResidents.Name = "btnResidents"
+        Me.btnResidents.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
+        Me.btnResidents.Size = New System.Drawing.Size(347, 108)
+        Me.btnResidents.TabIndex = 1
+        Me.btnResidents.Text = "Manage Residents"
+        Me.btnResidents.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnResidents.UseVisualStyleBackColor = False
+        '
+        'pnlLogo
+        '
+        Me.pnlLogo.BackColor = System.Drawing.Color.FromArgb(34, 49, 63)
+        Me.pnlLogo.Controls.Add(Me.lblLogo)
+        Me.pnlLogo.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlLogo.Location = New System.Drawing.Point(0, 0)
+        Me.pnlLogo.Name = "pnlLogo"
+        Me.pnlLogo.Size = New System.Drawing.Size(347, 123)
+        Me.pnlLogo.TabIndex = 0
+        '
+        'lblLogo
+        '
+        Me.lblLogo.AutoSize = True
+        Me.lblLogo.Font = New System.Drawing.Font("Segoe UI", 28.0!, System.Drawing.FontStyle.Bold)
+        Me.lblLogo.ForeColor = System.Drawing.Color.White
+        Me.lblLogo.Location = New System.Drawing.Point(80, 28)
+        Me.lblLogo.Name = "lblLogo"
+        Me.lblLogo.Size = New System.Drawing.Size(155, 51)
+        Me.lblLogo.TabIndex = 0
+        Me.lblLogo.Text = "ADMIN"
+        '
+        'adminDashboard
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.DimGray
+        Me.ClientSize = New System.Drawing.Size(1366, 768)
+        Me.Controls.Add(Me.pnlBorder)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "adminDashboard"
+        Me.Padding = New System.Windows.Forms.Padding(3)
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Admin Dashboard"
+        Me.pnlBorder.ResumeLayout(False)
+        Me.pnlMainContent.ResumeLayout(False)
+        Me.pnlHome.ResumeLayout(False)
+        Me.pnlHome.PerformLayout()
+        Me.pnlChartSection.ResumeLayout(False)
+        CType(Me.chartIncidents, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlFilterBar.ResumeLayout(False)
+        Me.pnlFilterBar.PerformLayout()
+        Me.pnlStatsRow.ResumeLayout(False)
+        Me.pnlCard1.ResumeLayout(False)
+        Me.pnlCard1.PerformLayout()
+        Me.pnlCard2.ResumeLayout(False)
+        Me.pnlCard2.PerformLayout()
+        Me.pnlCard3.ResumeLayout(False)
+        Me.pnlCard3.PerformLayout()
+        Me.pnlCard4.ResumeLayout(False)
+        Me.pnlCard4.PerformLayout()
+        Me.pnlHeader.ResumeLayout(False)
+        Me.pnlHeader.PerformLayout()
+        Me.pnlSidebar.ResumeLayout(False)
+        Me.pnlLogo.ResumeLayout(False)
+        Me.pnlLogo.PerformLayout()
+        Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents pnlBorder As Panel
-    Friend WithEvents pnlSidebar As Panel
-    Friend WithEvents pnlLogo As Panel
-    Friend WithEvents lblLogo As Label
-    Friend WithEvents btnBlotter As Button
-    Friend WithEvents btnConcerns As Button
-    Friend WithEvents btnResidents As Button
-    Friend WithEvents btnClearance As Button
-    Friend WithEvents btnLogout As Button
-    Friend WithEvents pnlHeader As Panel
-    Friend WithEvents lblPageTitle As Label
-    Friend WithEvents pnlMainContent As Panel
-    Friend WithEvents pnlHome As Panel
-    Friend WithEvents pnlStatsRow As FlowLayoutPanel
-    Friend WithEvents pnlCard1 As Panel
-    Friend WithEvents lblTotalUsers As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents pnlCard2 As Panel
-    Friend WithEvents lblPendingCases As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents pnlCard3 As Panel
-    Friend WithEvents lblTotalBlotter As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents pnlCard4 As Panel
-    Friend WithEvents lblTotalConcerns As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents pnlChartSection As Panel
-    Friend WithEvents pnlFilterBar As Panel
-    Friend WithEvents cbIncidentType As ComboBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents lblChartTitle As Label
+    Friend WithEvents pnlBorder As System.Windows.Forms.Panel
+    Friend WithEvents pnlSidebar As System.Windows.Forms.Panel
+    Friend WithEvents pnlLogo As System.Windows.Forms.Panel
+    Friend WithEvents lblLogo As System.Windows.Forms.Label
+    Friend WithEvents btnBlotter As System.Windows.Forms.Button
+    Friend WithEvents btnConcerns As System.Windows.Forms.Button
+    Friend WithEvents btnResidents As System.Windows.Forms.Button
+    Friend WithEvents btnClearance As System.Windows.Forms.Button
+    Friend WithEvents btnLogout As System.Windows.Forms.Button
+    Friend WithEvents pnlHeader As System.Windows.Forms.Panel
+    Friend WithEvents lblPageTitle As System.Windows.Forms.Label
+    Friend WithEvents pnlMainContent As System.Windows.Forms.Panel
+    Friend WithEvents pnlHome As System.Windows.Forms.Panel
+    Friend WithEvents pnlStatsRow As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents pnlCard1 As System.Windows.Forms.Panel
+    Friend WithEvents lblTotalUsers As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents pnlCard2 As System.Windows.Forms.Panel
+    Friend WithEvents lblPendingCases As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents pnlCard3 As System.Windows.Forms.Panel
+    Friend WithEvents lblTotalBlotter As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents pnlCard4 As System.Windows.Forms.Panel
+    Friend WithEvents lblTotalConcerns As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Panel4 As System.Windows.Forms.Panel
+    Friend WithEvents pnlChartSection As System.Windows.Forms.Panel
+    Friend WithEvents pnlFilterBar As System.Windows.Forms.Panel
+    Friend WithEvents cbIncidentType As System.Windows.Forms.ComboBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lblChartTitle As System.Windows.Forms.Label
     Friend WithEvents chartIncidents As System.Windows.Forms.DataVisualization.Charting.Chart
 End Class
