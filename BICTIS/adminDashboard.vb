@@ -6,85 +6,45 @@ Imports System.Threading.Tasks
 Imports System.Drawing
 
 Public Class adminDashboard
-    ' Variable to keep track of the current child form loaded
-    Private currentChildForm As Form
 
     Private Async Sub adminDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblPageTitle.Text = "Dashboard - " & Session.CurrentUserRole
-
         Try
-            ' Load Filters first (Fast, no DB)
             LoadFilterOptions()
-
-            ' Load Home Data
             Await LoadDashboardStats()
-
         Catch ex As Exception
             MessageBox.Show("Error loading dashboard: " & ex.Message)
         End Try
     End Sub
 
     ' ==========================================
-    '      NAVIGATION & SWITCH PANEL LOGIC
+    '      SIDEBAR NAVIGATION (DIRECT OPEN)
     ' ==========================================
 
-    ' Centralized Navigation Handler for Sidebar Buttons
-    Private Sub Navigation_Click(sender As Object, e As EventArgs) Handles _
-        btnResidents.Click, btnBlotter.Click, btnConcerns.Click, btnClearance.Click
-
-        Dim btn As Button = CType(sender, Button)
-
-        Select Case btn.Name
-            Case "btnResidents" : OpenChildForm(New frmManageResidents())
-            Case "btnBlotter" : OpenChildForm(New frmBlotter())
-            Case "btnConcerns" : OpenChildForm(New frmConcerns())
-            Case "btnClearance" : OpenChildForm(New frmClearance())
-        End Select
-    End Sub
-
-    Private Sub OpenChildForm(childForm As Form)
-        ' 1. Close previous form if exists to free resources
-        If currentChildForm IsNot Nothing Then
-            currentChildForm.Close()
-        End If
-        currentChildForm = childForm
-
-        ' 2. Configure Child Form
-        childForm.TopLevel = False
-        childForm.FormBorderStyle = FormBorderStyle.None
-        childForm.Dock = DockStyle.Fill
-        childForm.AutoScroll = True ' Enables scrolling if form is too large
-
-        ' 3. HIDE CHILD HEADER (Optional - assumes child has a panel named pnlHeader)
-        Dim header = childForm.Controls.Find("pnlHeader", True).FirstOrDefault()
-        If header IsNot Nothing Then header.Visible = False
-
-        ' 4. CRITICAL: Handle Closure to Restore Dashboard Home
-        AddHandler childForm.FormClosed, AddressOf OnChildFormClosed
-
-        ' 5. Add to Panel and Show
-        pnlMainContent.Controls.Add(childForm)
-        pnlMainContent.Tag = childForm
-        childForm.BringToFront()
-        childForm.Show()
-
-        ' 6. Update Dashboard State
-        pnlHome.Visible = False
-        lblPageTitle.Text = childForm.Text
-    End Sub
-
-    ' Triggered when the child form (e.g., Blotter) is closed
-    Private Async Sub OnChildFormClosed(sender As Object, e As FormClosedEventArgs)
-        pnlHome.Visible = True
-        pnlHome.BringToFront()
-        lblPageTitle.Text = "Admin Dashboard"
-
-        ' Refresh stats to show any changes made in the child form
+    Private Async Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
+        ' Refresh the Dashboard Stats
         Await LoadDashboardStats()
+        MessageBox.Show("Dashboard refreshed.", "Home", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub pnlLogo_Click(sender As Object, e As EventArgs) Handles pnlLogo.Click, lblLogo.Click
-        If currentChildForm IsNot Nothing Then currentChildForm.Close()
+    Private Sub btnResidents_Click(sender As Object, e As EventArgs) Handles btnResidents.Click
+        Dim frm As New frmManageResidents()
+        frm.Show()
+    End Sub
+
+    Private Sub btnBlotter_Click(sender As Object, e As EventArgs) Handles btnBlotter.Click
+        Dim frm As New frmBlotter()
+        frm.Show()
+    End Sub
+
+    Private Sub btnConcerns_Click(sender As Object, e As EventArgs) Handles btnConcerns.Click
+        Dim frm As New frmConcerns()
+        frm.Show()
+    End Sub
+
+    Private Sub btnClearance_Click(sender As Object, e As EventArgs) Handles btnClearance.Click
+        Dim frm As New frmClearance()
+        frm.Show()
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
@@ -101,8 +61,6 @@ Public Class adminDashboard
     ' ==========================================
 
     Private Async Function LoadDashboardStats() As Task
-        If Not pnlHome.Visible Then Exit Function
-
         Dim taskUserCount = Session.GetCountAsync("SELECT COUNT(*) FROM tblResidents WHERE Role='User'")
         Dim taskPending = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Status='Pending'")
         Dim taskBlotter = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Category='Blotter'")
@@ -142,7 +100,7 @@ Public Class adminDashboard
     End Sub
 
     Private Async Function LoadChartAsync() As Task
-        If chartIncidents Is Nothing OrElse Not pnlHome.Visible Then Exit Function
+        If chartIncidents Is Nothing Then Exit Function
 
         Dim selection As String = cbIncidentType.Text
         Dim query As String
@@ -184,7 +142,7 @@ Public Class adminDashboard
                 Dim pIndex As Integer = series.Points.AddXY(xVal, yVal)
                 Dim p As SysChart.DataPoint = series.Points(pIndex)
 
-                ' USE HELPER FUNCTION FOR COLORS
+                ' Helper color logic
                 p.Color = GetChartColor(xVal)
             Next
         Else
@@ -194,7 +152,6 @@ Public Class adminDashboard
         chartIncidents.Series.Add(series)
     End Function
 
-    ' Helper function to keep main logic clean
     Private Function GetChartColor(category As String) As Color
         Select Case category
             ' Crimes / Red
