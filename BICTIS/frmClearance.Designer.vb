@@ -172,12 +172,12 @@ Partial Class frmClearance
 
     End Sub
 
-    Friend WithEvents pnlHeader As Panel
-    Friend WithEvents lblTitle As Label
-    Friend WithEvents btnClose As Button
-    Friend WithEvents pnlControls As Panel
-    Friend WithEvents dgvRequests As DataGridView
-    Friend WithEvents btnPrint As Button
-    Friend WithEvents btnReject As Button
-    Friend WithEvents Label1 As Label
+    Friend WithEvents pnlHeader As System.Windows.Forms.Panel
+    Friend WithEvents lblTitle As System.Windows.Forms.Label
+    Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents pnlControls As System.Windows.Forms.Panel
+    Friend WithEvents dgvRequests As System.Windows.Forms.DataGridView
+    Friend WithEvents btnPrint As System.Windows.Forms.Button
+    Friend WithEvents btnReject As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

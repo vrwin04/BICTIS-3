@@ -335,24 +335,24 @@ Partial Class frmBlotter
 
     End Sub
 
-    Friend WithEvents pnlHeader As Panel
-    Friend WithEvents lblTitle As Label
-    Friend WithEvents btnClose As Button
-    Friend WithEvents pnlEditor As Panel
-    Friend WithEvents pnlGrid As Panel
-    Friend WithEvents dgvCases As DataGridView
-    Friend WithEvents cbComplainant As ComboBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents cbRespondent As ComboBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents cbIncidentType As ComboBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents txtNarrative As TextBox
-    Friend WithEvents pnlLine2 As Panel
-    Friend WithEvents Label5 As Label
-    Friend WithEvents cbStatus As ComboBox
-    Friend WithEvents btnSave As Button
-    Friend WithEvents btnResolve As Button
-    Friend WithEvents Label6 As Label
+    Friend WithEvents pnlHeader As System.Windows.Forms.Panel
+    Friend WithEvents lblTitle As System.Windows.Forms.Label
+    Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents pnlEditor As System.Windows.Forms.Panel
+    Friend WithEvents pnlGrid As System.Windows.Forms.Panel
+    Friend WithEvents dgvCases As System.Windows.Forms.DataGridView
+    Friend WithEvents cbComplainant As System.Windows.Forms.ComboBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents cbRespondent As System.Windows.Forms.ComboBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents cbIncidentType As System.Windows.Forms.ComboBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents txtNarrative As System.Windows.Forms.TextBox
+    Friend WithEvents pnlLine2 As System.Windows.Forms.Panel
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents cbStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents btnSave As System.Windows.Forms.Button
+    Friend WithEvents btnResolve As System.Windows.Forms.Button
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class
