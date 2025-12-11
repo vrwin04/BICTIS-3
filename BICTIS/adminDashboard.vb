@@ -37,6 +37,7 @@ Public Class adminDashboard
         childForm.TopLevel = False
         childForm.FormBorderStyle = FormBorderStyle.None
         childForm.Dock = DockStyle.Fill
+        childForm.AutoScroll = True ' <--- ADDED THIS: Enables scrolling if form is too large
 
         ' 3. Optional: Hide the Header/Close button of the child form 
         ' so it looks integrated (Searching for 'pnlHeader' or 'btnClose' control)
@@ -194,14 +195,36 @@ Public Class adminDashboard
                 Dim pIndex As Integer = series.Points.AddXY(xVal, yVal)
                 Dim p As SysChart.DataPoint = series.Points(pIndex)
 
-                ' Color logic matches previous version
+                ' --- COLOR CODING LOGIC ---
                 If isAllIncidents Then
+                    ' CATEGORY COLORS (Column Chart)
                     Select Case xVal
                         Case "Physical Injury" : p.Color = Color.Crimson
                         Case "Theft / Robbery" : p.Color = Color.DarkRed
                         Case "Harassment / Threats" : p.Color = Color.OrangeRed
+                        Case "Unjust Vexation" : p.Color = Color.Purple
+                        Case "Malicious Mischief" : p.Color = Color.DarkMagenta
+                        Case "Estafa / Swindling" : p.Color = Color.Indigo
+                        Case "Libel / Slander" : p.Color = Color.SlateBlue
+                        Case "Property / Land Dispute" : p.Color = Color.SaddleBrown
+
                         Case "Noise Complaint" : p.Color = Color.DarkOrange
                         Case "Waste Disposal / Trash" : p.Color = Color.ForestGreen
+                        Case "Suspicious Activity" : p.Color = Color.DimGray
+                        Case "Public Disturbance" : p.Color = Color.Goldenrod
+                        Case "Broken Street Light / Infrastructure" : p.Color = Color.Teal
+                        Case "Animal Control / Stray Pets" : p.Color = Color.OliveDrab
+                        Case "Curfew Violation" : p.Color = Color.MidnightBlue
+
+                        Case "Other" : p.Color = Color.Gray
+                        Case Else : p.Color = Color.SteelBlue
+                    End Select
+                Else
+                    ' STATUS COLORS (Pie Chart)
+                    Select Case xVal
+                        Case "Pending", "Escalated" : p.Color = Color.Crimson
+                        Case "Resolved", "Acknowledged" : p.Color = Color.SeaGreen
+                        Case "Dismissed", "Invalid" : p.Color = Color.Gray
                         Case Else : p.Color = Color.SteelBlue
                     End Select
                 End If

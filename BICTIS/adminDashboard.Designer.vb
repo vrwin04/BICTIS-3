@@ -420,7 +420,7 @@ Partial Class adminDashboard
         pnlSidebar.Location = New Point(0, 0)
         pnlSidebar.Margin = New Padding(4, 5, 4, 5)
         pnlSidebar.Name = "pnlSidebar"
-        pnlSidebar.Size = New Size(347, 720)
+        pnlSidebar.Size = New Size(347, 714)
         pnlSidebar.TabIndex = 0
         ' 
         ' btnLogout
@@ -432,7 +432,7 @@ Partial Class adminDashboard
         btnLogout.FlatStyle = FlatStyle.Flat
         btnLogout.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
         btnLogout.ForeColor = Color.White
-        btnLogout.Location = New Point(0, 612)
+        btnLogout.Location = New Point(0, 606)
         btnLogout.Margin = New Padding(4, 5, 4, 5)
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(347, 108)
@@ -557,7 +557,6 @@ Partial Class adminDashboard
         Padding = New Padding(3)
         StartPosition = FormStartPosition.CenterScreen
         Text = "Admin Dashboard"
-        WindowState = FormWindowState.Maximized
         pnlBorder.ResumeLayout(False)
         pnlMainContent.ResumeLayout(False)
         pnlHome.ResumeLayout(False)
