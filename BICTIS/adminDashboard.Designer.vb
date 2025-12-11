@@ -80,7 +80,7 @@ Partial Class adminDashboard
         pnlBorder.Location = New Point(3, 3)
         pnlBorder.Margin = New Padding(4, 5, 4, 5)
         pnlBorder.Name = "pnlBorder"
-        pnlBorder.Size = New Size(1274, 714)
+        pnlBorder.Size = New Size(1394, 894)
         pnlBorder.TabIndex = 0
         ' 
         ' pnlMainContent
@@ -90,7 +90,7 @@ Partial Class adminDashboard
         pnlMainContent.Location = New Point(347, 123)
         pnlMainContent.Margin = New Padding(4, 5, 4, 5)
         pnlMainContent.Name = "pnlMainContent"
-        pnlMainContent.Size = New Size(927, 591)
+        pnlMainContent.Size = New Size(1047, 771)
         pnlMainContent.TabIndex = 2
         ' 
         ' pnlHome
@@ -102,7 +102,7 @@ Partial Class adminDashboard
         pnlHome.Location = New Point(0, 0)
         pnlHome.Name = "pnlHome"
         pnlHome.Padding = New Padding(40, 46, 40, 46)
-        pnlHome.Size = New Size(927, 591)
+        pnlHome.Size = New Size(1047, 771)
         pnlHome.TabIndex = 0
         ' 
         ' pnlChartSection
@@ -115,7 +115,7 @@ Partial Class adminDashboard
         pnlChartSection.Margin = New Padding(4, 5, 4, 5)
         pnlChartSection.Name = "pnlChartSection"
         pnlChartSection.Padding = New Padding(27, 31, 27, 31)
-        pnlChartSection.Size = New Size(847, 514)
+        pnlChartSection.Size = New Size(967, 514)
         pnlChartSection.TabIndex = 1
         ' 
         ' chartIncidents
@@ -131,7 +131,7 @@ Partial Class adminDashboard
         Series1.Legend = "Legend1"
         Series1.Name = "Series1"
         chartIncidents.Series.Add(Series1)
-        chartIncidents.Size = New Size(793, 360)
+        chartIncidents.Size = New Size(913, 360)
         chartIncidents.TabIndex = 1
         chartIncidents.Text = "Incidents Chart"
         ' 
@@ -144,7 +144,7 @@ Partial Class adminDashboard
         pnlFilterBar.Location = New Point(27, 31)
         pnlFilterBar.Margin = New Padding(4, 5, 4, 5)
         pnlFilterBar.Name = "pnlFilterBar"
-        pnlFilterBar.Size = New Size(793, 92)
+        pnlFilterBar.Size = New Size(913, 92)
         pnlFilterBar.TabIndex = 0
         ' 
         ' cbIncidentType
@@ -155,7 +155,7 @@ Partial Class adminDashboard
         cbIncidentType.FlatStyle = FlatStyle.Flat
         cbIncidentType.Font = New Font("Segoe UI", 11.0F)
         cbIncidentType.FormattingEnabled = True
-        cbIncidentType.Location = New Point(473, 23)
+        cbIncidentType.Location = New Point(593, 23)
         cbIncidentType.Margin = New Padding(4, 5, 4, 5)
         cbIncidentType.Name = "cbIncidentType"
         cbIncidentType.Size = New Size(292, 33)
@@ -167,7 +167,7 @@ Partial Class adminDashboard
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
         Label2.ForeColor = Color.Gray
-        Label2.Location = New Point(340, 29)
+        Label2.Location = New Point(460, 29)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
         Label2.Size = New Size(104, 23)
@@ -197,7 +197,7 @@ Partial Class adminDashboard
         pnlStatsRow.Location = New Point(40, 46)
         pnlStatsRow.Margin = New Padding(4, 5, 4, 5)
         pnlStatsRow.Name = "pnlStatsRow"
-        pnlStatsRow.Size = New Size(847, 251)
+        pnlStatsRow.Size = New Size(967, 251)
         pnlStatsRow.TabIndex = 0
         ' 
         ' pnlCard1
@@ -392,7 +392,7 @@ Partial Class adminDashboard
         pnlHeader.Location = New Point(347, 0)
         pnlHeader.Margin = New Padding(4, 5, 4, 5)
         pnlHeader.Name = "pnlHeader"
-        pnlHeader.Size = New Size(927, 123)
+        pnlHeader.Size = New Size(1047, 123)
         pnlHeader.TabIndex = 1
         ' 
         ' lblPageTitle
@@ -420,7 +420,7 @@ Partial Class adminDashboard
         pnlSidebar.Location = New Point(0, 0)
         pnlSidebar.Margin = New Padding(4, 5, 4, 5)
         pnlSidebar.Name = "pnlSidebar"
-        pnlSidebar.Size = New Size(347, 714)
+        pnlSidebar.Size = New Size(347, 894)
         pnlSidebar.TabIndex = 0
         ' 
         ' btnLogout
@@ -432,7 +432,7 @@ Partial Class adminDashboard
         btnLogout.FlatStyle = FlatStyle.Flat
         btnLogout.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
         btnLogout.ForeColor = Color.White
-        btnLogout.Location = New Point(0, 606)
+        btnLogout.Location = New Point(0, 786)
         btnLogout.Margin = New Padding(4, 5, 4, 5)
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(347, 108)
@@ -549,7 +549,7 @@ Partial Class adminDashboard
         AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DimGray
-        ClientSize = New Size(1280, 720)
+        ClientSize = New Size(1400, 900)
         Controls.Add(pnlBorder)
         FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(4, 5, 4, 5)
