@@ -20,6 +20,7 @@ Partial Class adminDashboard
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         pnlBorder = New Panel()
         pnlMainContent = New Panel()
+        pnlHome = New Panel()
         pnlChartSection = New Panel()
         chartIncidents = New System.Windows.Forms.DataVisualization.Charting.Chart()
         pnlFilterBar = New Panel()
@@ -55,8 +56,9 @@ Partial Class adminDashboard
         lblLogo = New Label()
         pnlBorder.SuspendLayout()
         pnlMainContent.SuspendLayout()
+        pnlHome.SuspendLayout()
         pnlChartSection.SuspendLayout()
-        CType(chartIncidents, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(chartIncidents, ComponentModel.ISupportInitialize).BeginInit()
         pnlFilterBar.SuspendLayout()
         pnlStatsRow.SuspendLayout()
         pnlCard1.SuspendLayout()
@@ -83,15 +85,24 @@ Partial Class adminDashboard
         ' 
         ' pnlMainContent
         ' 
-        pnlMainContent.Controls.Add(pnlChartSection)
-        pnlMainContent.Controls.Add(pnlStatsRow)
+        pnlMainContent.Controls.Add(pnlHome)
         pnlMainContent.Dock = DockStyle.Fill
         pnlMainContent.Location = New Point(347, 123)
         pnlMainContent.Margin = New Padding(4, 5, 4, 5)
         pnlMainContent.Name = "pnlMainContent"
-        pnlMainContent.Padding = New Padding(40, 46, 40, 46)
         pnlMainContent.Size = New Size(1337, 857)
         pnlMainContent.TabIndex = 2
+        ' 
+        ' pnlHome
+        ' 
+        pnlHome.Controls.Add(pnlChartSection)
+        pnlHome.Controls.Add(pnlStatsRow)
+        pnlHome.Dock = DockStyle.Fill
+        pnlHome.Location = New Point(0, 0)
+        pnlHome.Name = "pnlHome"
+        pnlHome.Padding = New Padding(40, 46, 40, 46)
+        pnlHome.Size = New Size(1337, 857)
+        pnlHome.TabIndex = 0
         ' 
         ' pnlChartSection
         ' 
@@ -414,6 +425,7 @@ Partial Class adminDashboard
         ' btnLogout
         ' 
         btnLogout.BackColor = Color.FromArgb(CByte(192), CByte(57), CByte(43))
+        btnLogout.Cursor = Cursors.Hand
         btnLogout.Dock = DockStyle.Bottom
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
@@ -430,6 +442,7 @@ Partial Class adminDashboard
         ' btnClearance
         ' 
         btnClearance.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnClearance.Cursor = Cursors.Hand
         btnClearance.Dock = DockStyle.Top
         btnClearance.FlatAppearance.BorderSize = 0
         btnClearance.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
@@ -449,6 +462,7 @@ Partial Class adminDashboard
         ' btnConcerns
         ' 
         btnConcerns.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnConcerns.Cursor = Cursors.Hand
         btnConcerns.Dock = DockStyle.Top
         btnConcerns.FlatAppearance.BorderSize = 0
         btnConcerns.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
@@ -468,6 +482,7 @@ Partial Class adminDashboard
         ' btnBlotter
         ' 
         btnBlotter.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnBlotter.Cursor = Cursors.Hand
         btnBlotter.Dock = DockStyle.Top
         btnBlotter.FlatAppearance.BorderSize = 0
         btnBlotter.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
@@ -487,6 +502,7 @@ Partial Class adminDashboard
         ' btnResidents
         ' 
         btnResidents.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnResidents.Cursor = Cursors.Hand
         btnResidents.Dock = DockStyle.Top
         btnResidents.FlatAppearance.BorderSize = 0
         btnResidents.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
@@ -507,6 +523,7 @@ Partial Class adminDashboard
         ' 
         pnlLogo.BackColor = Color.FromArgb(CByte(34), CByte(49), CByte(63))
         pnlLogo.Controls.Add(lblLogo)
+        pnlLogo.Cursor = Cursors.Hand
         pnlLogo.Dock = DockStyle.Top
         pnlLogo.Location = New Point(0, 0)
         pnlLogo.Margin = New Padding(4, 5, 4, 5)
@@ -541,9 +558,10 @@ Partial Class adminDashboard
         Text = "Admin Dashboard"
         pnlBorder.ResumeLayout(False)
         pnlMainContent.ResumeLayout(False)
-        pnlMainContent.PerformLayout()
+        pnlHome.ResumeLayout(False)
+        pnlHome.PerformLayout()
         pnlChartSection.ResumeLayout(False)
-        CType(chartIncidents, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(chartIncidents, ComponentModel.ISupportInitialize).EndInit()
         pnlFilterBar.ResumeLayout(False)
         pnlFilterBar.PerformLayout()
         pnlStatsRow.ResumeLayout(False)
@@ -576,6 +594,7 @@ Partial Class adminDashboard
     Friend WithEvents pnlHeader As Panel
     Friend WithEvents lblPageTitle As Label
     Friend WithEvents pnlMainContent As Panel
+    Friend WithEvents pnlHome As Panel
     Friend WithEvents pnlStatsRow As FlowLayoutPanel
     Friend WithEvents pnlCard1 As Panel
     Friend WithEvents lblTotalUsers As Label

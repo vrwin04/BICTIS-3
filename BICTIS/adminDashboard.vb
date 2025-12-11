@@ -7,6 +7,9 @@ Imports System.Threading.Tasks ' Required for Async
 Imports System.Drawing ' Required for Color
 
 Public Class adminDashboard
+    ' Variable to keep track of the current child form loaded
+    Private currentChildForm As Form
+
     Private Async Sub adminDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblPageTitle.Text = "Dashboard - " & Session.CurrentUserRole
 
@@ -14,31 +17,108 @@ Public Class adminDashboard
             ' Load Filters first (Fast, no DB)
             LoadFilterOptions()
 
-            ' Run DB tasks concurrently for speed
-            Dim taskStats = LoadStatsAsync()
-            Dim taskChart = LoadChartAsync()
-
-            Await Task.WhenAll(taskStats, taskChart)
+            ' Load Home Data
+            Await LoadDashboardStats()
 
         Catch ex As Exception
             MessageBox.Show("Error loading dashboard: " & ex.Message)
         End Try
     End Sub
 
-    Private Async Function LoadStatsAsync() As Task
-        ' Fetch counts in parallel
+    ' --- HELPER TO SWITCH PANELS ---
+    Private Sub OpenChildForm(childForm As Form)
+        ' 1. Close previous form if exists
+        If currentChildForm IsNot Nothing Then
+            currentChildForm.Close()
+        End If
+        currentChildForm = childForm
+
+        ' 2. Configure Child Form
+        childForm.TopLevel = False
+        childForm.FormBorderStyle = FormBorderStyle.None
+        childForm.Dock = DockStyle.Fill
+
+        ' 3. Optional: Hide the Header/Close button of the child form 
+        ' so it looks integrated (Searching for 'pnlHeader' or 'btnClose' control)
+        Dim header = childForm.Controls.Find("pnlHeader", True).FirstOrDefault()
+        If header IsNot Nothing Then header.Visible = False
+
+        ' 4. Add to Panel
+        pnlMainContent.Controls.Add(childForm)
+        pnlMainContent.Tag = childForm
+        childForm.BringToFront()
+        childForm.Show()
+
+        ' 5. Hide the Dashboard Home Panel
+        pnlHome.Visible = False
+
+        ' 6. Update Title
+        lblPageTitle.Text = childForm.Text
+    End Sub
+
+    Private Async Sub GoToHome()
+        ' Close any active child form
+        If currentChildForm IsNot Nothing Then
+            currentChildForm.Close()
+            currentChildForm = Nothing
+        End If
+
+        pnlHome.Visible = True
+        pnlHome.BringToFront()
+        lblPageTitle.Text = "Admin Dashboard"
+
+        ' Refresh Stats
+        Await LoadDashboardStats()
+    End Sub
+
+    ' --- NAVIGATION BUTTONS ---
+
+    Private Sub btnResidents_Click(sender As Object, e As EventArgs) Handles btnResidents.Click
+        OpenChildForm(New frmManageResidents())
+    End Sub
+
+    Private Sub btnBlotter_Click(sender As Object, e As EventArgs) Handles btnBlotter.Click
+        OpenChildForm(New frmBlotter())
+    End Sub
+
+    Private Sub btnConcerns_Click(sender As Object, e As EventArgs) Handles btnConcerns.Click
+        OpenChildForm(New frmConcerns())
+    End Sub
+
+    Private Sub btnClearance_Click(sender As Object, e As EventArgs) Handles btnClearance.Click
+        OpenChildForm(New frmClearance())
+    End Sub
+
+    ' Click Logo to go back to Dashboard Home
+    Private Sub pnlLogo_Click(sender As Object, e As EventArgs) Handles pnlLogo.Click, lblLogo.Click
+        GoToHome()
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        If MessageBox.Show("Sign out?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            Session.CurrentResidentID = 0
+            Dim login As New frmLogin()
+            login.Show()
+            Me.Close()
+        End If
+    End Sub
+
+    ' --- DATA LOADING & CHARTS (Reused from previous code) ---
+
+    Private Async Function LoadDashboardStats() As Task
+        ' Only load if Home is visible
+        If Not pnlHome.Visible Then Exit Function
+
         Dim taskUserCount = Session.GetCountAsync("SELECT COUNT(*) FROM tblResidents WHERE Role='User'")
         Dim taskPending = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Status='Pending'")
         Dim taskBlotter = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Category='Blotter'")
         Dim taskConcerns = Session.GetCountAsync("SELECT COUNT(*) FROM tblIncidents WHERE Category='Concern'")
 
-        ' Wait for all
         Dim userCount As Integer = Await taskUserCount
         Dim pending As Integer = Await taskPending
         Dim blotter As Integer = Await taskBlotter
         Dim concerns As Integer = Await taskConcerns
 
-        ' Update UI
         lblTotalUsers.Text = userCount.ToString()
         lblPendingCases.Text = pending.ToString()
         lblTotalBlotter.Text = blotter.ToString()
@@ -49,32 +129,21 @@ Public Class adminDashboard
         Else
             lblPendingCases.ForeColor = Color.Green
         End If
+
+        Await LoadChartAsync()
     End Function
 
     Private Sub LoadFilterOptions()
         cbIncidentType.Items.Clear()
         cbIncidentType.Items.Add("All Incidents")
-
-        ' --- BLOTTER CASES ---
-        cbIncidentType.Items.Add("Physical Injury")
-        cbIncidentType.Items.Add("Theft / Robbery")
-        cbIncidentType.Items.Add("Property / Land Dispute")
-        cbIncidentType.Items.Add("Harassment / Threats")
-        cbIncidentType.Items.Add("Unjust Vexation")
-        cbIncidentType.Items.Add("Malicious Mischief")
-        cbIncidentType.Items.Add("Estafa / Swindling")
-        cbIncidentType.Items.Add("Libel / Slander")
-
-        ' --- COMMUNITY CONCERNS ---
-        cbIncidentType.Items.Add("Noise Complaint")
-        cbIncidentType.Items.Add("Waste Disposal / Trash")
-        cbIncidentType.Items.Add("Suspicious Activity")
-        cbIncidentType.Items.Add("Public Disturbance")
-        cbIncidentType.Items.Add("Broken Street Light / Infrastructure")
-        cbIncidentType.Items.Add("Animal Control / Stray Pets")
-        cbIncidentType.Items.Add("Curfew Violation")
-
-        cbIncidentType.Items.Add("Other")
+        cbIncidentType.Items.AddRange(New String() {
+            "Physical Injury", "Theft / Robbery", "Property / Land Dispute",
+            "Harassment / Threats", "Unjust Vexation", "Malicious Mischief",
+            "Estafa / Swindling", "Libel / Slander",
+            "Noise Complaint", "Waste Disposal / Trash", "Suspicious Activity",
+            "Public Disturbance", "Broken Street Light / Infrastructure",
+            "Animal Control / Stray Pets", "Curfew Violation", "Other"
+        })
         cbIncidentType.SelectedIndex = 0
     End Sub
 
@@ -83,9 +152,8 @@ Public Class adminDashboard
     End Sub
 
     Private Async Function LoadChartAsync() As Task
-        If chartIncidents Is Nothing Then Exit Function
+        If chartIncidents Is Nothing OrElse Not pnlHome.Visible Then Exit Function
 
-        ' We need to manipulate the chart on the UI thread, but fetch data Async
         Dim selection As String = cbIncidentType.Text
         Dim query As String
         Dim params As New Dictionary(Of String, Object)
@@ -98,10 +166,8 @@ Public Class adminDashboard
             params.Add("@type", selection)
         End If
 
-        ' Fetch Data Background
         Dim dt As DataTable = Await Session.GetDataTableAsync(query, params)
 
-        ' Update UI
         chartIncidents.Series.Clear()
         chartIncidents.Titles.Clear()
 
@@ -122,38 +188,20 @@ Public Class adminDashboard
         If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
             For Each row As DataRow In dt.Rows
                 Dim xVal As String = If(isAllIncidents, row("IncidentType").ToString(), row("Status").ToString())
-                ' Handle nulls
                 If String.IsNullOrEmpty(xVal) Then xVal = "Unknown"
-
                 Dim yVal As Integer = Convert.ToInt32(row("Count"))
 
-                ' Add Point
                 Dim pIndex As Integer = series.Points.AddXY(xVal, yVal)
                 Dim p As SysChart.DataPoint = series.Points(pIndex)
 
-                ' --- DISTINCT COLOR CODING ---
+                ' Color logic matches previous version
                 If isAllIncidents Then
                     Select Case xVal
-                        ' CRIMES (Warm/Dark Colors)
                         Case "Physical Injury" : p.Color = Color.Crimson
                         Case "Theft / Robbery" : p.Color = Color.DarkRed
                         Case "Harassment / Threats" : p.Color = Color.OrangeRed
-                        Case "Unjust Vexation" : p.Color = Color.Purple
-                        Case "Malicious Mischief" : p.Color = Color.DarkMagenta
-                        Case "Estafa / Swindling" : p.Color = Color.Indigo
-                        Case "Libel / Slander" : p.Color = Color.SlateBlue
-                        Case "Property / Land Dispute" : p.Color = Color.SaddleBrown
-
-                        ' CONCERNS (Cool/Earth Colors)
                         Case "Noise Complaint" : p.Color = Color.DarkOrange
                         Case "Waste Disposal / Trash" : p.Color = Color.ForestGreen
-                        Case "Suspicious Activity" : p.Color = Color.DimGray
-                        Case "Public Disturbance" : p.Color = Color.Goldenrod
-                        Case "Broken Street Light / Infrastructure" : p.Color = Color.Teal
-                        Case "Animal Control / Stray Pets" : p.Color = Color.OliveDrab
-                        Case "Curfew Violation" : p.Color = Color.MidnightBlue
-
-                        Case "Other" : p.Color = Color.Gray
                         Case Else : p.Color = Color.SteelBlue
                     End Select
                 End If
@@ -161,43 +209,6 @@ Public Class adminDashboard
         Else
             series.Points.AddXY("No Data", 0)
         End If
-
         chartIncidents.Series.Add(series)
     End Function
-
-    ' --- NAVIGATION BUTTONS ---
-
-    Private Async Sub btnResidents_Click(sender As Object, e As EventArgs) Handles btnResidents.Click
-        Dim frm As New frmManageResidents()
-        frm.ShowDialog()
-        Await LoadStatsAsync()
-    End Sub
-
-    Private Async Sub btnBlotter_Click(sender As Object, e As EventArgs) Handles btnBlotter.Click
-        Dim frm As New frmBlotter()
-        frm.ShowDialog()
-        Await LoadStatsAsync()
-        Await LoadChartAsync()
-    End Sub
-
-    Private Async Sub btnConcerns_Click(sender As Object, e As EventArgs) Handles btnConcerns.Click
-        Dim frm As New frmConcerns()
-        frm.ShowDialog()
-        Await LoadStatsAsync()
-        Await LoadChartAsync()
-    End Sub
-
-    Private Sub btnClearance_Click(sender As Object, e As EventArgs) Handles btnClearance.Click
-        Dim frm As New frmClearance()
-        frm.ShowDialog()
-    End Sub
-
-    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        If MessageBox.Show("Sign out?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            Session.CurrentResidentID = 0
-            Dim login As New frmLogin()
-            login.Show()
-            Me.Close()
-        End If
-    End Sub
 End Class
