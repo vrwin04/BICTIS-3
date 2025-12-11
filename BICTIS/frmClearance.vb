@@ -109,7 +109,7 @@ Public Class frmClearance
         startY += 25
         e.Graphics.DrawString("Municipality of Silang", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
         startY += 25
-        e.Graphics.DrawString("BARANGAY POBLACION I", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
+        e.Graphics.DrawString("BARANGAY TARTARIA", headerFont, Brushes.Black, CSng(e.PageBounds.Width / 2), startY, centerFormat)
 
         startY += 80
 
@@ -124,7 +124,7 @@ Public Class frmClearance
         Dim text As String = "This is to certify that " & printName.ToUpper() & ", of legal age, is a bona fide resident of this Barangay." & vbCrLf & vbCrLf &
                              "This certification is issued upon the request of the interested party for the purpose of: " & vbCrLf & vbCrLf &
                              "     " & printPurpose.ToUpper() & "." & vbCrLf & vbCrLf &
-                             "Issued this " & printDate & " at Barangay Poblacion I, Silang, Cavite."
+                             "Issued this " & printDate & " at Barangay Tartaria, Silang, Cavite."
 
         Dim rect As New RectangleF(startX, startY, e.PageBounds.Width - 200, 400)
         e.Graphics.DrawString(text, bodyFont, Brushes.Black, rect)

@@ -25,6 +25,7 @@ Partial Class frmUser
         pnlSidebar = New Panel()
         btnLogout = New Button()
         btnRefresh = New Button()
+        btnRequestClearance = New Button()
         btnFileBlotter = New Button()
         btnReport = New Button()
         pnlLogo = New Panel()
@@ -121,6 +122,7 @@ Partial Class frmUser
         pnlSidebar.BackColor = Color.FromArgb(0, 150, 136)
         pnlSidebar.Controls.Add(btnLogout)
         pnlSidebar.Controls.Add(btnRefresh)
+        pnlSidebar.Controls.Add(btnRequestClearance)
         pnlSidebar.Controls.Add(btnFileBlotter)
         pnlSidebar.Controls.Add(btnReport)
         pnlSidebar.Controls.Add(pnlLogo)
@@ -133,6 +135,7 @@ Partial Class frmUser
         ' btnLogout
         ' 
         btnLogout.BackColor = Color.FromArgb(0, 121, 107)
+        btnLogout.Cursor = Cursors.Hand
         btnLogout.Dock = DockStyle.Bottom
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
@@ -147,22 +150,41 @@ Partial Class frmUser
         ' 
         ' btnRefresh
         ' 
+        btnRefresh.Cursor = Cursors.Hand
         btnRefresh.Dock = DockStyle.Top
         btnRefresh.FlatAppearance.BorderSize = 0
         btnRefresh.FlatStyle = FlatStyle.Flat
         btnRefresh.Font = New Font("Segoe UI", 11.0F)
         btnRefresh.ForeColor = Color.White
-        btnRefresh.Location = New Point(0, 307)
+        btnRefresh.Location = New Point(0, 399)
         btnRefresh.Name = "btnRefresh"
         btnRefresh.Padding = New Padding(27, 0, 0, 0)
         btnRefresh.Size = New Size(347, 92)
-        btnRefresh.TabIndex = 3
+        btnRefresh.TabIndex = 4
         btnRefresh.Text = "Refresh History"
         btnRefresh.TextAlign = ContentAlignment.MiddleLeft
         btnRefresh.UseVisualStyleBackColor = True
         ' 
+        ' btnRequestClearance
+        ' 
+        btnRequestClearance.Cursor = Cursors.Hand
+        btnRequestClearance.Dock = DockStyle.Top
+        btnRequestClearance.FlatAppearance.BorderSize = 0
+        btnRequestClearance.FlatStyle = FlatStyle.Flat
+        btnRequestClearance.Font = New Font("Segoe UI", 11.0F)
+        btnRequestClearance.ForeColor = Color.White
+        btnRequestClearance.Location = New Point(0, 307)
+        btnRequestClearance.Name = "btnRequestClearance"
+        btnRequestClearance.Padding = New Padding(27, 0, 0, 0)
+        btnRequestClearance.Size = New Size(347, 92)
+        btnRequestClearance.TabIndex = 3
+        btnRequestClearance.Text = "Request Clearance"
+        btnRequestClearance.TextAlign = ContentAlignment.MiddleLeft
+        btnRequestClearance.UseVisualStyleBackColor = True
+        ' 
         ' btnFileBlotter
         ' 
+        btnFileBlotter.Cursor = Cursors.Hand
         btnFileBlotter.Dock = DockStyle.Top
         btnFileBlotter.FlatAppearance.BorderSize = 0
         btnFileBlotter.FlatStyle = FlatStyle.Flat
@@ -179,6 +201,7 @@ Partial Class frmUser
         ' 
         ' btnReport
         ' 
+        btnReport.Cursor = Cursors.Hand
         btnReport.Dock = DockStyle.Top
         btnReport.FlatAppearance.BorderSize = 0
         btnReport.FlatStyle = FlatStyle.Flat
@@ -243,6 +266,7 @@ Partial Class frmUser
     Friend WithEvents Label1 As Label
     Friend WithEvents btnReport As Button
     Friend WithEvents btnFileBlotter As Button
+    Friend WithEvents btnRequestClearance As Button
     Friend WithEvents btnRefresh As Button
     Friend WithEvents btnLogout As Button
     Friend WithEvents pnlHeader As Panel

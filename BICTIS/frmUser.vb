@@ -7,11 +7,10 @@ Public Class frmUser
     End Sub
 
     Private Sub LoadHistory()
-        ' Load both Blotters and Concerns for this user
+        ' Load both Blotters and Concerns for this user from tblIncidents
         Dim sql As String = "SELECT IncidentID, Category, IncidentType, Status, IncidentDate FROM tblIncidents " &
-                            "WHERE ComplainantID=" & Session.CurrentResidentID & " ORDER BY IncidentID DESC"
+                             "WHERE ComplainantID=" & Session.CurrentResidentID & " ORDER BY IncidentID DESC"
 
-        ' Use generic GetDataTable (works with both Sync and Async if updated properly)
         Dim dt As DataTable = Session.GetDataTable(sql)
         dgvHistory.DataSource = dt
     End Sub
@@ -30,6 +29,23 @@ Public Class frmUser
         LoadHistory() ' Refresh after closing
     End Sub
 
+    ' *** NEW: REQUEST CLEARANCE BUTTON ***
+    Private Sub btnRequestClearance_Click(sender As Object, e As EventArgs) Handles btnRequestClearance.Click
+        Dim purpose As String = InputBox("Please state the purpose of the clearance (e.g., Employment, ID, Business):", "Clearance Request")
+
+        If String.IsNullOrWhiteSpace(purpose) Then Exit Sub
+
+        Dim query As String = "INSERT INTO tblClearances (ResidentID, Purpose, DateIssued, Status) VALUES (@uid, @purp, @date, 'Pending')"
+        Dim params As New Dictionary(Of String, Object)
+        params.Add("@uid", Session.CurrentResidentID)
+        params.Add("@purp", purpose)
+        params.Add("@date", DateTime.Now.ToString())
+
+        If Session.ExecuteQuery(query, params) Then
+            MessageBox.Show("Clearance request submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         LoadHistory()
     End Sub
@@ -45,10 +61,12 @@ Public Class frmUser
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Session.CurrentResidentID = 0
-        Dim login As New frmLogin()
-        login.Show()
-        Me.Close()
+        If MessageBox.Show("Sign out?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            Session.CurrentResidentID = 0
+            Dim login As New frmLogin()
+            login.Show()
+            Me.Close()
+        End If
     End Sub
 
 End Class
