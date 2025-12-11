@@ -17,14 +17,12 @@ Public Class adminDashboard
         End Try
     End Sub
 
-    ' ==========================================
-    '      SIDEBAR NAVIGATION (DIRECT OPEN)
-    ' ==========================================
+    ' --- SIDEBAR NAVIGATION (DIRECT OPEN) ---
 
     Private Async Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         ' Refresh the Dashboard Stats
         Await LoadDashboardStats()
-        MessageBox.Show("Dashboard refreshed.", "Home", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Dashboard stats refreshed.", "Home", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub btnResidents_Click(sender As Object, e As EventArgs) Handles btnResidents.Click
@@ -56,9 +54,7 @@ Public Class adminDashboard
         End If
     End Sub
 
-    ' ==========================================
-    '        DATA LOADING & CHARTS
-    ' ==========================================
+    ' --- DATA & CHARTS ---
 
     Private Async Function LoadDashboardStats() As Task
         Dim taskUserCount = Session.GetCountAsync("SELECT COUNT(*) FROM tblResidents WHERE Role='User'")
@@ -76,7 +72,7 @@ Public Class adminDashboard
         lblTotalBlotter.Text = blotter.ToString()
         lblTotalConcerns.Text = concerns.ToString()
 
-        lblPendingCases.ForeColor = If(pending > 0, Color.Red, Color.Green)
+        lblPendingCases.ForeColor = If(pending > 0, Color.Crimson, Color.SeaGreen)
 
         Await LoadChartAsync()
     End Function
@@ -141,8 +137,6 @@ Public Class adminDashboard
 
                 Dim pIndex As Integer = series.Points.AddXY(xVal, yVal)
                 Dim p As SysChart.DataPoint = series.Points(pIndex)
-
-                ' Helper color logic
                 p.Color = GetChartColor(xVal)
             Next
         Else
@@ -154,29 +148,22 @@ Public Class adminDashboard
 
     Private Function GetChartColor(category As String) As Color
         Select Case category
-            ' Crimes / Red
+            ' Red/Danger
             Case "Physical Injury", "Pending", "Escalated" : Return Color.Crimson
             Case "Theft / Robbery" : Return Color.DarkRed
             Case "Harassment / Threats" : Return Color.OrangeRed
-
-            ' Civil / Purple
+            ' Purple/Civil
             Case "Unjust Vexation" : Return Color.Purple
             Case "Malicious Mischief" : Return Color.DarkMagenta
             Case "Estafa / Swindling" : Return Color.Indigo
             Case "Libel / Slander" : Return Color.SlateBlue
             Case "Property / Land Dispute" : Return Color.SaddleBrown
-
-            ' Concerns / Green-Orange
+            ' Green/Concerns
             Case "Noise Complaint" : Return Color.DarkOrange
             Case "Waste Disposal / Trash", "Resolved", "Acknowledged" : Return Color.SeaGreen
             Case "Broken Street Light / Infrastructure" : Return Color.Teal
             Case "Public Disturbance" : Return Color.Goldenrod
-            Case "Animal Control / Stray Pets" : Return Color.OliveDrab
-            Case "Curfew Violation" : Return Color.MidnightBlue
-
-            ' Default
-            Case "Suspicious Activity", "Dismissed", "Invalid" : Return Color.DimGray
-            Case "Other" : Return Color.Gray
+                ' Default
             Case Else : Return Color.SteelBlue
         End Select
     End Function

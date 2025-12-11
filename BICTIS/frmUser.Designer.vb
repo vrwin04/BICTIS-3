@@ -45,7 +45,7 @@ Partial Class frmUser
         ' 
         ' pnlBorder
         ' 
-        pnlBorder.BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
+        pnlBorder.BackColor = Color.WhiteSmoke
         pnlBorder.Controls.Add(pnlContainer)
         pnlBorder.Controls.Add(pnlHeader)
         pnlBorder.Controls.Add(pnlSidebar)
@@ -97,7 +97,7 @@ Partial Class frmUser
         dgvHistory.ColumnHeadersHeight = 50
         dgvHistory.Dock = DockStyle.Fill
         dgvHistory.EnableHeadersVisualStyles = False
-        dgvHistory.Location = New Point(40, 320)
+        dgvHistory.Location = New Point(40, 120)
         dgvHistory.Name = "dgvHistory"
         dgvHistory.ReadOnly = True
         dgvHistory.RowHeadersVisible = False
@@ -109,7 +109,7 @@ Partial Class frmUser
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
         dgvHistory.RowsDefaultCellStyle = DataGridViewCellStyle2
         dgvHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvHistory.Size = New Size(939, 279)
+        dgvHistory.Size = New Size(939, 479)
         dgvHistory.TabIndex = 1
         ' 
         ' pnlChart
@@ -120,21 +120,21 @@ Partial Class frmUser
         pnlChart.Location = New Point(40, 20)
         pnlChart.Name = "pnlChart"
         pnlChart.Padding = New Padding(10)
-        pnlChart.Size = New Size(939, 300)
+        pnlChart.Size = New Size(939, 100)
         pnlChart.TabIndex = 0
         ' 
         ' lblChartHeader
         ' 
         lblChartHeader.AutoSize = True
         lblChartHeader.Dock = DockStyle.Top
-        lblChartHeader.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
-        lblChartHeader.ForeColor = Color.DimGray
+        lblChartHeader.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
+        lblChartHeader.ForeColor = Color.FromArgb(CByte(0), CByte(121), CByte(107))
         lblChartHeader.Location = New Point(10, 10)
         lblChartHeader.Name = "lblChartHeader"
         lblChartHeader.Padding = New Padding(0, 0, 0, 10)
-        lblChartHeader.Size = New Size(187, 38)
+        lblChartHeader.Size = New Size(268, 47)
         lblChartHeader.TabIndex = 0
-        lblChartHeader.Text = "My Case Overview"
+        lblChartHeader.Text = "My Activity History"
         ' 
         ' pnlHeader
         ' 
@@ -149,11 +149,11 @@ Partial Class frmUser
         ' lblWelcome
         ' 
         lblWelcome.AutoSize = True
-        lblWelcome.Font = New Font("Segoe UI", 18.0F, FontStyle.Bold)
+        lblWelcome.Font = New Font("Segoe UI", 24.0F, FontStyle.Bold)
         lblWelcome.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
         lblWelcome.Location = New Point(33, 38)
         lblWelcome.Name = "lblWelcome"
-        lblWelcome.Size = New Size(277, 41)
+        lblWelcome.Size = New Size(371, 54)
         lblWelcome.TabIndex = 0
         lblWelcome.Text = "Welcome Resident"
         ' 
@@ -175,10 +175,11 @@ Partial Class frmUser
         ' btnLogout
         ' 
         btnLogout.BackColor = Color.FromArgb(CByte(0), CByte(121), CByte(107))
+        btnLogout.Cursor = Cursors.Hand
         btnLogout.Dock = DockStyle.Bottom
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
-        btnLogout.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        btnLogout.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
         btnLogout.ForeColor = Color.White
         btnLogout.Location = New Point(0, 676)
         btnLogout.Name = "btnLogout"
@@ -189,10 +190,11 @@ Partial Class frmUser
         ' 
         ' btnRefresh
         ' 
+        btnRefresh.Cursor = Cursors.Hand
         btnRefresh.Dock = DockStyle.Top
         btnRefresh.FlatAppearance.BorderSize = 0
         btnRefresh.FlatStyle = FlatStyle.Flat
-        btnRefresh.Font = New Font("Segoe UI", 11.0F)
+        btnRefresh.Font = New Font("Segoe UI", 12.0F)
         btnRefresh.ForeColor = Color.White
         btnRefresh.Location = New Point(0, 399)
         btnRefresh.Name = "btnRefresh"
@@ -205,10 +207,11 @@ Partial Class frmUser
         ' 
         ' btnRequestClearance
         ' 
+        btnRequestClearance.Cursor = Cursors.Hand
         btnRequestClearance.Dock = DockStyle.Top
         btnRequestClearance.FlatAppearance.BorderSize = 0
         btnRequestClearance.FlatStyle = FlatStyle.Flat
-        btnRequestClearance.Font = New Font("Segoe UI", 11.0F)
+        btnRequestClearance.Font = New Font("Segoe UI", 12.0F)
         btnRequestClearance.ForeColor = Color.White
         btnRequestClearance.Location = New Point(0, 307)
         btnRequestClearance.Name = "btnRequestClearance"
@@ -221,10 +224,11 @@ Partial Class frmUser
         ' 
         ' btnFileBlotter
         ' 
+        btnFileBlotter.Cursor = Cursors.Hand
         btnFileBlotter.Dock = DockStyle.Top
         btnFileBlotter.FlatAppearance.BorderSize = 0
         btnFileBlotter.FlatStyle = FlatStyle.Flat
-        btnFileBlotter.Font = New Font("Segoe UI", 11.0F)
+        btnFileBlotter.Font = New Font("Segoe UI", 12.0F)
         btnFileBlotter.ForeColor = Color.White
         btnFileBlotter.Location = New Point(0, 215)
         btnFileBlotter.Name = "btnFileBlotter"
@@ -237,10 +241,11 @@ Partial Class frmUser
         ' 
         ' btnReport
         ' 
+        btnReport.Cursor = Cursors.Hand
         btnReport.Dock = DockStyle.Top
         btnReport.FlatAppearance.BorderSize = 0
         btnReport.FlatStyle = FlatStyle.Flat
-        btnReport.Font = New Font("Segoe UI", 11.0F)
+        btnReport.Font = New Font("Segoe UI", 12.0F)
         btnReport.ForeColor = Color.White
         btnReport.Location = New Point(0, 123)
         btnReport.Name = "btnReport"
@@ -264,11 +269,11 @@ Partial Class frmUser
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 20.0F, FontStyle.Bold)
+        Label1.Font = New Font("Segoe UI", 28.0F, FontStyle.Bold)
         Label1.ForeColor = Color.White
         Label1.Location = New Point(80, 31)
         Label1.Name = "Label1"
-        Label1.Size = New Size(180, 46)
+        Label1.Size = New Size(249, 62)
         Label1.TabIndex = 0
         Label1.Text = "RESIDENT"
         ' 
@@ -298,21 +303,20 @@ Partial Class frmUser
 
     End Sub
 
-    Friend WithEvents pnlBorder As Panel
-    Friend WithEvents pnlSidebar As Panel
-    Friend WithEvents pnlLogo As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents btnReport As Button
-    Friend WithEvents btnFileBlotter As Button
-    Friend WithEvents btnRequestClearance As Button
-    Friend WithEvents btnRefresh As Button
-    Friend WithEvents btnLogout As Button
-    Friend WithEvents pnlHeader As Panel
-    Friend WithEvents lblWelcome As Label
-    Friend WithEvents pnlContainer As Panel
-    Friend WithEvents pnlHome As Panel
-    Friend WithEvents dgvHistory As DataGridView
-    Friend WithEvents pnlChart As Panel
-    Friend WithEvents chartUserStats As System.Windows.Forms.DataVisualization.Charting.Chart
-    Friend WithEvents lblChartHeader As Label
+    Friend WithEvents pnlBorder As System.Windows.Forms.Panel
+    Friend WithEvents pnlSidebar As System.Windows.Forms.Panel
+    Friend WithEvents pnlLogo As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnReport As System.Windows.Forms.Button
+    Friend WithEvents btnFileBlotter As System.Windows.Forms.Button
+    Friend WithEvents btnRequestClearance As System.Windows.Forms.Button
+    Friend WithEvents btnRefresh As System.Windows.Forms.Button
+    Friend WithEvents btnLogout As System.Windows.Forms.Button
+    Friend WithEvents pnlHeader As System.Windows.Forms.Panel
+    Friend WithEvents lblWelcome As System.Windows.Forms.Label
+    Friend WithEvents pnlContainer As System.Windows.Forms.Panel
+    Friend WithEvents pnlHome As System.Windows.Forms.Panel
+    Friend WithEvents dgvHistory As System.Windows.Forms.DataGridView
+    Friend WithEvents pnlChart As System.Windows.Forms.Panel
+    Friend WithEvents lblChartHeader As System.Windows.Forms.Label
 End Class

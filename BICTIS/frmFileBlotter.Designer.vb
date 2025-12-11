@@ -47,6 +47,7 @@ Partial Class frmFileBlotter
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnClose.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClose.FlatAppearance.BorderSize = 0
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
@@ -126,11 +127,11 @@ Partial Class frmFileBlotter
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label2.ForeColor = System.Drawing.Color.Gray
         Me.Label2.Location = New System.Drawing.Point(46, 190)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(125, 19)
+        Me.Label2.Size = New System.Drawing.Size(131, 19)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Narrative / Details :"
         '
@@ -145,6 +146,7 @@ Partial Class frmFileBlotter
         'cbType
         '
         Me.cbType.BackColor = System.Drawing.Color.White
+        Me.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbType.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.cbType.FormattingEnabled = True
@@ -156,11 +158,11 @@ Partial Class frmFileBlotter
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label1.ForeColor = System.Drawing.Color.Gray
         Me.Label1.Location = New System.Drawing.Point(46, 110)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(109, 19)
+        Me.Label1.Size = New System.Drawing.Size(113, 19)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Incident Nature:"
         '
@@ -185,11 +187,11 @@ Partial Class frmFileBlotter
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Label3.ForeColor = System.Drawing.Color.Gray
         Me.Label3.Location = New System.Drawing.Point(46, 40)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(180, 19)
+        Me.Label3.Size = New System.Drawing.Size(193, 19)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "Name of Respondent (Who?):"
         '
@@ -212,18 +214,18 @@ Partial Class frmFileBlotter
 
     End Sub
 
-    Friend WithEvents pnlHeader As Panel
-    Friend WithEvents lblTitle As Label
-    Friend WithEvents btnClose As Button
-    Friend WithEvents pnlContent As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents cbType As ComboBox
-    Friend WithEvents pnlLine1 As Panel
-    Friend WithEvents Label2 As Label
-    Friend WithEvents txtNarrative As TextBox
-    Friend WithEvents pnlLine2 As Panel
-    Friend WithEvents btnSubmit As Button
-    Friend WithEvents Label3 As Label
-    Friend WithEvents txtRespondent As TextBox
-    Friend WithEvents pnlLine3 As Panel
+    Friend WithEvents pnlHeader As System.Windows.Forms.Panel
+    Friend WithEvents lblTitle As System.Windows.Forms.Label
+    Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents pnlContent As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents pnlLine1 As System.Windows.Forms.Panel
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtNarrative As System.Windows.Forms.TextBox
+    Friend WithEvents pnlLine2 As System.Windows.Forms.Panel
+    Friend WithEvents btnSubmit As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txtRespondent As System.Windows.Forms.TextBox
+    Friend WithEvents pnlLine3 As System.Windows.Forms.Panel
 End Class
