@@ -51,7 +51,7 @@ Partial Class frmBlotter
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(1200, 80)
+        Me.pnlHeader.Size = New System.Drawing.Size(933, 80)
         Me.pnlHeader.TabIndex = 0
         '
         'btnClose
@@ -62,7 +62,7 @@ Partial Class frmBlotter
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.White
-        Me.btnClose.Location = New System.Drawing.Point(1140, 15)
+        Me.btnClose.Location = New System.Drawing.Point(870, 15)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(50, 50)
         Me.btnClose.TabIndex = 1
@@ -82,6 +82,7 @@ Partial Class frmBlotter
         '
         'pnlEditor
         '
+        Me.pnlEditor.AutoScroll = True
         Me.pnlEditor.BackColor = System.Drawing.Color.White
         Me.pnlEditor.Controls.Add(Me.Label6)
         Me.pnlEditor.Controls.Add(Me.btnResolve)
@@ -98,10 +99,10 @@ Partial Class frmBlotter
         Me.pnlEditor.Controls.Add(Me.Label1)
         Me.pnlEditor.Controls.Add(Me.cbComplainant)
         Me.pnlEditor.Dock = System.Windows.Forms.DockStyle.Right
-        Me.pnlEditor.Location = New System.Drawing.Point(800, 80)
+        Me.pnlEditor.Location = New System.Drawing.Point(533, 80)
         Me.pnlEditor.Name = "pnlEditor"
         Me.pnlEditor.Padding = New System.Windows.Forms.Padding(30)
-        Me.pnlEditor.Size = New System.Drawing.Size(400, 720)
+        Me.pnlEditor.Size = New System.Drawing.Size(400, 520)
         Me.pnlEditor.TabIndex = 1
         '
         'Label6
@@ -109,7 +110,7 @@ Partial Class frmBlotter
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80)
-        Me.Label6.Location = New System.Drawing.Point(30, 30)
+        Me.Label6.Location = New System.Drawing.Point(30, 20)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(127, 25)
         Me.Label6.TabIndex = 13
@@ -123,7 +124,7 @@ Partial Class frmBlotter
         Me.btnResolve.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnResolve.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnResolve.ForeColor = System.Drawing.Color.White
-        Me.btnResolve.Location = New System.Drawing.Point(30, 600)
+        Me.btnResolve.Location = New System.Drawing.Point(30, 540)
         Me.btnResolve.Name = "btnResolve"
         Me.btnResolve.Size = New System.Drawing.Size(340, 50)
         Me.btnResolve.TabIndex = 12
@@ -138,7 +139,7 @@ Partial Class frmBlotter
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnSave.ForeColor = System.Drawing.Color.White
-        Me.btnSave.Location = New System.Drawing.Point(30, 540)
+        Me.btnSave.Location = New System.Drawing.Point(30, 480)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(340, 50)
         Me.btnSave.TabIndex = 11
@@ -152,7 +153,7 @@ Partial Class frmBlotter
         Me.cbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbStatus.Font = New System.Drawing.Font("Segoe UI", 11.0!)
         Me.cbStatus.FormattingEnabled = True
-        Me.cbStatus.Location = New System.Drawing.Point(30, 480)
+        Me.cbStatus.Location = New System.Drawing.Point(30, 430)
         Me.cbStatus.Name = "cbStatus"
         Me.cbStatus.Size = New System.Drawing.Size(340, 28)
         Me.cbStatus.TabIndex = 10
@@ -162,7 +163,7 @@ Partial Class frmBlotter
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label5.ForeColor = System.Drawing.Color.Gray
-        Me.Label5.Location = New System.Drawing.Point(26, 455)
+        Me.Label5.Location = New System.Drawing.Point(26, 405)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(82, 19)
         Me.Label5.TabIndex = 9
@@ -171,7 +172,7 @@ Partial Class frmBlotter
         'pnlLine2
         '
         Me.pnlLine2.BackColor = System.Drawing.Color.Silver
-        Me.pnlLine2.Location = New System.Drawing.Point(30, 430)
+        Me.pnlLine2.Location = New System.Drawing.Point(30, 390)
         Me.pnlLine2.Name = "pnlLine2"
         Me.pnlLine2.Size = New System.Drawing.Size(340, 2)
         Me.pnlLine2.TabIndex = 8
@@ -181,10 +182,10 @@ Partial Class frmBlotter
         Me.txtNarrative.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtNarrative.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtNarrative.Font = New System.Drawing.Font("Segoe UI", 11.0!)
-        Me.txtNarrative.Location = New System.Drawing.Point(30, 310)
+        Me.txtNarrative.Location = New System.Drawing.Point(30, 290)
         Me.txtNarrative.Multiline = True
         Me.txtNarrative.Name = "txtNarrative"
-        Me.txtNarrative.Size = New System.Drawing.Size(340, 100)
+        Me.txtNarrative.Size = New System.Drawing.Size(340, 80)
         Me.txtNarrative.TabIndex = 7
         '
         'Label4
@@ -192,7 +193,7 @@ Partial Class frmBlotter
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label4.ForeColor = System.Drawing.Color.Gray
-        Me.Label4.Location = New System.Drawing.Point(26, 285)
+        Me.Label4.Location = New System.Drawing.Point(26, 265)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(127, 19)
         Me.Label4.TabIndex = 6
@@ -205,7 +206,7 @@ Partial Class frmBlotter
         Me.cbIncidentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbIncidentType.Font = New System.Drawing.Font("Segoe UI", 11.0!)
         Me.cbIncidentType.FormattingEnabled = True
-        Me.cbIncidentType.Location = New System.Drawing.Point(30, 240)
+        Me.cbIncidentType.Location = New System.Drawing.Point(30, 225)
         Me.cbIncidentType.Name = "cbIncidentType"
         Me.cbIncidentType.Size = New System.Drawing.Size(340, 28)
         Me.cbIncidentType.TabIndex = 5
@@ -215,7 +216,7 @@ Partial Class frmBlotter
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label3.ForeColor = System.Drawing.Color.Gray
-        Me.Label3.Location = New System.Drawing.Point(26, 215)
+        Me.Label3.Location = New System.Drawing.Point(26, 200)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(109, 19)
         Me.Label3.TabIndex = 4
@@ -226,7 +227,7 @@ Partial Class frmBlotter
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label2.ForeColor = System.Drawing.Color.Gray
-        Me.Label2.Location = New System.Drawing.Point(26, 145)
+        Me.Label2.Location = New System.Drawing.Point(26, 135)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(185, 19)
         Me.Label2.TabIndex = 3
@@ -238,7 +239,7 @@ Partial Class frmBlotter
         Me.cbRespondent.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbRespondent.Font = New System.Drawing.Font("Segoe UI", 11.0!)
         Me.cbRespondent.FormattingEnabled = True
-        Me.cbRespondent.Location = New System.Drawing.Point(30, 170)
+        Me.cbRespondent.Location = New System.Drawing.Point(30, 160)
         Me.cbRespondent.Name = "cbRespondent"
         Me.cbRespondent.Size = New System.Drawing.Size(340, 28)
         Me.cbRespondent.TabIndex = 2
@@ -248,7 +249,7 @@ Partial Class frmBlotter
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label1.ForeColor = System.Drawing.Color.Gray
-        Me.Label1.Location = New System.Drawing.Point(26, 75)
+        Me.Label1.Location = New System.Drawing.Point(26, 70)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(152, 19)
         Me.Label1.TabIndex = 1
@@ -260,7 +261,7 @@ Partial Class frmBlotter
         Me.cbComplainant.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbComplainant.Font = New System.Drawing.Font("Segoe UI", 11.0!)
         Me.cbComplainant.FormattingEnabled = True
-        Me.cbComplainant.Location = New System.Drawing.Point(30, 100)
+        Me.cbComplainant.Location = New System.Drawing.Point(30, 95)
         Me.cbComplainant.Name = "cbComplainant"
         Me.cbComplainant.Size = New System.Drawing.Size(340, 28)
         Me.cbComplainant.TabIndex = 0
@@ -273,7 +274,7 @@ Partial Class frmBlotter
         Me.pnlGrid.Location = New System.Drawing.Point(0, 80)
         Me.pnlGrid.Name = "pnlGrid"
         Me.pnlGrid.Padding = New System.Windows.Forms.Padding(30)
-        Me.pnlGrid.Size = New System.Drawing.Size(800, 720)
+        Me.pnlGrid.Size = New System.Drawing.Size(533, 520)
         Me.pnlGrid.TabIndex = 2
         '
         'dgvCases
@@ -308,14 +309,14 @@ Partial Class frmBlotter
         Me.dgvCases.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvCases.RowTemplate.Height = 35
         Me.dgvCases.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCases.Size = New System.Drawing.Size(740, 660)
+        Me.dgvCases.Size = New System.Drawing.Size(473, 460)
         Me.dgvCases.TabIndex = 0
         '
         'frmBlotter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1200, 800)
+        Me.ClientSize = New System.Drawing.Size(933, 600)
         Me.Controls.Add(Me.pnlGrid)
         Me.Controls.Add(Me.pnlEditor)
         Me.Controls.Add(Me.pnlHeader)

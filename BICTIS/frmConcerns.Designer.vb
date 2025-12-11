@@ -41,7 +41,7 @@ Partial Class frmConcerns
         pnlHeader.Dock = DockStyle.Top
         pnlHeader.Location = New Point(0, 0)
         pnlHeader.Name = "pnlHeader"
-        pnlHeader.Size = New Size(900, 70)
+        pnlHeader.Size = New Size(933, 70)
         pnlHeader.TabIndex = 0
         ' 
         ' btnClose
@@ -49,9 +49,9 @@ Partial Class frmConcerns
         btnClose.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnClose.FlatAppearance.BorderSize = 0
         btnClose.FlatStyle = FlatStyle.Flat
-        btnClose.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+        btnClose.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
         btnClose.ForeColor = Color.White
-        btnClose.Location = New Point(840, 15)
+        btnClose.Location = New Point(873, 15)
         btnClose.Name = "btnClose"
         btnClose.Size = New Size(40, 40)
         btnClose.TabIndex = 1
@@ -60,7 +60,7 @@ Partial Class frmConcerns
         ' lblTitle
         ' 
         lblTitle.AutoSize = True
-        lblTitle.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
+        lblTitle.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
         lblTitle.ForeColor = Color.White
         lblTitle.Location = New Point(20, 20)
         lblTitle.Name = "lblTitle"
@@ -76,7 +76,7 @@ Partial Class frmConcerns
         pnlEditor.Controls.Add(cbStatus)
         pnlEditor.Controls.Add(Label5)
         pnlEditor.Dock = DockStyle.Right
-        pnlEditor.Location = New Point(600, 70)
+        pnlEditor.Location = New Point(633, 70)
         pnlEditor.Name = "pnlEditor"
         pnlEditor.Size = New Size(300, 530)
         pnlEditor.TabIndex = 1
@@ -84,7 +84,7 @@ Partial Class frmConcerns
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+        Label6.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
         Label6.ForeColor = Color.Gray
         Label6.Location = New Point(20, 20)
         Label6.Name = "Label6"
@@ -97,7 +97,7 @@ Partial Class frmConcerns
         btnUpdate.BackColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
         btnUpdate.FlatAppearance.BorderSize = 0
         btnUpdate.FlatStyle = FlatStyle.Flat
-        btnUpdate.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        btnUpdate.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnUpdate.ForeColor = Color.White
         btnUpdate.Location = New Point(25, 130)
         btnUpdate.Name = "btnUpdate"
@@ -109,7 +109,7 @@ Partial Class frmConcerns
         ' cbStatus
         ' 
         cbStatus.DropDownStyle = ComboBoxStyle.DropDownList
-        cbStatus.Font = New Font("Segoe UI", 11F)
+        cbStatus.Font = New Font("Segoe UI", 11.0F)
         cbStatus.FormattingEnabled = True
         cbStatus.Location = New Point(25, 80)
         cbStatus.Name = "cbStatus"
@@ -119,7 +119,7 @@ Partial Class frmConcerns
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Font = New Font("Segoe UI", 10F)
+        Label5.Font = New Font("Segoe UI", 10.0F)
         Label5.ForeColor = Color.Gray
         Label5.Location = New Point(22, 55)
         Label5.Name = "Label5"
@@ -135,7 +135,7 @@ Partial Class frmConcerns
         pnlGrid.Location = New Point(0, 70)
         pnlGrid.Name = "pnlGrid"
         pnlGrid.Padding = New Padding(20)
-        pnlGrid.Size = New Size(600, 530)
+        pnlGrid.Size = New Size(633, 530)
         pnlGrid.TabIndex = 2
         ' 
         ' dgvCases
@@ -146,7 +146,7 @@ Partial Class frmConcerns
         dgvCases.BackgroundColor = Color.White
         dgvCases.BorderStyle = BorderStyle.None
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(41), CByte(128), CByte(185))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         DataGridViewCellStyle1.ForeColor = Color.White
         dgvCases.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvCases.ColumnHeadersHeight = 40
@@ -157,23 +157,23 @@ Partial Class frmConcerns
         dgvCases.ReadOnly = True
         dgvCases.RowHeadersVisible = False
         DataGridViewCellStyle2.BackColor = Color.White
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 10F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 10.0F)
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(200), CByte(230), CByte(255))
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
         dgvCases.RowsDefaultCellStyle = DataGridViewCellStyle2
         dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvCases.Size = New Size(560, 490)
+        dgvCases.Size = New Size(593, 490)
         dgvCases.TabIndex = 0
         ' 
         ' frmConcerns
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(900, 600)
+        ClientSize = New Size(933, 600)
         Controls.Add(pnlGrid)
         Controls.Add(pnlEditor)
         Controls.Add(pnlHeader)
-        Font = New Font("Segoe UI", 9F)
+        Font = New Font("Segoe UI", 9.0F)
         FormBorderStyle = FormBorderStyle.None
         Name = "frmConcerns"
         StartPosition = FormStartPosition.CenterScreen

@@ -38,7 +38,7 @@ Partial Class frmClearance
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(900, 60)
+        Me.pnlHeader.Size = New System.Drawing.Size(933, 60)
         Me.pnlHeader.TabIndex = 0
         '
         'lblTitle
@@ -59,7 +59,7 @@ Partial Class frmClearance
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.White
-        Me.btnClose.Location = New System.Drawing.Point(850, 10)
+        Me.btnClose.Location = New System.Drawing.Point(883, 10)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(40, 40)
         Me.btnClose.TabIndex = 1
@@ -75,7 +75,7 @@ Partial Class frmClearance
         Me.pnlControls.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.pnlControls.Location = New System.Drawing.Point(0, 520)
         Me.pnlControls.Name = "pnlControls"
-        Me.pnlControls.Size = New System.Drawing.Size(900, 80)
+        Me.pnlControls.Size = New System.Drawing.Size(933, 80)
         Me.pnlControls.TabIndex = 1
         '
         'btnPrint
@@ -147,14 +147,14 @@ Partial Class frmClearance
         Me.dgvRequests.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvRequests.RowTemplate.Height = 35
         Me.dgvRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRequests.Size = New System.Drawing.Size(900, 460)
+        Me.dgvRequests.Size = New System.Drawing.Size(933, 460)
         Me.dgvRequests.TabIndex = 2
         '
         'frmClearance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(900, 600)
+        Me.ClientSize = New System.Drawing.Size(933, 600)
         Me.Controls.Add(Me.dgvRequests)
         Me.Controls.Add(Me.pnlControls)
         Me.Controls.Add(Me.pnlHeader)

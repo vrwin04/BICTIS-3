@@ -38,7 +38,7 @@ Partial Class frmManageResidents
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(900, 60)
+        Me.pnlHeader.Size = New System.Drawing.Size(933, 60)
         Me.pnlHeader.TabIndex = 0
         '
         'btnClose
@@ -48,7 +48,7 @@ Partial Class frmManageResidents
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.White
-        Me.btnClose.Location = New System.Drawing.Point(850, 10)
+        Me.btnClose.Location = New System.Drawing.Point(883, 10)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(40, 40)
         Me.btnClose.TabIndex = 1
@@ -75,7 +75,7 @@ Partial Class frmManageResidents
         Me.pnlControls.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlControls.Location = New System.Drawing.Point(0, 60)
         Me.pnlControls.Name = "pnlControls"
-        Me.pnlControls.Size = New System.Drawing.Size(900, 70)
+        Me.pnlControls.Size = New System.Drawing.Size(933, 70)
         Me.pnlControls.TabIndex = 1
         '
         'btnDelete
@@ -145,14 +145,14 @@ Partial Class frmManageResidents
         Me.dgvResidents.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvResidents.RowTemplate.Height = 35
         Me.dgvResidents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvResidents.Size = New System.Drawing.Size(900, 470)
+        Me.dgvResidents.Size = New System.Drawing.Size(933, 470)
         Me.dgvResidents.TabIndex = 2
         '
         'frmManageResidents
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(900, 600)
+        Me.ClientSize = New System.Drawing.Size(933, 600)
         Me.Controls.Add(Me.dgvResidents)
         Me.Controls.Add(Me.pnlControls)
         Me.Controls.Add(Me.pnlHeader)
