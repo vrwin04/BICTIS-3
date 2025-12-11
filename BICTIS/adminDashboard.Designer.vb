@@ -15,10 +15,14 @@ Partial Class adminDashboard
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         pnlBorder = New Panel()
         pnlMainContent = New Panel()
         pnlHome = New Panel()
         pnlChartSection = New Panel()
+        chartIncidents = New System.Windows.Forms.DataVisualization.Charting.Chart()
         pnlFilterBar = New Panel()
         cbIncidentType = New ComboBox()
         Label2 = New Label()
@@ -54,6 +58,7 @@ Partial Class adminDashboard
         pnlMainContent.SuspendLayout()
         pnlHome.SuspendLayout()
         pnlChartSection.SuspendLayout()
+        CType(chartIncidents, ComponentModel.ISupportInitialize).BeginInit()
         pnlFilterBar.SuspendLayout()
         pnlStatsRow.SuspendLayout()
         pnlCard1.SuspendLayout()
@@ -73,9 +78,8 @@ Partial Class adminDashboard
         pnlBorder.Controls.Add(pnlSidebar)
         pnlBorder.Dock = DockStyle.Fill
         pnlBorder.Location = New Point(3, 3)
-        pnlBorder.Margin = New Padding(4, 5, 4, 5)
         pnlBorder.Name = "pnlBorder"
-        pnlBorder.Size = New Size(1594, 894)
+        pnlBorder.Size = New Size(1360, 762)
         pnlBorder.TabIndex = 0
         ' 
         ' pnlMainContent
@@ -83,34 +87,53 @@ Partial Class adminDashboard
         pnlMainContent.Controls.Add(pnlHome)
         pnlMainContent.Dock = DockStyle.Fill
         pnlMainContent.Location = New Point(347, 123)
-        pnlMainContent.Margin = New Padding(4, 5, 4, 5)
         pnlMainContent.Name = "pnlMainContent"
-        pnlMainContent.Size = New Size(1247, 771)
+        pnlMainContent.Size = New Size(1013, 639)
         pnlMainContent.TabIndex = 2
         ' 
         ' pnlHome
         ' 
         pnlHome.AutoScroll = True
-        pnlHome.Controls.Add(pnlChartSection)
+        ' CRITICAL FIX: Add Stats FIRST so it docks to TOP first
         pnlHome.Controls.Add(pnlStatsRow)
+        pnlHome.Controls.Add(pnlChartSection)
         pnlHome.Dock = DockStyle.Fill
         pnlHome.Location = New Point(0, 0)
         pnlHome.Name = "pnlHome"
-        pnlHome.Padding = New Padding(40, 46, 40, 46)
-        pnlHome.Size = New Size(1247, 771)
+        pnlHome.Padding = New Padding(40)
+        pnlHome.Size = New Size(1013, 639)
         pnlHome.TabIndex = 0
         ' 
         ' pnlChartSection
         ' 
         pnlChartSection.BackColor = Color.White
+        pnlChartSection.Controls.Add(chartIncidents)
         pnlChartSection.Controls.Add(pnlFilterBar)
         pnlChartSection.Dock = DockStyle.Top
-        pnlChartSection.Location = New Point(40, 548)
-        pnlChartSection.Margin = New Padding(4, 5, 4, 5)
+        pnlChartSection.Location = New Point(40, 291)
         pnlChartSection.Name = "pnlChartSection"
-        pnlChartSection.Padding = New Padding(27, 31, 27, 31)
-        pnlChartSection.Size = New Size(1146, 514)
+        pnlChartSection.Padding = New Padding(20)
+        pnlChartSection.Size = New Size(933, 500)
         pnlChartSection.TabIndex = 1
+        ' 
+        ' chartIncidents
+        ' 
+        ChartArea1.Name = "ChartArea1"
+        chartIncidents.ChartAreas.Add(ChartArea1)
+        chartIncidents.Dock = DockStyle.Fill
+        Legend1.Font = New Font("Segoe UI", 10.0F)
+        Legend1.IsTextAutoFit = False
+        Legend1.Name = "Legend1"
+        chartIncidents.Legends.Add(Legend1)
+        chartIncidents.Location = New Point(20, 100)
+        chartIncidents.Name = "chartIncidents"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        chartIncidents.Series.Add(Series1)
+        chartIncidents.Size = New Size(893, 380)
+        chartIncidents.TabIndex = 1
+        chartIncidents.Text = "Incidents Chart"
         ' 
         ' pnlFilterBar
         ' 
@@ -118,10 +141,9 @@ Partial Class adminDashboard
         pnlFilterBar.Controls.Add(Label2)
         pnlFilterBar.Controls.Add(lblChartTitle)
         pnlFilterBar.Dock = DockStyle.Top
-        pnlFilterBar.Location = New Point(27, 31)
-        pnlFilterBar.Margin = New Padding(4, 5, 4, 5)
+        pnlFilterBar.Location = New Point(20, 20)
         pnlFilterBar.Name = "pnlFilterBar"
-        pnlFilterBar.Size = New Size(1092, 92)
+        pnlFilterBar.Size = New Size(893, 80)
         pnlFilterBar.TabIndex = 0
         ' 
         ' cbIncidentType
@@ -130,36 +152,33 @@ Partial Class adminDashboard
         cbIncidentType.BackColor = Color.WhiteSmoke
         cbIncidentType.DropDownStyle = ComboBoxStyle.DropDownList
         cbIncidentType.FlatStyle = FlatStyle.Flat
-        cbIncidentType.Font = New Font("Segoe UI", 11F)
+        cbIncidentType.Font = New Font("Segoe UI", 12.0F)
         cbIncidentType.FormattingEnabled = True
-        cbIncidentType.Location = New Point(772, 23)
-        cbIncidentType.Margin = New Padding(4, 5, 4, 5)
+        cbIncidentType.Location = New Point(573, 23)
         cbIncidentType.Name = "cbIncidentType"
-        cbIncidentType.Size = New Size(292, 33)
+        cbIncidentType.Size = New Size(300, 36)
         cbIncidentType.TabIndex = 2
         ' 
         ' Label2
         ' 
         Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        Label2.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
         Label2.ForeColor = Color.Gray
-        Label2.Location = New Point(639, 29)
-        Label2.Margin = New Padding(4, 0, 4, 0)
+        Label2.Location = New Point(450, 26)
         Label2.Name = "Label2"
-        Label2.Size = New Size(104, 23)
+        Label2.Size = New Size(122, 28)
         Label2.TabIndex = 1
         Label2.Text = "Filter Graph:"
         ' 
         ' lblChartTitle
         ' 
         lblChartTitle.AutoSize = True
-        lblChartTitle.Font = New Font("Segoe UI", 14F, FontStyle.Bold)
+        lblChartTitle.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
         lblChartTitle.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
         lblChartTitle.Location = New Point(13, 23)
-        lblChartTitle.Margin = New Padding(4, 0, 4, 0)
         lblChartTitle.Name = "lblChartTitle"
-        lblChartTitle.Size = New Size(219, 32)
+        lblChartTitle.Size = New Size(248, 37)
         lblChartTitle.TabIndex = 0
         lblChartTitle.Text = "Incident Analytics"
         ' 
@@ -171,10 +190,9 @@ Partial Class adminDashboard
         pnlStatsRow.Controls.Add(pnlCard3)
         pnlStatsRow.Controls.Add(pnlCard4)
         pnlStatsRow.Dock = DockStyle.Top
-        pnlStatsRow.Location = New Point(40, 46)
-        pnlStatsRow.Margin = New Padding(4, 5, 4, 5)
+        pnlStatsRow.Location = New Point(40, 40)
         pnlStatsRow.Name = "pnlStatsRow"
-        pnlStatsRow.Size = New Size(1146, 502)
+        pnlStatsRow.Size = New Size(933, 251)
         pnlStatsRow.TabIndex = 0
         ' 
         ' pnlCard1
@@ -192,10 +210,9 @@ Partial Class adminDashboard
         ' lblTotalUsers
         ' 
         lblTotalUsers.AutoSize = True
-        lblTotalUsers.Font = New Font("Segoe UI", 36F, FontStyle.Bold)
+        lblTotalUsers.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
         lblTotalUsers.ForeColor = Color.FromArgb(CByte(41), CByte(128), CByte(185))
         lblTotalUsers.Location = New Point(27, 62)
-        lblTotalUsers.Margin = New Padding(4, 0, 4, 0)
         lblTotalUsers.Name = "lblTotalUsers"
         lblTotalUsers.Size = New Size(70, 81)
         lblTotalUsers.TabIndex = 1
@@ -204,12 +221,11 @@ Partial Class adminDashboard
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        Label1.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
         Label1.ForeColor = Color.Gray
         Label1.Location = New Point(27, 23)
-        Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(156, 23)
+        Label1.Size = New Size(174, 25)
         Label1.TabIndex = 0
         Label1.Text = "TOTAL RESIDENTS"
         ' 
@@ -218,7 +234,6 @@ Partial Class adminDashboard
         Panel1.BackColor = Color.FromArgb(CByte(41), CByte(128), CByte(185))
         Panel1.Dock = DockStyle.Left
         Panel1.Location = New Point(0, 0)
-        Panel1.Margin = New Padding(4, 5, 4, 5)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(11, 215)
         Panel1.TabIndex = 2
@@ -238,10 +253,9 @@ Partial Class adminDashboard
         ' lblPendingCases
         ' 
         lblPendingCases.AutoSize = True
-        lblPendingCases.Font = New Font("Segoe UI", 36F, FontStyle.Bold)
+        lblPendingCases.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
         lblPendingCases.ForeColor = Color.Crimson
         lblPendingCases.Location = New Point(27, 62)
-        lblPendingCases.Margin = New Padding(4, 0, 4, 0)
         lblPendingCases.Name = "lblPendingCases"
         lblPendingCases.Size = New Size(70, 81)
         lblPendingCases.TabIndex = 1
@@ -250,12 +264,11 @@ Partial Class adminDashboard
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        Label3.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
         Label3.ForeColor = Color.Gray
         Label3.Location = New Point(27, 23)
-        Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(142, 23)
+        Label3.Size = New Size(158, 25)
         Label3.TabIndex = 0
         Label3.Text = "PENDING CASES"
         ' 
@@ -264,7 +277,6 @@ Partial Class adminDashboard
         Panel2.BackColor = Color.Crimson
         Panel2.Dock = DockStyle.Left
         Panel2.Location = New Point(0, 0)
-        Panel2.Margin = New Padding(4, 5, 4, 5)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(11, 215)
         Panel2.TabIndex = 2
@@ -284,10 +296,9 @@ Partial Class adminDashboard
         ' lblTotalBlotter
         ' 
         lblTotalBlotter.AutoSize = True
-        lblTotalBlotter.Font = New Font("Segoe UI", 36F, FontStyle.Bold)
+        lblTotalBlotter.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
         lblTotalBlotter.ForeColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
         lblTotalBlotter.Location = New Point(27, 62)
-        lblTotalBlotter.Margin = New Padding(4, 0, 4, 0)
         lblTotalBlotter.Name = "lblTotalBlotter"
         lblTotalBlotter.Size = New Size(70, 81)
         lblTotalBlotter.TabIndex = 1
@@ -296,12 +307,11 @@ Partial Class adminDashboard
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        Label4.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
         Label4.ForeColor = Color.Gray
         Label4.Location = New Point(27, 23)
-        Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(195, 23)
+        Label4.Size = New Size(218, 25)
         Label4.TabIndex = 0
         Label4.Text = "TOTAL BLOTTER CASES"
         ' 
@@ -310,7 +320,6 @@ Partial Class adminDashboard
         Panel3.BackColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
         Panel3.Dock = DockStyle.Left
         Panel3.Location = New Point(0, 0)
-        Panel3.Margin = New Padding(4, 5, 4, 5)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(11, 215)
         Panel3.TabIndex = 2
@@ -321,7 +330,7 @@ Partial Class adminDashboard
         pnlCard4.Controls.Add(lblTotalConcerns)
         pnlCard4.Controls.Add(Label5)
         pnlCard4.Controls.Add(Panel4)
-        pnlCard4.Location = New Point(4, 256)
+        pnlCard4.Location = New Point(937, 5)
         pnlCard4.Margin = New Padding(4, 5, 27, 31)
         pnlCard4.Name = "pnlCard4"
         pnlCard4.Size = New Size(280, 215)
@@ -330,10 +339,9 @@ Partial Class adminDashboard
         ' lblTotalConcerns
         ' 
         lblTotalConcerns.AutoSize = True
-        lblTotalConcerns.Font = New Font("Segoe UI", 36F, FontStyle.Bold)
+        lblTotalConcerns.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
         lblTotalConcerns.ForeColor = Color.FromArgb(CByte(230), CByte(126), CByte(34))
         lblTotalConcerns.Location = New Point(27, 62)
-        lblTotalConcerns.Margin = New Padding(4, 0, 4, 0)
         lblTotalConcerns.Name = "lblTotalConcerns"
         lblTotalConcerns.Size = New Size(70, 81)
         lblTotalConcerns.TabIndex = 1
@@ -342,12 +350,11 @@ Partial Class adminDashboard
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        Label5.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
         Label5.ForeColor = Color.Gray
         Label5.Location = New Point(27, 23)
-        Label5.Margin = New Padding(4, 0, 4, 0)
         Label5.Name = "Label5"
-        Label5.Size = New Size(157, 23)
+        Label5.Size = New Size(177, 25)
         Label5.TabIndex = 0
         Label5.Text = "TOTAL CONCERNS"
         ' 
@@ -356,7 +363,6 @@ Partial Class adminDashboard
         Panel4.BackColor = Color.FromArgb(CByte(230), CByte(126), CByte(34))
         Panel4.Dock = DockStyle.Left
         Panel4.Location = New Point(0, 0)
-        Panel4.Margin = New Padding(4, 5, 4, 5)
         Panel4.Name = "Panel4"
         Panel4.Size = New Size(11, 215)
         Panel4.TabIndex = 2
@@ -367,20 +373,18 @@ Partial Class adminDashboard
         pnlHeader.Controls.Add(lblPageTitle)
         pnlHeader.Dock = DockStyle.Top
         pnlHeader.Location = New Point(347, 0)
-        pnlHeader.Margin = New Padding(4, 5, 4, 5)
         pnlHeader.Name = "pnlHeader"
-        pnlHeader.Size = New Size(1247, 123)
+        pnlHeader.Size = New Size(1013, 123)
         pnlHeader.TabIndex = 1
         ' 
         ' lblPageTitle
         ' 
         lblPageTitle.AutoSize = True
-        lblPageTitle.Font = New Font("Segoe UI", 20F, FontStyle.Bold)
+        lblPageTitle.Font = New Font("Segoe UI", 24.0F, FontStyle.Bold)
         lblPageTitle.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
         lblPageTitle.Location = New Point(40, 34)
-        lblPageTitle.Margin = New Padding(4, 0, 4, 0)
         lblPageTitle.Name = "lblPageTitle"
-        lblPageTitle.Size = New Size(309, 46)
+        lblPageTitle.Size = New Size(372, 54)
         lblPageTitle.TabIndex = 0
         lblPageTitle.Text = "Admin Dashboard"
         ' 
@@ -395,9 +399,8 @@ Partial Class adminDashboard
         pnlSidebar.Controls.Add(pnlLogo)
         pnlSidebar.Dock = DockStyle.Left
         pnlSidebar.Location = New Point(0, 0)
-        pnlSidebar.Margin = New Padding(4, 5, 4, 5)
         pnlSidebar.Name = "pnlSidebar"
-        pnlSidebar.Size = New Size(347, 894)
+        pnlSidebar.Size = New Size(347, 762)
         pnlSidebar.TabIndex = 0
         ' 
         ' btnLogout
@@ -407,10 +410,9 @@ Partial Class adminDashboard
         btnLogout.Dock = DockStyle.Bottom
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
-        btnLogout.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+        btnLogout.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
         btnLogout.ForeColor = Color.White
-        btnLogout.Location = New Point(0, 786)
-        btnLogout.Margin = New Padding(4, 5, 4, 5)
+        btnLogout.Location = New Point(0, 654)
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(347, 108)
         btnLogout.TabIndex = 5
@@ -425,10 +427,9 @@ Partial Class adminDashboard
         btnClearance.FlatAppearance.BorderSize = 0
         btnClearance.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
         btnClearance.FlatStyle = FlatStyle.Flat
-        btnClearance.Font = New Font("Segoe UI", 11F)
+        btnClearance.Font = New Font("Segoe UI", 12.0F)
         btnClearance.ForeColor = Color.WhiteSmoke
         btnClearance.Location = New Point(0, 447)
-        btnClearance.Margin = New Padding(4, 5, 4, 5)
         btnClearance.Name = "btnClearance"
         btnClearance.Padding = New Padding(40, 0, 0, 0)
         btnClearance.Size = New Size(347, 108)
@@ -445,10 +446,9 @@ Partial Class adminDashboard
         btnConcerns.FlatAppearance.BorderSize = 0
         btnConcerns.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
         btnConcerns.FlatStyle = FlatStyle.Flat
-        btnConcerns.Font = New Font("Segoe UI", 11F)
+        btnConcerns.Font = New Font("Segoe UI", 12.0F)
         btnConcerns.ForeColor = Color.WhiteSmoke
         btnConcerns.Location = New Point(0, 339)
-        btnConcerns.Margin = New Padding(4, 5, 4, 5)
         btnConcerns.Name = "btnConcerns"
         btnConcerns.Padding = New Padding(40, 0, 0, 0)
         btnConcerns.Size = New Size(347, 108)
@@ -465,10 +465,9 @@ Partial Class adminDashboard
         btnBlotter.FlatAppearance.BorderSize = 0
         btnBlotter.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
         btnBlotter.FlatStyle = FlatStyle.Flat
-        btnBlotter.Font = New Font("Segoe UI", 11F)
+        btnBlotter.Font = New Font("Segoe UI", 12.0F)
         btnBlotter.ForeColor = Color.WhiteSmoke
         btnBlotter.Location = New Point(0, 231)
-        btnBlotter.Margin = New Padding(4, 5, 4, 5)
         btnBlotter.Name = "btnBlotter"
         btnBlotter.Padding = New Padding(40, 0, 0, 0)
         btnBlotter.Size = New Size(347, 108)
@@ -485,10 +484,9 @@ Partial Class adminDashboard
         btnResidents.FlatAppearance.BorderSize = 0
         btnResidents.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(52), CByte(73), CByte(94))
         btnResidents.FlatStyle = FlatStyle.Flat
-        btnResidents.Font = New Font("Segoe UI", 11F)
+        btnResidents.Font = New Font("Segoe UI", 12.0F)
         btnResidents.ForeColor = Color.WhiteSmoke
         btnResidents.Location = New Point(0, 123)
-        btnResidents.Margin = New Padding(4, 5, 4, 5)
         btnResidents.Name = "btnResidents"
         btnResidents.Padding = New Padding(40, 0, 0, 0)
         btnResidents.Size = New Size(347, 108)
@@ -504,7 +502,6 @@ Partial Class adminDashboard
         pnlLogo.Cursor = Cursors.Hand
         pnlLogo.Dock = DockStyle.Top
         pnlLogo.Location = New Point(0, 0)
-        pnlLogo.Margin = New Padding(4, 5, 4, 5)
         pnlLogo.Name = "pnlLogo"
         pnlLogo.Size = New Size(347, 123)
         pnlLogo.TabIndex = 0
@@ -512,24 +509,22 @@ Partial Class adminDashboard
         ' lblLogo
         ' 
         lblLogo.AutoSize = True
-        lblLogo.Font = New Font("Segoe UI", 24F, FontStyle.Bold)
+        lblLogo.Font = New Font("Segoe UI", 28.0F, FontStyle.Bold)
         lblLogo.ForeColor = Color.White
         lblLogo.Location = New Point(80, 28)
-        lblLogo.Margin = New Padding(4, 0, 4, 0)
         lblLogo.Name = "lblLogo"
-        lblLogo.Size = New Size(164, 54)
+        lblLogo.Size = New Size(196, 62)
         lblLogo.TabIndex = 0
         lblLogo.Text = "ADMIN"
         ' 
         ' adminDashboard
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DimGray
-        ClientSize = New Size(1600, 900)
+        ClientSize = New Size(1366, 768)
         Controls.Add(pnlBorder)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(4, 5, 4, 5)
         Name = "adminDashboard"
         Padding = New Padding(3)
         StartPosition = FormStartPosition.CenterScreen
@@ -539,6 +534,7 @@ Partial Class adminDashboard
         pnlHome.ResumeLayout(False)
         pnlHome.PerformLayout()
         pnlChartSection.ResumeLayout(False)
+        CType(chartIncidents, ComponentModel.ISupportInitialize).EndInit()
         pnlFilterBar.ResumeLayout(False)
         pnlFilterBar.PerformLayout()
         pnlStatsRow.ResumeLayout(False)
