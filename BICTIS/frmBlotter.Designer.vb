@@ -51,7 +51,7 @@ Partial Class frmBlotter
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(933, 80)
+        Me.pnlHeader.Size = New System.Drawing.Size(1000, 80)
         Me.pnlHeader.TabIndex = 0
         '
         'btnClose
@@ -62,7 +62,7 @@ Partial Class frmBlotter
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.White
-        Me.btnClose.Location = New System.Drawing.Point(870, 15)
+        Me.btnClose.Location = New System.Drawing.Point(935, 15)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(50, 50)
         Me.btnClose.TabIndex = 1
@@ -99,10 +99,10 @@ Partial Class frmBlotter
         Me.pnlEditor.Controls.Add(Me.Label1)
         Me.pnlEditor.Controls.Add(Me.cbComplainant)
         Me.pnlEditor.Dock = System.Windows.Forms.DockStyle.Right
-        Me.pnlEditor.Location = New System.Drawing.Point(533, 80)
+        Me.pnlEditor.Location = New System.Drawing.Point(600, 80)
         Me.pnlEditor.Name = "pnlEditor"
-        Me.pnlEditor.Padding = New System.Windows.Forms.Padding(30)
-        Me.pnlEditor.Size = New System.Drawing.Size(400, 520)
+        Me.pnlEditor.Padding = New System.Windows.Forms.Padding(20)
+        Me.pnlEditor.Size = New System.Drawing.Size(400, 620)
         Me.pnlEditor.TabIndex = 1
         '
         'Label6
@@ -274,7 +274,7 @@ Partial Class frmBlotter
         Me.pnlGrid.Location = New System.Drawing.Point(0, 80)
         Me.pnlGrid.Name = "pnlGrid"
         Me.pnlGrid.Padding = New System.Windows.Forms.Padding(30)
-        Me.pnlGrid.Size = New System.Drawing.Size(533, 520)
+        Me.pnlGrid.Size = New System.Drawing.Size(600, 620)
         Me.pnlGrid.TabIndex = 2
         '
         'dgvCases
@@ -302,21 +302,21 @@ Partial Class frmBlotter
         Me.dgvCases.ReadOnly = True
         Me.dgvCases.RowHeadersVisible = False
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11.0!)
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64)
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(229, 241, 251)
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
         Me.dgvCases.RowsDefaultCellStyle = DataGridViewCellStyle2
-        Me.dgvCases.RowTemplate.Height = 35
+        Me.dgvCases.RowTemplate.Height = 40
         Me.dgvCases.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCases.Size = New System.Drawing.Size(473, 460)
+        Me.dgvCases.Size = New System.Drawing.Size(540, 560)
         Me.dgvCases.TabIndex = 0
         '
         'frmBlotter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(933, 600)
+        Me.ClientSize = New System.Drawing.Size(1000, 700)
         Me.Controls.Add(Me.pnlGrid)
         Me.Controls.Add(Me.pnlEditor)
         Me.Controls.Add(Me.pnlHeader)

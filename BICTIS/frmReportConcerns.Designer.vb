@@ -38,7 +38,7 @@ Partial Class frmReportConcern
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(500, 60)
+        Me.pnlHeader.Size = New System.Drawing.Size(600, 60)
         Me.pnlHeader.TabIndex = 0
         '
         'btnClose
@@ -48,7 +48,7 @@ Partial Class frmReportConcern
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.White
-        Me.btnClose.Location = New System.Drawing.Point(450, 10)
+        Me.btnClose.Location = New System.Drawing.Point(550, 10)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(40, 40)
         Me.btnClose.TabIndex = 1
@@ -68,6 +68,7 @@ Partial Class frmReportConcern
         '
         'pnlContent
         '
+        Me.pnlContent.AutoScroll = True
         Me.pnlContent.BackColor = System.Drawing.Color.White
         Me.pnlContent.Controls.Add(Me.btnSubmit)
         Me.pnlContent.Controls.Add(Me.pnlLine2)
@@ -79,7 +80,7 @@ Partial Class frmReportConcern
         Me.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlContent.Location = New System.Drawing.Point(0, 60)
         Me.pnlContent.Name = "pnlContent"
-        Me.pnlContent.Size = New System.Drawing.Size(500, 440)
+        Me.pnlContent.Size = New System.Drawing.Size(600, 540)
         Me.pnlContent.TabIndex = 1
         '
         'btnSubmit
@@ -109,7 +110,7 @@ Partial Class frmReportConcern
         '
         Me.txtNarrative.BackColor = System.Drawing.Color.White
         Me.txtNarrative.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtNarrative.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.txtNarrative.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.txtNarrative.Location = New System.Drawing.Point(50, 190)
         Me.txtNarrative.Multiline = True
         Me.txtNarrative.Name = "txtNarrative"
@@ -139,13 +140,11 @@ Partial Class frmReportConcern
         '
         Me.cbType.BackColor = System.Drawing.Color.White
         Me.cbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbType.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.cbType.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.cbType.FormattingEnabled = True
-        ' UPDATED LIST TO MATCH FRMBLOTTER
-        Me.cbType.Items.AddRange(New Object() {"Physical Injury", "Theft / Robbery", "Malicious Mischief", "Unjust Vexation", "Threats", "Noise Complaint", "Curfew Violation", "Property Dispute", "Other"})
         Me.cbType.Location = New System.Drawing.Point(50, 80)
         Me.cbType.Name = "cbType"
-        Me.cbType.Size = New System.Drawing.Size(400, 28)
+        Me.cbType.Size = New System.Drawing.Size(400, 29)
         Me.cbType.TabIndex = 1
         '
         'Label1
@@ -163,7 +162,7 @@ Partial Class frmReportConcern
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(500, 500)
+        Me.ClientSize = New System.Drawing.Size(600, 600)
         Me.Controls.Add(Me.pnlContent)
         Me.Controls.Add(Me.pnlHeader)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

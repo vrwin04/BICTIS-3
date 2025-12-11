@@ -41,7 +41,7 @@ Partial Class frmCaseDetails
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(600, 60)
+        Me.pnlHeader.Size = New System.Drawing.Size(800, 60)
         Me.pnlHeader.TabIndex = 0
         '
         'btnClose
@@ -51,7 +51,7 @@ Partial Class frmCaseDetails
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.White
-        Me.btnClose.Location = New System.Drawing.Point(550, 10)
+        Me.btnClose.Location = New System.Drawing.Point(750, 10)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(40, 40)
         Me.btnClose.TabIndex = 1
@@ -85,20 +85,20 @@ Partial Class frmCaseDetails
         Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlBody.Location = New System.Drawing.Point(0, 60)
         Me.pnlBody.Name = "pnlBody"
-        Me.pnlBody.Size = New System.Drawing.Size(600, 440)
+        Me.pnlBody.Size = New System.Drawing.Size(800, 540)
         Me.pnlBody.TabIndex = 1
         '
         'txtNarrative
         '
         Me.txtNarrative.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtNarrative.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtNarrative.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.txtNarrative.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.txtNarrative.Location = New System.Drawing.Point(30, 200)
         Me.txtNarrative.Multiline = True
         Me.txtNarrative.Name = "txtNarrative"
         Me.txtNarrative.ReadOnly = True
         Me.txtNarrative.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtNarrative.Size = New System.Drawing.Size(540, 210)
+        Me.txtNarrative.Size = New System.Drawing.Size(740, 310)
         Me.txtNarrative.TabIndex = 9
         '
         'Label5
@@ -204,7 +204,7 @@ Partial Class frmCaseDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(600, 500)
+        Me.ClientSize = New System.Drawing.Size(800, 600)
         Me.Controls.Add(Me.pnlBody)
         Me.Controls.Add(Me.pnlHeader)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

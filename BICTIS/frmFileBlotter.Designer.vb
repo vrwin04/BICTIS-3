@@ -41,7 +41,7 @@ Partial Class frmFileBlotter
         Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
         Me.pnlHeader.Name = "pnlHeader"
-        Me.pnlHeader.Size = New System.Drawing.Size(500, 60)
+        Me.pnlHeader.Size = New System.Drawing.Size(600, 60)
         Me.pnlHeader.TabIndex = 0
         '
         'btnClose
@@ -51,7 +51,7 @@ Partial Class frmFileBlotter
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.White
-        Me.btnClose.Location = New System.Drawing.Point(450, 10)
+        Me.btnClose.Location = New System.Drawing.Point(550, 10)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(40, 40)
         Me.btnClose.TabIndex = 1
@@ -71,6 +71,7 @@ Partial Class frmFileBlotter
         '
         'pnlContent
         '
+        Me.pnlContent.AutoScroll = True
         Me.pnlContent.BackColor = System.Drawing.Color.White
         Me.pnlContent.Controls.Add(Me.btnSubmit)
         Me.pnlContent.Controls.Add(Me.pnlLine2)
@@ -85,7 +86,7 @@ Partial Class frmFileBlotter
         Me.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlContent.Location = New System.Drawing.Point(0, 60)
         Me.pnlContent.Name = "pnlContent"
-        Me.pnlContent.Size = New System.Drawing.Size(500, 490)
+        Me.pnlContent.Size = New System.Drawing.Size(600, 640)
         Me.pnlContent.TabIndex = 1
         '
         'btnSubmit
@@ -96,7 +97,7 @@ Partial Class frmFileBlotter
         Me.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSubmit.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnSubmit.ForeColor = System.Drawing.Color.White
-        Me.btnSubmit.Location = New System.Drawing.Point(50, 400)
+        Me.btnSubmit.Location = New System.Drawing.Point(50, 420)
         Me.btnSubmit.Name = "btnSubmit"
         Me.btnSubmit.Size = New System.Drawing.Size(400, 50)
         Me.btnSubmit.TabIndex = 6
@@ -106,7 +107,7 @@ Partial Class frmFileBlotter
         'pnlLine2
         '
         Me.pnlLine2.BackColor = System.Drawing.Color.Silver
-        Me.pnlLine2.Location = New System.Drawing.Point(50, 355)
+        Me.pnlLine2.Location = New System.Drawing.Point(50, 375)
         Me.pnlLine2.Name = "pnlLine2"
         Me.pnlLine2.Size = New System.Drawing.Size(400, 2)
         Me.pnlLine2.TabIndex = 5
@@ -115,8 +116,8 @@ Partial Class frmFileBlotter
         '
         Me.txtNarrative.BackColor = System.Drawing.Color.White
         Me.txtNarrative.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtNarrative.Font = New System.Drawing.Font("Segoe UI", 11.0!)
-        Me.txtNarrative.Location = New System.Drawing.Point(50, 200)
+        Me.txtNarrative.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.txtNarrative.Location = New System.Drawing.Point(50, 220)
         Me.txtNarrative.Multiline = True
         Me.txtNarrative.Name = "txtNarrative"
         Me.txtNarrative.Size = New System.Drawing.Size(400, 150)
@@ -127,7 +128,7 @@ Partial Class frmFileBlotter
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label2.ForeColor = System.Drawing.Color.Gray
-        Me.Label2.Location = New System.Drawing.Point(46, 170)
+        Me.Label2.Location = New System.Drawing.Point(46, 190)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(125, 19)
         Me.Label2.TabIndex = 3
@@ -136,7 +137,7 @@ Partial Class frmFileBlotter
         'pnlLine1
         '
         Me.pnlLine1.BackColor = System.Drawing.Color.Silver
-        Me.pnlLine1.Location = New System.Drawing.Point(50, 145)
+        Me.pnlLine1.Location = New System.Drawing.Point(50, 165)
         Me.pnlLine1.Name = "pnlLine1"
         Me.pnlLine1.Size = New System.Drawing.Size(400, 2)
         Me.pnlLine1.TabIndex = 2
@@ -145,11 +146,11 @@ Partial Class frmFileBlotter
         '
         Me.cbType.BackColor = System.Drawing.Color.White
         Me.cbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbType.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.cbType.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Location = New System.Drawing.Point(50, 115)
+        Me.cbType.Location = New System.Drawing.Point(50, 135)
         Me.cbType.Name = "cbType"
-        Me.cbType.Size = New System.Drawing.Size(400, 28)
+        Me.cbType.Size = New System.Drawing.Size(400, 29)
         Me.cbType.TabIndex = 1
         '
         'Label1
@@ -157,7 +158,7 @@ Partial Class frmFileBlotter
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label1.ForeColor = System.Drawing.Color.Gray
-        Me.Label1.Location = New System.Drawing.Point(46, 90)
+        Me.Label1.Location = New System.Drawing.Point(46, 110)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(109, 19)
         Me.Label1.TabIndex = 0
@@ -166,7 +167,7 @@ Partial Class frmFileBlotter
         'pnlLine3
         '
         Me.pnlLine3.BackColor = System.Drawing.Color.Silver
-        Me.pnlLine3.Location = New System.Drawing.Point(50, 70)
+        Me.pnlLine3.Location = New System.Drawing.Point(50, 90)
         Me.pnlLine3.Name = "pnlLine3"
         Me.pnlLine3.Size = New System.Drawing.Size(400, 2)
         Me.pnlLine3.TabIndex = 11
@@ -176,7 +177,7 @@ Partial Class frmFileBlotter
         Me.txtRespondent.BackColor = System.Drawing.Color.White
         Me.txtRespondent.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtRespondent.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtRespondent.Location = New System.Drawing.Point(50, 45)
+        Me.txtRespondent.Location = New System.Drawing.Point(50, 65)
         Me.txtRespondent.Name = "txtRespondent"
         Me.txtRespondent.Size = New System.Drawing.Size(400, 22)
         Me.txtRespondent.TabIndex = 0
@@ -186,7 +187,7 @@ Partial Class frmFileBlotter
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label3.ForeColor = System.Drawing.Color.Gray
-        Me.Label3.Location = New System.Drawing.Point(46, 20)
+        Me.Label3.Location = New System.Drawing.Point(46, 40)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(180, 19)
         Me.Label3.TabIndex = 10
@@ -196,7 +197,7 @@ Partial Class frmFileBlotter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(500, 550)
+        Me.ClientSize = New System.Drawing.Size(600, 700)
         Me.Controls.Add(Me.pnlContent)
         Me.Controls.Add(Me.pnlHeader)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

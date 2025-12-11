@@ -70,6 +70,7 @@ Partial Class frmConcerns
         ' 
         ' pnlEditor
         ' 
+        pnlEditor.AutoScroll = True
         pnlEditor.BackColor = Color.White
         pnlEditor.Controls.Add(Label6)
         pnlEditor.Controls.Add(btnUpdate)
@@ -78,6 +79,7 @@ Partial Class frmConcerns
         pnlEditor.Dock = DockStyle.Right
         pnlEditor.Location = New Point(633, 70)
         pnlEditor.Name = "pnlEditor"
+        pnlEditor.Padding = New Padding(20)
         pnlEditor.Size = New Size(300, 530)
         pnlEditor.TabIndex = 1
         ' 
@@ -157,10 +159,11 @@ Partial Class frmConcerns
         dgvCases.ReadOnly = True
         dgvCases.RowHeadersVisible = False
         DataGridViewCellStyle2.BackColor = Color.White
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 10.0F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 11.0F)
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(200), CByte(230), CByte(255))
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
         dgvCases.RowsDefaultCellStyle = DataGridViewCellStyle2
+        dgvCases.RowTemplate.Height = 40
         dgvCases.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvCases.Size = New Size(593, 490)
         dgvCases.TabIndex = 0

@@ -19,7 +19,10 @@ Partial Class frmUser
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         pnlBorder = New Panel()
         pnlContainer = New Panel()
+        pnlHome = New Panel()
         dgvHistory = New DataGridView()
+        pnlChart = New Panel()
+        lblChartHeader = New Label()
         pnlHeader = New Panel()
         lblWelcome = New Label()
         pnlSidebar = New Panel()
@@ -32,7 +35,9 @@ Partial Class frmUser
         Label1 = New Label()
         pnlBorder.SuspendLayout()
         pnlContainer.SuspendLayout()
+        pnlHome.SuspendLayout()
         CType(dgvHistory, ComponentModel.ISupportInitialize).BeginInit()
+        pnlChart.SuspendLayout()
         pnlHeader.SuspendLayout()
         pnlSidebar.SuspendLayout()
         pnlLogo.SuspendLayout()
@@ -40,26 +45,37 @@ Partial Class frmUser
         ' 
         ' pnlBorder
         ' 
-        pnlBorder.BackColor = Color.FromArgb(236, 240, 241)
+        pnlBorder.BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
         pnlBorder.Controls.Add(pnlContainer)
         pnlBorder.Controls.Add(pnlHeader)
         pnlBorder.Controls.Add(pnlSidebar)
         pnlBorder.Dock = DockStyle.Fill
         pnlBorder.Location = New Point(0, 0)
         pnlBorder.Name = "pnlBorder"
-        pnlBorder.Size = New Size(1336, 768)
+        pnlBorder.Size = New Size(1366, 768)
         pnlBorder.TabIndex = 0
         ' 
         ' pnlContainer
         ' 
         pnlContainer.BackColor = Color.WhiteSmoke
-        pnlContainer.Controls.Add(dgvHistory)
+        pnlContainer.Controls.Add(pnlHome)
         pnlContainer.Dock = DockStyle.Fill
         pnlContainer.Location = New Point(347, 123)
         pnlContainer.Name = "pnlContainer"
-        pnlContainer.Padding = New Padding(40, 46, 40, 46)
-        pnlContainer.Size = New Size(989, 645)
+        pnlContainer.Size = New Size(1019, 645)
         pnlContainer.TabIndex = 2
+        ' 
+        ' pnlHome
+        ' 
+        pnlHome.AutoScroll = True
+        pnlHome.Controls.Add(dgvHistory)
+        pnlHome.Controls.Add(pnlChart)
+        pnlHome.Dock = DockStyle.Fill
+        pnlHome.Location = New Point(0, 0)
+        pnlHome.Name = "pnlHome"
+        pnlHome.Padding = New Padding(40, 20, 40, 46)
+        pnlHome.Size = New Size(1019, 645)
+        pnlHome.TabIndex = 0
         ' 
         ' dgvHistory
         ' 
@@ -71,7 +87,7 @@ Partial Class frmUser
         dgvHistory.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         dgvHistory.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(0, 150, 136)
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(0), CByte(150), CByte(136))
         DataGridViewCellStyle1.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
         DataGridViewCellStyle1.ForeColor = Color.White
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
@@ -81,20 +97,44 @@ Partial Class frmUser
         dgvHistory.ColumnHeadersHeight = 50
         dgvHistory.Dock = DockStyle.Fill
         dgvHistory.EnableHeadersVisualStyles = False
-        dgvHistory.Location = New Point(40, 46)
+        dgvHistory.Location = New Point(40, 320)
         dgvHistory.Name = "dgvHistory"
         dgvHistory.ReadOnly = True
         dgvHistory.RowHeadersVisible = False
         dgvHistory.RowHeadersWidth = 51
         DataGridViewCellStyle2.BackColor = Color.White
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 10.0F)
-        DataGridViewCellStyle2.ForeColor = Color.FromArgb(64, 64, 64)
-        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(224, 242, 241)
+        DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(224), CByte(242), CByte(241))
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
         dgvHistory.RowsDefaultCellStyle = DataGridViewCellStyle2
         dgvHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvHistory.Size = New Size(909, 553)
-        dgvHistory.TabIndex = 0
+        dgvHistory.Size = New Size(939, 279)
+        dgvHistory.TabIndex = 1
+        ' 
+        ' pnlChart
+        ' 
+        pnlChart.BackColor = Color.White
+        pnlChart.Controls.Add(lblChartHeader)
+        pnlChart.Dock = DockStyle.Top
+        pnlChart.Location = New Point(40, 20)
+        pnlChart.Name = "pnlChart"
+        pnlChart.Padding = New Padding(10)
+        pnlChart.Size = New Size(939, 300)
+        pnlChart.TabIndex = 0
+        ' 
+        ' lblChartHeader
+        ' 
+        lblChartHeader.AutoSize = True
+        lblChartHeader.Dock = DockStyle.Top
+        lblChartHeader.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        lblChartHeader.ForeColor = Color.DimGray
+        lblChartHeader.Location = New Point(10, 10)
+        lblChartHeader.Name = "lblChartHeader"
+        lblChartHeader.Padding = New Padding(0, 0, 0, 10)
+        lblChartHeader.Size = New Size(187, 38)
+        lblChartHeader.TabIndex = 0
+        lblChartHeader.Text = "My Case Overview"
         ' 
         ' pnlHeader
         ' 
@@ -103,14 +143,14 @@ Partial Class frmUser
         pnlHeader.Dock = DockStyle.Top
         pnlHeader.Location = New Point(347, 0)
         pnlHeader.Name = "pnlHeader"
-        pnlHeader.Size = New Size(989, 123)
+        pnlHeader.Size = New Size(1019, 123)
         pnlHeader.TabIndex = 1
         ' 
         ' lblWelcome
         ' 
         lblWelcome.AutoSize = True
         lblWelcome.Font = New Font("Segoe UI", 18.0F, FontStyle.Bold)
-        lblWelcome.ForeColor = Color.FromArgb(44, 62, 80)
+        lblWelcome.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
         lblWelcome.Location = New Point(33, 38)
         lblWelcome.Name = "lblWelcome"
         lblWelcome.Size = New Size(277, 41)
@@ -119,7 +159,7 @@ Partial Class frmUser
         ' 
         ' pnlSidebar
         ' 
-        pnlSidebar.BackColor = Color.FromArgb(0, 150, 136)
+        pnlSidebar.BackColor = Color.FromArgb(CByte(0), CByte(150), CByte(136))
         pnlSidebar.Controls.Add(btnLogout)
         pnlSidebar.Controls.Add(btnRefresh)
         pnlSidebar.Controls.Add(btnRequestClearance)
@@ -134,8 +174,7 @@ Partial Class frmUser
         ' 
         ' btnLogout
         ' 
-        btnLogout.BackColor = Color.FromArgb(0, 121, 107)
-        btnLogout.Cursor = Cursors.Hand
+        btnLogout.BackColor = Color.FromArgb(CByte(0), CByte(121), CByte(107))
         btnLogout.Dock = DockStyle.Bottom
         btnLogout.FlatAppearance.BorderSize = 0
         btnLogout.FlatStyle = FlatStyle.Flat
@@ -150,7 +189,6 @@ Partial Class frmUser
         ' 
         ' btnRefresh
         ' 
-        btnRefresh.Cursor = Cursors.Hand
         btnRefresh.Dock = DockStyle.Top
         btnRefresh.FlatAppearance.BorderSize = 0
         btnRefresh.FlatStyle = FlatStyle.Flat
@@ -161,13 +199,12 @@ Partial Class frmUser
         btnRefresh.Padding = New Padding(27, 0, 0, 0)
         btnRefresh.Size = New Size(347, 92)
         btnRefresh.TabIndex = 4
-        btnRefresh.Text = "Refresh History"
+        btnRefresh.Text = "HOME / REFRESH"
         btnRefresh.TextAlign = ContentAlignment.MiddleLeft
         btnRefresh.UseVisualStyleBackColor = True
         ' 
         ' btnRequestClearance
         ' 
-        btnRequestClearance.Cursor = Cursors.Hand
         btnRequestClearance.Dock = DockStyle.Top
         btnRequestClearance.FlatAppearance.BorderSize = 0
         btnRequestClearance.FlatStyle = FlatStyle.Flat
@@ -184,7 +221,6 @@ Partial Class frmUser
         ' 
         ' btnFileBlotter
         ' 
-        btnFileBlotter.Cursor = Cursors.Hand
         btnFileBlotter.Dock = DockStyle.Top
         btnFileBlotter.FlatAppearance.BorderSize = 0
         btnFileBlotter.FlatStyle = FlatStyle.Flat
@@ -201,7 +237,6 @@ Partial Class frmUser
         ' 
         ' btnReport
         ' 
-        btnReport.Cursor = Cursors.Hand
         btnReport.Dock = DockStyle.Top
         btnReport.FlatAppearance.BorderSize = 0
         btnReport.FlatStyle = FlatStyle.Flat
@@ -218,7 +253,7 @@ Partial Class frmUser
         ' 
         ' pnlLogo
         ' 
-        pnlLogo.BackColor = Color.FromArgb(0, 105, 92)
+        pnlLogo.BackColor = Color.FromArgb(CByte(0), CByte(105), CByte(92))
         pnlLogo.Controls.Add(Label1)
         pnlLogo.Dock = DockStyle.Top
         pnlLogo.Location = New Point(0, 0)
@@ -242,7 +277,7 @@ Partial Class frmUser
         AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.WhiteSmoke
-        ClientSize = New Size(1336, 768)
+        ClientSize = New Size(1366, 768)
         Controls.Add(pnlBorder)
         FormBorderStyle = FormBorderStyle.None
         Name = "frmUser"
@@ -250,7 +285,10 @@ Partial Class frmUser
         Text = "User Dashboard"
         pnlBorder.ResumeLayout(False)
         pnlContainer.ResumeLayout(False)
+        pnlHome.ResumeLayout(False)
         CType(dgvHistory, ComponentModel.ISupportInitialize).EndInit()
+        pnlChart.ResumeLayout(False)
+        pnlChart.PerformLayout()
         pnlHeader.ResumeLayout(False)
         pnlHeader.PerformLayout()
         pnlSidebar.ResumeLayout(False)
@@ -272,5 +310,9 @@ Partial Class frmUser
     Friend WithEvents pnlHeader As Panel
     Friend WithEvents lblWelcome As Label
     Friend WithEvents pnlContainer As Panel
+    Friend WithEvents pnlHome As Panel
     Friend WithEvents dgvHistory As DataGridView
+    Friend WithEvents pnlChart As Panel
+    Friend WithEvents chartUserStats As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents lblChartHeader As Label
 End Class
